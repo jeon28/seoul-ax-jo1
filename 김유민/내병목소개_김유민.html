@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>내 병목 소개</title>
+<style>
+  :root {
+    --bg: #f7f5f0; --fg: #1d2330; --muted: #5b6475; --accent: #c2410c;
+    --card: #ffffff; --line: #e3ded3; --ok: #15803d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12151c; --fg: #eef1f6; --muted: #a3acbd; --accent: #fb923c;
+      --card: #1c212b; --line: #2d3442; --ok: #4ade80;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12151c; --fg: #eef1f6; --muted: #a3acbd; --accent: #fb923c;
+    --card: #1c212b; --line: #2d3442; --ok: #4ade80;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg); color: var(--fg); overflow: hidden;
+    font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .slide {
+    position: fixed; inset: 0; display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(20px, 6vw, 96px) clamp(16px, 8vw, 140px);
+    opacity: 0; visibility: hidden; transform: translateY(12px);
+    transition: opacity .35s, transform .35s, visibility .35s;
+  }
+  .slide.active { opacity: 1; visibility: visible; transform: none; }
+  .kicker { color: var(--accent); font-weight: 700; letter-spacing: .04em;
+    font-size: clamp(14px, 2vw, 22px); margin-bottom: .8em; }
+  h1 { font-size: clamp(30px, 6.2vw, 76px); line-height: 1.2; font-weight: 800;
+    letter-spacing: -0.02em; margin-bottom: .6em; word-break: keep-all; }
+  .lines p { font-size: clamp(20px, 3.4vw, 40px); line-height: 1.5; margin: .25em 0;
+    word-break: keep-all; }
+  .muted { color: var(--muted); }
+  .em { color: var(--accent); font-weight: 800; }
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: .4em;
+    font-size: clamp(18px, 3vw, 34px); margin-bottom: .9em; font-weight: 700; }
+  .chip { padding: .3em .7em; border: 2px solid var(--line); border-radius: 999px; background: var(--card); }
+  .chip.hot { border-color: var(--accent); color: var(--accent); }
+  .arrow { color: var(--muted); }
+  .big { font-size: clamp(64px, 16vw, 200px); font-weight: 900; line-height: 1;
+    color: var(--accent); letter-spacing: -0.04em; margin-bottom: .2em; }
+  .big small { font-size: .35em; color: var(--fg); font-weight: 700; letter-spacing: 0; }
+  .io { display: grid; grid-template-columns: 1fr auto 1fr; gap: clamp(10px, 2vw, 28px);
+    align-items: center; margin-bottom: .8em; }
+  .box { background: var(--card); border: 2px solid var(--line); border-radius: 16px;
+    padding: clamp(12px, 2vw, 26px); font-size: clamp(17px, 2.7vw, 32px); line-height: 1.4;
+    word-break: keep-all; }
+  .box b { display: block; font-size: .6em; color: var(--muted); letter-spacing: .05em; margin-bottom: .3em; }
+  .box.out { border-color: var(--accent); }
+  .io .arrow { font-size: clamp(28px, 5vw, 60px); text-align: center; }
+  @media (max-width: 640px) {
+    .io { grid-template-columns: 1fr; }
+    .io .arrow { transform: rotate(90deg); }
+  }
+  .bar { position: fixed; left: 0; bottom: 0; height: 5px; background: var(--accent); transition: width .35s; }
+  .nav { position: fixed; right: clamp(12px, 3vw, 32px); bottom: clamp(14px, 3vw, 28px);
+    display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: 15px; }
+  .nav button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line);
+    background: var(--card); color: var(--fg); font-size: 18px; cursor: pointer; }
+  .nav button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  @page { size: 1280px 720px; margin: 0; }
+  @media print {
+    html, body { height: auto; overflow: visible; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .slide { position: relative; inset: auto; width: 1280px; height: 720px;
+      opacity: 1; visibility: visible; transform: none; transition: none; }
+    .slide ~ .slide { break-before: page; }
+    .nav, .bar { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="slide active" aria-label="1 / 5">
+  <div class="kicker">1 · 나는 누구</div>
+  <h1>흥아라인 인천사무소<br>수출입 담당 김유민</h1>
+  <div class="lines">
+    <p>수출입 마감 → <span class="em">위험물 확인</span> → 미반입 확인</p>
+    <p class="muted">오늘은 가운데, 위험물 확인 이야기</p>
+  </div>
+</section>
+
+<section class="slide" aria-label="2 / 5">
+  <div class="kicker">2 · 일의 흐름과 병목</div>
+  <div class="flow">
+    <span class="chip">PDF 다운</span><span class="arrow">→</span>
+    <span class="chip hot">컨테이너별 눈으로 대조</span><span class="arrow">→</span>
+    <span class="chip">일치 확인</span>
+  </div>
+  <div class="lines">
+    <p>CERTI(화주) ↔ SPECIAL LIST(부킹)</p>
+    <p><span class="em">중량 · PKG · CLASS · UN NO.</span> 하나씩</p>
+    <p>놓치면 → <span class="em">선적 불가</span></p>
+  </div>
+</section>
+
+<section class="slide" aria-label="3 / 5">
+  <div class="kicker">3 · 얼마나 걸리나</div>
+  <div class="big">5<small> 분/회</small></div>
+  <div class="lines">
+    <p>위험물 선적 건이 있을 때만 · 컨테이너 1~10대</p>
+    <p>주 3회 × 약 5분 = 월 약 1.1시간</p>
+    <p class="muted">시간보다 <span class="em">한 번의 실수</span>가 더 비싸다</p>
+  </div>
+</section>
+
+<section class="slide" aria-label="4 / 5">
+  <div class="kicker">4 · 이렇게 바뀌면 좋겠다</div>
+  <div class="io">
+    <div class="box"><b>INPUT</b>CERTI PDF 여러 개<br>+ SPECIAL LIST 1개</div>
+    <div class="arrow">→</div>
+    <div class="box out"><b>OUTPUT · 화면 요약</b>12대 중 <span class="em">2대 불일치</span><br>ABCU1234567 중량 다름</div>
+  </div>
+  <div class="lines">
+    <p>위험물 대조 에이전트가 1차 대조, <span class="em">최종 확인은 내가</span></p>
+  </div>
+</section>
+
+<section class="slide" aria-label="5 / 5">
+  <div class="kicker">5 · 조 대시보드 &amp; 질문</div>
+  <div class="lines">
+    <p>보탤 것: 회차별 <span class="em">불일치 건수 · 유형</span></p>
+    <p>확인 시간: 5분 → 약 1~2분 <span class="muted">(추정)</span></p>
+    <p>❓ 여러분도 <span class="em">“두 문서 대조”</span> 업무 있나요?</p>
+  </div>
+</section>
+
+<div class="bar" id="bar"></div>
+<div class="nav">
+  <span id="count">1 / 5</span>
+  <button id="prev" aria-label="이전">‹</button>
+  <button id="next" aria-label="다음">›</button>
+</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  let i = 0;
+  function go(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle('active', k === i));
+    document.getElementById('count').textContent = (i + 1) + ' / ' + slides.length;
+    document.getElementById('bar').style.width = ((i + 1) / slides.length * 100) + '%';
+  }
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); go(i + 1); }
+    if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); go(i - 1); }
+    if (e.key === 'Home') go(0);
+    if (e.key === 'End') go(slides.length - 1);
+  });
+  document.getElementById('prev').onclick = () => go(i - 1);
+  document.getElementById('next').onclick = () => go(i + 1);
+  let x0 = null;
+  document.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) go(dx < 0 ? i + 1 : i - 1);
+    x0 = null;
+  });
+  go(0);
+</script>
+</body>
+</html>
