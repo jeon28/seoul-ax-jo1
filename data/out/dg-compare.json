@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "agent": "dg-compare",
+  "owner": "김유민",
+  "bundle": "C",
+  "as_of": "2026-10-15",
+  "headline": "12대 중 2대 불일치, 짝 없음 1대",
+  "metrics": [
+    {
+      "key": "processed",
+      "label": "대조 컨테이너",
+      "value": 12,
+      "unit": "대",
+      "prev": 9
+    },
+    {
+      "key": "mismatch",
+      "label": "불일치",
+      "value": 2,
+      "unit": "대"
+    },
+    {
+      "key": "unpaired",
+      "label": "짝 없음",
+      "value": 1,
+      "unit": "대"
+    }
+  ],
+  "table": {
+    "columns": [
+      "컨테이너코드",
+      "항목",
+      "CERTI",
+      "LIST",
+      "판정"
+    ],
+    "rows": [
+      [
+        "C03",
+        "중량",
+        "18,200",
+        "18,000",
+        "불일치"
+      ],
+      [
+        "C07",
+        "UN NO.",
+        "1263",
+        "1266",
+        "불일치"
+      ],
+      [
+        "C11",
+        "-",
+        "-",
+        "있음",
+        "짝 없음"
+      ]
+    ]
+  },
+  "review": [
+    {
+      "id": "R01",
+      "code": "C03",
+      "reason": "중량 불일치",
+      "detail": "C03 CERTI 18,200kg / LIST 18,000kg"
+    },
+    {
+      "id": "R02",
+      "code": "C07",
+      "reason": "UN NO. 불일치",
+      "detail": "C07 CERTI 1263 / LIST 1266"
+    },
+    {
+      "id": "R03",
+      "code": "C11",
+      "reason": "LIST 에만 있음",
+      "detail": "C11 CERTI 서류 없음"
+    }
+  ],
+  "time": {
+    "before_min": 5,
+    "after_min": 2,
+    "runs_per_month": 13,
+    "basis": "추정"
+  },
+  "source": {
+    "label": "가상 CERTI·SPECIAL LIST PDF",
+    "rows": 12
+  },
+  "rules_version": "compare@v1",
+  "synthetic": true
+}

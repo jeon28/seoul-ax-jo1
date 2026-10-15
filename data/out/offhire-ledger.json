@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "agent": "offhire",
+  "owner": "ijryu",
+  "bundle": "D",
+  "as_of": "2026-10-15",
+  "headline": "협정 4건 진행, 7일 넘은 미회신 1건",
+  "metrics": [
+    {
+      "key": "processed",
+      "label": "협정 건수",
+      "value": 4,
+      "unit": "건",
+      "prev": 3
+    },
+    {
+      "key": "stale",
+      "label": "7일 넘은 미회신",
+      "value": 1,
+      "unit": "건",
+      "prev": 0
+    },
+    {
+      "key": "agree_rate",
+      "label": "청구 대비 합의율",
+      "value": 82,
+      "unit": "%"
+    }
+  ],
+  "table": {
+    "columns": [
+      "선박코드",
+      "상태",
+      "청구(구간)",
+      "다음 조치일"
+    ],
+    "rows": [
+      [
+        "S04",
+        "청구",
+        "$$$",
+        "10/20"
+      ],
+      [
+        "S05",
+        "반론",
+        "$$$",
+        "10/18"
+      ],
+      [
+        "S06",
+        "합의",
+        "$$",
+        "-"
+      ],
+      [
+        "S07",
+        "정산",
+        "$$",
+        "-"
+      ]
+    ]
+  },
+  "review": [
+    {
+      "id": "R01",
+      "code": "S05",
+      "reason": "7일 넘게 회신 없음",
+      "detail": "S05 협정 청구 후 9일째 선주 회신 없음"
+    },
+    {
+      "id": "R02",
+      "code": "S04",
+      "reason": "시간대 혼동 가능",
+      "detail": "S04 사고 시작 시각이 UTC 인지 현지 시각인지 확인"
+    }
+  ],
+  "time": {
+    "before_min": 45,
+    "after_min": 10,
+    "runs_per_month": 4,
+    "basis": "추정"
+  },
+  "source": {
+    "label": "가상 Off-hire 엑셀·대장",
+    "rows": 4
+  },
+  "rules_version": "aggregate@v1",
+  "synthetic": true
+}

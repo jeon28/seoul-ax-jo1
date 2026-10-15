@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "agent": "special-cargo-approval",
+  "owner": "kim jaehyung",
+  "bundle": "C",
+  "as_of": "2026-10-15",
+  "headline": "5건 점검, 누락 1 · 불일치 1 · 규정 위반 1",
+  "metrics": [
+    {
+      "key": "processed",
+      "label": "점검 건수",
+      "value": 5,
+      "unit": "건",
+      "prev": 8
+    },
+    {
+      "key": "missing",
+      "label": "서류 누락",
+      "value": 1,
+      "unit": "건"
+    },
+    {
+      "key": "conflict",
+      "label": "서류 불일치",
+      "value": 1,
+      "unit": "건"
+    },
+    {
+      "key": "violation",
+      "label": "규정 위반",
+      "value": 1,
+      "unit": "건"
+    }
+  ],
+  "table": {
+    "columns": [
+      "요청코드",
+      "유형",
+      "서류",
+      "판정"
+    ],
+    "rows": [
+      [
+        "Q01",
+        "DG",
+        "완비",
+        "승인"
+      ],
+      [
+        "Q02",
+        "DG",
+        "누락(MSDS)",
+        "확인 필요"
+      ],
+      [
+        "Q03",
+        "OOG",
+        "불일치(치수)",
+        "확인 필요"
+      ],
+      [
+        "Q04",
+        "Flexibag",
+        "완비",
+        "승인"
+      ],
+      [
+        "Q05",
+        "DG",
+        "완비",
+        "거절"
+      ]
+    ]
+  },
+  "review": [
+    {
+      "id": "R01",
+      "code": "Q02",
+      "reason": "필수 서류 누락",
+      "detail": "Q02 DG 요청에 MSDS 없음"
+    },
+    {
+      "id": "R02",
+      "code": "Q03",
+      "reason": "서류 간 치수 불일치",
+      "detail": "Q03 OOG 치수가 두 서류에서 다름"
+    },
+    {
+      "id": "R03",
+      "code": "Q05",
+      "reason": "규정 위반 의심",
+      "detail": "Q05 해당 Class 가 항만 금지 목록에 있음"
+    }
+  ],
+  "time": {
+    "before_min": 20,
+    "after_min": 5,
+    "runs_per_month": 60,
+    "basis": "추정"
+  },
+  "source": {
+    "label": "가상 승인 요청 서류",
+    "rows": 5
+  },
+  "rules_version": "compare@v1",
+  "synthetic": true
+}

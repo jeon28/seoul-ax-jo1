@@ -63,9 +63,10 @@
   "review": [
     { "id": "R01", "code": "S02", "reason": "평균 대비 큰 이탈", "detail": "S02 10/03 소모량 이탈 폭 큼" }
   ],
-  "time": { "before_min": 10, "after_min": 2, "basis": "추정" },
+  "time": { "before_min": 10, "after_min": 2, "runs_per_month": 30, "basis": "추정" },
   "source": { "label": "가상 항해 일지", "rows": 365 },
-  "rules_version": "aggregate@v1"
+  "rules_version": "aggregate@v1",
+  "synthetic": true
 }
 ```
 
@@ -78,9 +79,11 @@
 | `metrics[]` | 카드 숫자들. key · label · value · unit · prev(전회 값, 없으면 생략) |
 | `table` | 카드를 눌렀을 때 펼치는 표. columns 와 rows |
 | `review[]` | 확인 필요 목록. id · code · reason · detail. detail 은 이미 코드로 가린 문장만 |
-| `time` | 걸린 시간 전/후(분)와 basis(추정 또는 측정) |
+| `time` | 걸린 시간 전/후(분), 월 실행 횟수, basis(추정 또는 측정). 월 절감 시간 = (전−후)×횟수÷60 |
+
 | `source` | 입력 자료 이름표와 행 수. 파일 이름·경로는 쓰지 않는다 |
 | `rules_version` | 어느 lib/ 규칙 버전으로 계산했는지 |
+| `synthetic` | 가상 데이터이면 true |
 
 ### 공통 계산 규칙 (lib/)
 

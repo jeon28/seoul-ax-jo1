@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "agent": "japan-empty-transfer",
+  "owner": "권도윤",
+  "bundle": "A",
+  "as_of": "2026-10-15",
+  "headline": "이송안 3구간, 스페이스 부족 1건",
+  "metrics": [
+    {
+      "key": "processed",
+      "label": "이송안 구간",
+      "value": 3,
+      "unit": "구간",
+      "prev": 4
+    },
+    {
+      "key": "moved",
+      "label": "이송 수량",
+      "value": 140,
+      "unit": "TEU"
+    },
+    {
+      "key": "space_short",
+      "label": "스페이스 부족",
+      "value": 1,
+      "unit": "건"
+    }
+  ],
+  "table": {
+    "columns": [
+      "구간",
+      "모선코드",
+      "타입",
+      "수량"
+    ],
+    "rows": [
+      [
+        "P01→P05",
+        "V01",
+        "45HC",
+        60
+      ],
+      [
+        "P02→P04",
+        "V01",
+        "40DC",
+        50
+      ],
+      [
+        "P03→P06",
+        "V02",
+        "40DC",
+        30
+      ]
+    ]
+  },
+  "review": [
+    {
+      "id": "R01",
+      "code": "V02",
+      "reason": "모선 잔여 스페이스 부족",
+      "detail": "V02 P03→P06 구간에 요청 수량 대비 스페이스 모자람, 다른 이송분과 분할 필요"
+    }
+  ],
+  "time": {
+    "before_min": 30,
+    "after_min": 10,
+    "runs_per_month": 22,
+    "basis": "가정"
+  },
+  "source": {
+    "label": "가상 포트 현황·기항 엑셀",
+    "rows": 6
+  },
+  "rules_version": "threshold@v1+schedule-window@v1",
+  "synthetic": true
+}

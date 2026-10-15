@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "agent": "bugok-cy",
+  "owner": "전지연",
+  "bundle": "B",
+  "as_of": "2026-10-15",
+  "headline": "5개 CY 중 2곳 불일치",
+  "metrics": [
+    {
+      "key": "processed",
+      "label": "대조한 CY",
+      "value": 5,
+      "unit": "곳",
+      "prev": 5
+    },
+    {
+      "key": "mismatch",
+      "label": "불일치 CY",
+      "value": 2,
+      "unit": "곳",
+      "prev": 1
+    },
+    {
+      "key": "diff_qty",
+      "label": "차이 수량 합",
+      "value": 7,
+      "unit": "개"
+    }
+  ],
+  "table": {
+    "columns": [
+      "CY코드",
+      "메일 재고",
+      "포탈 재고",
+      "차이"
+    ],
+    "rows": [
+      [
+        "Y01",
+        120,
+        120,
+        0
+      ],
+      [
+        "Y02",
+        85,
+        88,
+        -3
+      ],
+      [
+        "Y03",
+        40,
+        40,
+        0
+      ],
+      [
+        "Y04",
+        210,
+        214,
+        -4
+      ],
+      [
+        "Y05",
+        66,
+        66,
+        0
+      ]
+    ]
+  },
+  "review": [
+    {
+      "id": "R01",
+      "code": "Y02",
+      "reason": "재고 수량 불일치",
+      "detail": "Y02 메일 85, 포탈 88 (차이 -3)"
+    },
+    {
+      "id": "R02",
+      "code": "Y04",
+      "reason": "재고 수량 불일치",
+      "detail": "Y04 메일 210, 포탈 214 (차이 -4)"
+    }
+  ],
+  "time": {
+    "before_min": 60,
+    "after_min": 15,
+    "runs_per_month": 22,
+    "basis": "추정"
+  },
+  "source": {
+    "label": "가상 CY 메일·포탈 엑셀",
+    "rows": 5
+  },
+  "rules_version": "compare@v1",
+  "synthetic": true
+}

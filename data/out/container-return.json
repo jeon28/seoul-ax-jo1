@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "agent": "return-helper",
+  "owner": "전성현",
+  "bundle": "B",
+  "as_of": "2026-10-15",
+  "headline": "신규 반납건 18, 반납번호 확보 13 (72%)",
+  "metrics": [
+    {
+      "key": "processed",
+      "label": "신규 반납건",
+      "value": 18,
+      "unit": "건",
+      "prev": 15
+    },
+    {
+      "key": "secured",
+      "label": "반납번호 확보율",
+      "value": 72,
+      "unit": "%",
+      "prev": 64
+    },
+    {
+      "key": "waiting",
+      "label": "회신 대기",
+      "value": 5,
+      "unit": "건"
+    }
+  ],
+  "table": {
+    "columns": [
+      "리즈사코드",
+      "신규건",
+      "확보",
+      "대기"
+    ],
+    "rows": [
+      [
+        "L01",
+        7,
+        7,
+        0
+      ],
+      [
+        "L02",
+        5,
+        3,
+        2
+      ],
+      [
+        "L03",
+        4,
+        2,
+        2
+      ],
+      [
+        "L04",
+        2,
+        1,
+        1
+      ]
+    ]
+  },
+  "review": [
+    {
+      "id": "R01",
+      "code": "L02",
+      "reason": "회신 대기",
+      "detail": "L02 요청 후 5건 회신 없음 중 2건"
+    },
+    {
+      "id": "R02",
+      "code": "C21",
+      "reason": "터미널 즉시 반출 여부 미확인",
+      "detail": "C21 터미널 회신 필요"
+    }
+  ],
+  "time": {
+    "before_min": 40,
+    "after_min": 15,
+    "runs_per_month": 22,
+    "basis": "추정"
+  },
+  "source": {
+    "label": "가상 터미널 반납 대상 엑셀",
+    "rows": 18
+  },
+  "rules_version": "compare@v1",
+  "synthetic": true
+}

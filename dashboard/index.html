@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>장금상선 AX 대시보드</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>장금상선 AX 대시보드</h1>
+    <p class="sub">조원 12명의 에이전트 결과를 한 화면에 · <span id="asof">-</span> · 가상 데이터</p>
+  </div>
+  <div class="badge">보내기 기능 없음</div>
+</header>
+
+<main>
+  <section aria-label="요약">
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section aria-label="묶음별 카드">
+    <h2>묶음별 카드</h2>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section aria-label="확인 필요 목록">
+    <div class="rowhead">
+      <h2>확인 필요 목록 <span class="sub">(이름 가림)</span></h2>
+      <div class="tools">
+        <select id="filter" aria-label="묶음 필터"></select>
+        <button id="aiBtn" type="button">AI 로 문장 정리</button>
+      </div>
+    </div>
+    <div class="tablewrap"><table id="reviewTable"></table></div>
+    <div id="aiBox" class="aibox" hidden></div>
+    <p class="sub">AI 에는 선박·컨테이너·화주 같은 이름을 코드(S01·C01·H01)로 바꾼 목록만 보냅니다. 숫자 계산은 규칙이 하고, AI 는 계산하지 않습니다.</p>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

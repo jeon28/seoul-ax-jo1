@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "agent": "special-cargo-rules",
+  "owner": "이병선",
+  "bundle": "C",
+  "as_of": "2026-10-15",
+  "headline": "30건 판정: 가능 24 · 불가 3 · 검토 필요 3",
+  "metrics": [
+    {
+      "key": "processed",
+      "label": "판정 건수",
+      "value": 30,
+      "unit": "건",
+      "prev": 28
+    },
+    {
+      "key": "ok",
+      "label": "가능",
+      "value": 24,
+      "unit": "건"
+    },
+    {
+      "key": "no",
+      "label": "불가",
+      "value": 3,
+      "unit": "건"
+    },
+    {
+      "key": "check",
+      "label": "검토 필요",
+      "value": 3,
+      "unit": "건"
+    }
+  ],
+  "table": {
+    "columns": [
+      "요청코드",
+      "품목",
+      "항만",
+      "판정",
+      "근거"
+    ],
+    "rows": [
+      [
+        "Q11",
+        "Class 3",
+        "T01",
+        "가능",
+        "내규 [조항]"
+      ],
+      [
+        "Q12",
+        "Class 1",
+        "T02",
+        "불가",
+        "내규 [조항]"
+      ],
+      [
+        "Q13",
+        "Class 8",
+        "T03",
+        "검토 필요",
+        "환적 조건 애매"
+      ]
+    ]
+  },
+  "review": [
+    {
+      "id": "R01",
+      "code": "Q13",
+      "reason": "환적 조건 애매",
+      "detail": "Q13 조항이 환적항 조건을 명확히 정하지 않음"
+    },
+    {
+      "id": "R02",
+      "code": "Q27",
+      "reason": "같은 UN 번호 최근 사고 이력",
+      "detail": "Q27 품목에 최근 사고 기록 있음"
+    }
+  ],
+  "time": {
+    "before_min": 1,
+    "after_min": 0.3,
+    "runs_per_month": 660,
+    "basis": "추정"
+  },
+  "source": {
+    "label": "가상 금지 매트릭스·사고 사례",
+    "rows": 30
+  },
+  "rules_version": "special-cargo-rules@v1",
+  "synthetic": true
+}

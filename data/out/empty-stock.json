@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "agent": "empty-stock",
+  "owner": "hjung",
+  "bundle": "A",
+  "as_of": "2026-10-15",
+  "headline": "6개 지역 중 과잉 2 · 부족 2",
+  "metrics": [
+    {
+      "key": "processed",
+      "label": "점검 지역",
+      "value": 6,
+      "unit": "곳",
+      "prev": 6
+    },
+    {
+      "key": "over",
+      "label": "과잉 지역",
+      "value": 2,
+      "unit": "곳",
+      "prev": 1
+    },
+    {
+      "key": "short",
+      "label": "부족 지역",
+      "value": 2,
+      "unit": "곳",
+      "prev": 3
+    }
+  ],
+  "table": {
+    "columns": [
+      "지역코드",
+      "현재 재고",
+      "적정재고",
+      "과부족",
+      "판정"
+    ],
+    "rows": [
+      [
+        "G01",
+        520,
+        400,
+        120,
+        "과잉"
+      ],
+      [
+        "G02",
+        180,
+        300,
+        -120,
+        "부족"
+      ],
+      [
+        "G03",
+        310,
+        300,
+        10,
+        "적정"
+      ],
+      [
+        "G04",
+        450,
+        350,
+        100,
+        "과잉"
+      ],
+      [
+        "G05",
+        90,
+        200,
+        -110,
+        "부족"
+      ],
+      [
+        "G06",
+        205,
+        200,
+        5,
+        "적정"
+      ]
+    ]
+  },
+  "review": [
+    {
+      "id": "R01",
+      "code": "G05",
+      "reason": "재고 메일 양식 열 이름 불일치",
+      "detail": "G05 파일의 수량 열 이름을 매핑표에서 못 찾음"
+    }
+  ],
+  "time": {
+    "before_min": 30,
+    "after_min": 10,
+    "runs_per_month": 22,
+    "basis": "가정"
+  },
+  "source": {
+    "label": "가상 지역 재고 엑셀",
+    "rows": 6
+  },
+  "rules_version": "threshold@v1",
+  "synthetic": true
+}
