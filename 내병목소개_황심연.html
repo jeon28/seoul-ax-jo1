@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>내 병목 소개</title>
+<style>
+  :root {
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --ink: #13202f;
+    --muted: #5b6b7d;
+    --accent: #0a6cbd;
+    --accent-soft: #e3effa;
+    --hot: #d9480f;
+    --hot-soft: #fdebe2;
+    --ok: #2b8a3e;
+    --line: #d8dee6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1520;
+      --card: #152232;
+      --ink: #eef3f8;
+      --muted: #9fb0c2;
+      --accent: #5cb3f5;
+      --accent-soft: #1b3550;
+      --hot: #ff8a5b;
+      --hot-soft: #3d2418;
+      --ok: #69db7c;
+      --line: #2a3a4d;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+    overflow: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+  .deck { position: relative; height: 100dvh; width: 100vw; }
+  .slide {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(20px, 6vw, 96px) clamp(16px, 8vw, 140px) clamp(64px, 9vh, 110px);
+    opacity: 0; visibility: hidden; transform: translateX(24px);
+    transition: opacity .35s ease, transform .35s ease, visibility .35s;
+  }
+  .slide.active { opacity: 1; visibility: visible; transform: none; }
+  .slide.prev { transform: translateX(-24px); }
+  .kicker {
+    font-size: clamp(14px, 2vw, 22px); font-weight: 700; letter-spacing: .04em;
+    color: var(--accent); margin-bottom: clamp(10px, 2vh, 20px);
+  }
+  h1 {
+    font-size: clamp(30px, 6vw, 76px); line-height: 1.2; font-weight: 800;
+    letter-spacing: -0.02em; margin-bottom: clamp(18px, 4vh, 44px);
+    word-break: keep-all;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+  ul.lines { list-style: none; display: grid; gap: clamp(10px, 2.2vh, 22px); }
+  ul.lines li {
+    font-size: clamp(19px, 3.1vw, 40px); line-height: 1.4; font-weight: 500;
+    word-break: keep-all; padding-left: 1.1em; position: relative;
+  }
+  ul.lines li::before {
+    content: ""; position: absolute; left: 0; top: .55em;
+    width: .42em; height: .42em; border-radius: 50%; background: var(--accent);
+  }
+  ul.lines li.hot::before { background: var(--hot); }
+  b.hot { color: var(--hot); }
+  b.acc { color: var(--accent); }
+  .muted { color: var(--muted); }
+
+  /* 흐름 칩 */
+  .flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: clamp(18px, 3.5vh, 36px); }
+  .chip {
+    font-size: clamp(13px, 1.7vw, 20px); font-weight: 700;
+    padding: .45em .8em; border-radius: 999px;
+    background: var(--card); border: 1.5px solid var(--line); color: var(--muted);
+    white-space: nowrap;
+  }
+  .chip.hot { background: var(--hot-soft); border-color: var(--hot); color: var(--hot); }
+  .arrow { color: var(--muted); font-size: clamp(13px, 1.7vw, 20px); }
+
+  /* 큰 숫자 */
+  .big {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: .3em .5em;
+    font-weight: 800; letter-spacing: -0.03em; margin-bottom: clamp(18px, 4vh, 40px);
+  }
+  .big .from { font-size: clamp(44px, 10vw, 130px); color: var(--ink); }
+  .big .to { font-size: clamp(44px, 10vw, 130px); color: var(--ok); }
+  .big .arr { font-size: clamp(30px, 6vw, 80px); color: var(--muted); }
+  .big small { font-size: clamp(14px, 1.8vw, 22px); font-weight: 600; color: var(--muted); letter-spacing: 0; }
+
+  /* Input → Output */
+  .io { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: clamp(8px, 1.5vw, 20px); align-items: stretch; }
+  .box {
+    background: var(--card); border: 1.5px solid var(--line); border-radius: 18px;
+    padding: clamp(14px, 2.2vw, 28px);
+  }
+  .box.agent { background: var(--accent-soft); border-color: var(--accent); }
+  .box h3 { font-size: clamp(14px, 1.7vw, 20px); color: var(--accent); margin-bottom: .5em; letter-spacing: .03em; }
+  .box p { font-size: clamp(18px, 2.4vw, 32px); font-weight: 700; line-height: 1.35; word-break: keep-all; }
+  .io .arr2 { align-self: center; font-size: clamp(22px, 3vw, 40px); color: var(--muted); font-weight: 700; }
+  @media (max-width: 760px) {
+    .io { grid-template-columns: 1fr; }
+    .io .arr2 { transform: rotate(90deg); justify-self: center; line-height: 1; }
+  }
+
+  /* 5장 2단 */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 2vw, 28px); }
+  @media (max-width: 760px) { .two { grid-template-columns: 1fr; } }
+  .two .box p { font-size: clamp(18px, 2.3vw, 30px); }
+
+  /* 하단 바 */
+  .bar {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 10px clamp(16px, 4vw, 40px) calc(10px + env(safe-area-inset-bottom));
+    font-size: 14px; color: var(--muted); z-index: 2;
+  }
+  .bar button {
+    font: inherit; font-size: 20px; font-weight: 700; color: var(--ink);
+    background: var(--card); border: 1.5px solid var(--line); border-radius: 12px;
+    width: 48px; height: 44px; cursor: pointer;
+  }
+  .bar button:disabled { opacity: .35; cursor: default; }
+  .progress { position: fixed; top: 0; left: 0; height: 4px; background: var(--accent); transition: width .35s ease; z-index: 2; }
+  .hint { flex: 1; text-align: center; }
+  @media (max-width: 760px) { .hint { display: none; } }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<main class="deck" id="deck">
+
+  <!-- 1. 나는 누구 -->
+  <section class="slide">
+    <div class="kicker">1 · 나는 누구 · 어떤 업무</div>
+    <h1>냉동컨테이너가<br>배 위에서 <em>멈추지 않게</em></h1>
+    <ul class="lines">
+      <li>장비팀 컨테이너 유지보수 담당 <b class="acc">황심연</b></li>
+      <li>견적서 승인 → 수리비 면제 확인 → <b class="acc">스페어파트 선적</b></li>
+      <li>오늘 이야기: 자사선에 고장 잦은 부품을 미리 보급하는 일</li>
+    </ul>
+  </section>
+
+  <!-- 2. 흐름과 병목 -->
+  <section class="slide">
+    <div class="kicker">2 · 일의 흐름과 병목</div>
+    <div class="flow">
+      <span class="chip hot">재고 회신 취합</span><span class="arrow">→</span>
+      <span class="chip hot">부족 선박 선별</span><span class="arrow">→</span>
+      <span class="chip hot">선장님 확인</span><span class="arrow">→</span>
+      <span class="chip hot">⭐ 스케줄·항구 찾기</span><span class="arrow">→</span>
+      <span class="chip hot">지역 담당자 요청</span><span class="arrow">→</span>
+      <span class="chip hot">선적까지 추적</span>
+    </div>
+    <ul class="lines">
+      <li class="hot"><b class="hot">최대 병목:</b> 1~3주 안에 들르는 국내·청도·닝보·심천을 손으로 찾기</li>
+      <li class="hot">재고 회신은 메일로 오는데 엑셀 양식이 선박마다 제각각</li>
+      <li class="hot">사내 시스템 화면을 선박별로 하나씩 열어 봐야 함</li>
+    </ul>
+  </section>
+
+  <!-- 3. 얼마나 걸리나 -->
+  <section class="slide">
+    <div class="kicker">3 · 얼마나 걸리나</div>
+    <div class="big">
+      <span class="from">60분</span><span class="arr">→</span><span class="to">15분</span>
+      <small>월 1회 · 목표치(추정)</small>
+    </div>
+    <ul class="lines">
+      <li>회당 약 60분이지만 요청부터 선적까지 <b class="acc">1~3주</b> 동안 계속 챙겨야 함</li>
+      <li class="hot">시간보다 무서운 건 <b class="hot">공급 누락</b>: 고장 나면 배 위에서 바로 손쓸 수 없음</li>
+    </ul>
+  </section>
+
+  <!-- 4. Input → Output -->
+  <section class="slide">
+    <div class="kicker">4 · 이렇게 바뀌면 좋겠다</div>
+    <div class="io">
+      <div class="box"><h3>INPUT</h3><p>메일 재고 회신<br>+ 시스템 스케줄<br>+ 기준수량표</p></div>
+      <div class="arr2">→</div>
+      <div class="box agent"><h3>에이전트 1 · 스킬 3</h3><p>스페어파트<br>보급 에이전트</p></div>
+      <div class="arr2">→</div>
+      <div class="box"><h3>OUTPUT</h3><p>부족 선박 알림<br>+ 추천 항구·날짜<br>+ 메일 초안·추적표</p></div>
+    </div>
+    <ul class="lines" style="margin-top:clamp(16px,3vh,32px)">
+      <li class="muted">스킬: 회신 취합 · 항구 매칭 · 메일 초안·추적 (발송은 내가)</li>
+    </ul>
+  </section>
+
+  <!-- 5. 대시보드 + 질문 -->
+  <section class="slide">
+    <div class="kicker">5 · 조 대시보드 & 조원에게</div>
+    <div class="two">
+      <div class="box"><h3>대시보드에 보탤 것</h3><p>월 60분 → 15분<br>공급 누락 0건<br>메일 취합 스킬 공유</p></div>
+      <div class="box agent"><h3>조원에게 묻고 싶은 것</h3><p>사내 시스템 데이터,<br>어떻게 가져오세요?<br>양식 통일해 본 분?</p></div>
+    </div>
+  </section>
+
+</main>
+<nav class="bar">
+  <button id="prevBtn" aria-label="이전">←</button>
+  <span class="hint">← → 키 · 스와이프로 넘기기</span>
+  <span id="count">1 / 5</span>
+  <button id="nextBtn" aria-label="다음">→</button>
+</nav>
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const count = document.getElementById('count');
+  const progress = document.getElementById('progress');
+  let i = 0;
+
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => {
+      s.classList.toggle('active', k === i);
+      s.classList.toggle('prev', k < i);
+    });
+    count.textContent = (i + 1) + ' / ' + slides.length;
+    prevBtn.disabled = i === 0;
+    nextBtn.disabled = i === slides.length - 1;
+    progress.style.width = ((i + 1) / slides.length * 100) + '%';
+    try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) {}
+  }
+
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+  });
+  prevBtn.addEventListener('click', () => show(i - 1));
+  nextBtn.addEventListener('click', () => show(i + 1));
+
+  let sx = null, sy = null;
+  document.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) show(i + (dx < 0 ? 1 : -1));
+    sx = sy = null;
+  });
+
+  const start = parseInt(location.hash.slice(1), 10);
+  show(Number.isFinite(start) ? start - 1 : 0);
+</script>
+</body>
+</html>
