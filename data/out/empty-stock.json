@@ -358,9 +358,9 @@
     "basis": "가정"
   },
   "source": {
-    "label": "SKR+HAL 공컨테이너 재고 표(전달받은 값)",
+    "label": "SKR+HAL 공컨테이너 재고 표(가상)",
     "rows": 21
   },
   "rules_version": "aggregate@v1",
-  "synthetic": false
+  "synthetic": true
 }

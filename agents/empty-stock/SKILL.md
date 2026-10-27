@@ -31,7 +31,7 @@ TODO: 각 단계의 입력 → 출력, 막혔을 때(양식이 다르거나 값�
 - SKR + HAL 공컨테이너(22GP/45GP) **항구별 재고 현황**: KPI · 국가 목록 · 항구 표 · 항구 상세(`dashboard/js/stock/board.js`). 재고현황.html 을 옮겨 온 것.
 - 자료는 `data/in/empty-stock-ports.json`(수량이 없으면 null = 보고 없음). 이 파일을 바꾸면 화면이 1분 안에 따라온다.
 - 결과 파일은 `node scripts/build-empty-stock-result.mjs` 로 같은 자료에서 다시 만든다(합계 · TEU = 22GP + 45GP × 2 · 확인 필요).
-- 지금 자료는 **전달받은 실제 재고 수량**이라 결과 파일의 `synthetic` 이 false 다. CLAUDE.md 에 따라 실제 자료를 공개 주소에 올리기 전에 입장 비밀번호를 먼저 건다.
+- 지금 자료는 **가상 데이터**라 결과 파일의 `synthetic` 이 true 다. 실제 수량으로 바꾸면 `synthetic` 을 false 로 하고, CLAUDE.md 에 따라 공개 주소에 올리기 전에 입장 비밀번호를 먼저 건다.
 - 아직 이 화면에 없는 것: 지역별 적정재고 대비 과잉/부족 판정(`over-short-judge`), 공이송 후보 요약. 적정재고 기준표가 생기면 이어서 붙인다.
 
 ## 지킬 것

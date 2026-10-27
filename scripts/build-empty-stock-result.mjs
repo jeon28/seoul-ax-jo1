@@ -48,10 +48,9 @@ const doc = {
   },
   review,
   time: old.time ?? { before_min: 30, after_min: 10, runs_per_month: 22, basis: '가정' },
-  source: { label: 'SKR+HAL 공컨테이너 재고 표(전달받은 값)', rows: rows.length },
+  source: { label: 'SKR+HAL 공컨테이너 재고 표(가상)', rows: rows.length },
   rules_version: 'aggregate@v1',
-  // 실제 재고 수량이라 false. CLAUDE.md: 실제 자료를 올리게 되면 대시보드에 입장 비밀번호를 먼저 건다.
-  synthetic: false,
+  synthetic: true, // 가상 데이터(담당자 확인). 실제 수량으로 바꾸면 false 로, 그리고 입장 비밀번호부터(CLAUDE.md)
 };
 
 fs.writeFileSync(outPath, JSON.stringify(doc, null, 2) + '\n');
