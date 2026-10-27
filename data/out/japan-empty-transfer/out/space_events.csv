@@ -1,0 +1,3 @@
+type,vessel,voyage,from,to,need,assigned,room_teu
+45GP,SIM_VSL_A,101S,CHIBA,NAGOYA,48,18,36
+45GP,SIM_VSL_A,101S,CHIBA,MOJI,20,0,0
