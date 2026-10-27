@@ -459,3 +459,63 @@ textarea.ohtext{width:100%;min-height:300px;font:12.5px/1.5 Consolas,"D2Coding",
 .dgresult.ok{background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ok)}
 .dgresult.bad{background:color-mix(in srgb,var(--bad) 13%,transparent);color:var(--bad)}
 @media (max-width:1100px){.dglanes{grid-template-columns:minmax(0,1fr)}}
+
+/* ── 영업실적 분석: 엑셀 올리기 · 영업 카드 · 월간 실적 보고서 · 방문 목록 · 월별 추이 (다른 메뉴에는 영향 없음) ── */
+.sa{display:flex;flex-direction:column;gap:10px}
+.sa td.center{text-align:center}
+.satabs{margin-bottom:8px}
+.sa .chip{padding:4px 12px;font-size:12.5px}
+.saissue{font-size:12.5px;margin-bottom:6px}
+.saissue summary{cursor:pointer;color:var(--sub);font-weight:600}
+.saissue ul{margin:6px 0 0;padding-left:18px}
+.saissue li.bad{color:var(--bad)}
+.sadrop{color:var(--warn);font-size:12.5px;margin:2px 0 6px}
+.satiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:10px}
+.sakpi{background:var(--tilebg);border:1px solid var(--stroke-lo);border-radius:16px;padding:10px 14px}
+.sakpi .lab{font-size:12px;color:var(--sub)}
+.sakpi .val{font-size:28px;font-weight:750;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.25}
+.sakpi .val small{font-size:13px;font-weight:500;color:var(--sub);margin-left:4px}
+.sakpi .delta{font-size:12.5px;font-variant-numeric:tabular-nums}
+.sagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.sacol{background:var(--tilebg);border:1px solid var(--stroke-lo);border-radius:16px;padding:12px 14px}
+.sacol h3{font-size:14px;margin-bottom:8px}
+.sachg{display:flex;gap:8px;align-items:baseline;margin:6px 0}
+.sachg b{min-width:34px;font-size:12.5px}
+.sachips{display:flex;flex-wrap:wrap;gap:6px}
+.pill.sanote.new{background:color-mix(in srgb,var(--blue) 15%,transparent);color:var(--blue)}
+.pill.sanote.gain{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)}
+.pill.sanote.loss{background:color-mix(in srgb,var(--warn) 17%,transparent);color:var(--warn)}
+.pill.sanote.lost{background:color-mix(in srgb,var(--bad) 15%,transparent);color:var(--bad)}
+.saports{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.saports li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 8px;font-variant-numeric:tabular-nums}
+.saval{color:var(--sub)}
+.sabarline{flex-basis:100%;height:6px;border-radius:3px;background:var(--blue);opacity:.8}
+.sasheet{margin-top:10px}
+.sasheet h3{font-size:14px;margin-bottom:6px}
+.sasheet h4,.sasub{font-size:13px;color:var(--sub);font-weight:650;margin:14px 0 6px}
+.samain{min-width:720px}
+.sa .tbl tr.satotal td{font-weight:700;background:var(--glass-lo)}
+.sa td.satext2{white-space:normal;min-width:260px}
+.saprinttitle{display:none}
+.sastack{display:flex;height:10px;min-width:60px;border-radius:99px;overflow:hidden}
+.sa-ex{background:var(--blue)}.sa-im{background:#bf5af2}
+.satext{width:100%;min-height:260px;font:12.5px/1.55 Consolas,"D2Coding",monospace;color:var(--ink);background:var(--tilebg);border:1px solid var(--stroke);border-radius:14px;padding:10px 12px;resize:vertical}
+@media print{
+  body.sa-printing{--ink:#000;--sub:#444;--hair:#bbb;--stroke:#bbb;--stroke-lo:#ddd;--tilebg:#fff;--glass:#fff;--glass-hi:#fff;--glass-lo:#eee;--blue:#1d4e89;--ok:#1e7b34;--warn:#b25e00;--bad:#c0392b;background:#fff}
+  body.sa-printing .bg,body.sa-printing .scrim,body.sa-printing .side,body.sa-printing .topbar{display:none}
+  body.sa-printing .shell{display:block;padding:0}
+  body.sa-printing .view{padding:0}
+  body.sa-printing .page>*:not(.toolsec),body.sa-printing .toolsec>*:not(.sa){display:none}
+  body.sa-printing .sa>.panel:first-child,body.sa-printing .sa .phead,body.sa-printing .satabs,body.sa-printing .saissues,body.sa-printing .sareport>.ohnote{display:none}
+  body.sa-printing .sareport>.phead{display:none}
+  body.sa-printing .glass{background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:0}
+  body.sa-printing .glass::before{display:none}
+  body.sa-printing .tablewrap{overflow:visible;max-height:none}
+  body.sa-printing .tbl th{position:static;background:#1d4e89;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body.sa-printing .tbl{font-size:10px}
+  body.sa-printing .tbl td{padding:3px 6px}
+  body.sa-printing .saprinttitle{display:block;font-size:15px;font-weight:700;margin:0 0 6px}
+  body.sa-printing .sasheet{break-after:page;margin:0}
+  body.sa-printing .sasheet:last-of-type{break-after:auto}
+  body.sa-printing .pill,body.sa-printing tr.satotal td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}

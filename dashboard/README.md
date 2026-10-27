@@ -113,3 +113,15 @@ export default function render(ctx) {
 | `data/in/special-cargo-rules/accident-cases.json` | 가상 사고 사례 8건. 같은 UN 번호의 최근 12개월 사고를 카드·시트·결과 파일에 붙임(판정은 안 바꿈) |
 | `scripts/build-special-cargo-rules-result.mjs` | 같은 규칙으로 `data/out/special-cargo-rules.json`(홈 카드)을 다시 만듦 |
 | `scripts/test-special-cargo-rules.mjs` | 판정 규칙 테스트: `node --test scripts/test-special-cargo-rules.mjs` |
+
+## 예시: 영업실적 분석 메뉴 (노현석.html 「월간 영업 카드」를 옮김)
+
+| 파일 | 하는 일 |
+|---|---|
+| `dashboard/menus/sales-analysis.js` | 기본 조각에 영업실적 도구 화면을 끼워 넣음 |
+| `dashboard/js/sales/board.js` | 화면: ① 엑셀 올리기(이번 달 · 전월 고르기, 처음 열 때 샘플을 자동으로 읽음) ② 영업 카드(수출·수입·합계 TEU, 화주 변화, 항구 상위 3) · 월간 실적 보고서(수출표·수입표, 인쇄·PDF) · 방문 목록 · 월별 추이(보고 문장 복사). 보내기는 없음 |
+| `dashboard/js/sales/rules.js` | 집계 규칙(순수 함수, node 에서도 돈다) = `lib/aggregate.md` 「영업실적」 장. 증가·감소 기준 5 TEU 등 숫자표 포함 |
+| `dashboard/js/offhire/xlsx.js` | 엑셀 읽기(SheetJS)를 Off hire 메뉴와 같이 씀. 이 메뉴가 열릴 때만 불러옴 |
+| `data/in/sales-analysis/demo-monthly-sales.xlsx` | 가상 월별 실적 엑셀(2026-09 · 2026-10, 건별 204줄). `node scripts/make-sales-sample.mjs` 로 다시 만듦 |
+| `scripts/build-sales-result.mjs` | 같은 규칙으로 `data/out/pyeongtaek-sales.json`(홈 카드, 화주는 H01 · 항구는 D01/O01 로 가림)을 다시 만듦 |
+| `scripts/test-sales.mjs` | 집계 규칙 테스트: `node --test scripts/test-sales.mjs` |
