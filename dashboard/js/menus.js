@@ -3,7 +3,7 @@
 //   skills[].status: 'todo'(작성 전) → 'done'(SKILL.md 작성 완료)
 //   화면을 직접 꾸미려면 dashboard/menus/<slug>.js 를 고친다.
 export const MENUS = [
-  { slug: 'empty-stock', bundle: 'A', name: '일일 재고 브리핑', agent: '일일 재고 브리핑 에이전트', owner: 'hjung', file: 'empty-stock.json', icon: 'M21 8l-9-5-9 5v8l9 5 9-5V8z M3 8l9 5 9-5 M12 13v8',
+  { slug: 'empty-stock', bundle: 'A', name: '일일 재고 현황', agent: '일일 재고 브리핑 에이전트', owner: 'hjung', file: 'empty-stock.json', icon: 'M21 8l-9-5-9 5v8l9 5 9-5V8z M3 8l9 5 9-5 M12 13v8',
     skills: [{ slug: 'stock-excel-parser', name: '재고 Excel 파서', status: 'todo' }, { slug: 'over-short-judge', name: '과잉/부족 판정', status: 'todo' }, { slug: 'transfer-candidate-summary', name: '공이송 후보 요약', status: 'todo' }] },
   { slug: 'japan-empty-transfer', bundle: 'A', name: '일본 공이송 플래너', agent: '일본 공이송 플래너', owner: '권도윤', file: 'japan-empty-transfer.json', icon: 'M7 8h13 M16 4l4 4-4 4 M17 16H4 M8 12l-4 4 4 4',
     skills: [{ slug: 'input-cleanup', name: '입력 정리', status: 'todo' }, { slug: 'transfer-candidate-calc', name: '이송 후보 계산', status: 'todo' }, { slug: 'verify-report', name: '검증·보고', status: 'todo' }] },

@@ -271,3 +271,41 @@ code{font:12px/1.4 ui-monospace,"SF Mono",Consolas,monospace;color:var(--sub)}
 :root[data-theme="dark"]{--opt-bg:#1d2130;--opt-ink:#f3f4f7;--opt-sel:#1a5fd6;--opt-sel-ink:#ffffff}
 select.inp option{background-color:var(--opt-bg);color:var(--opt-ink);font-size:15px;font-weight:500}
 select.inp option:checked{background-color:var(--opt-sel);color:var(--opt-sel-ink)}
+
+/* ── 일일 재고 현황: KPI · 국가 목록 · 항구 표 · 상세 ── */
+:root{--skr:#0a84ff;--hal:#ff9f0a;--skr45:#7fbaff;--hal45:#ffd08a}
+.stock{display:flex;flex-direction:column;gap:18px}
+.kpis .tile .val{font-size:30px}
+.stocklayout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:18px;align-items:start}
+.stockright{display:flex;flex-direction:column;gap:18px;min-width:0}
+.countrypanel{padding:16px 12px}
+.countrypanel .phead{padding:0 8px}
+.countrylist{display:flex;flex-direction:column;gap:2px}
+.country{appearance:none;border:0;background:transparent;color:var(--ink);font:500 14px var(--font);text-align:left;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;border-radius:14px;cursor:pointer;transition:background .2s}
+.country:hover{background:var(--glass-lo)}
+.country.on{background:var(--glass-hi);font-weight:700;box-shadow:inset 3px 0 0 var(--blue),inset 0 1px 0 var(--stroke)}
+.country .muted{font-size:12px}
+.stocktable .tablewrap{max-height:none}
+.tbl .clickrow{cursor:pointer}
+.tbl .clickrow.on td{background:color-mix(in srgb,var(--blue) 14%,transparent)}
+.tbl td.stale{color:var(--warn);font-weight:700}
+.tbl tfoot td{font-weight:700;background:var(--glass-lo);border-top:1px solid var(--hair)}
+.detail{padding:20px 22px}
+.detail h3{font-size:18px;letter-spacing:-.02em}
+.detail .sub{margin:2px 0 14px}
+.hint{color:var(--sub);text-align:center;padding:22px 0}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.sbox{background:var(--tilebg);border:1px solid var(--stroke-lo);border-radius:16px;padding:12px 14px}
+.sbox h4{margin:0 0 8px;font-size:13px}
+.sbox.skr{border-top:4px solid var(--skr)}.sbox.hal{border-top:4px solid var(--hal)}.sbox.tot{border-top:4px solid var(--ink)}
+.srow{display:flex;justify-content:space-between;padding:3px 0;font-size:14px}
+.srow b{font-size:16px;font-variant-numeric:tabular-nums}
+.sbar{height:10px;border-radius:99px;background:var(--tilebg);margin-top:16px;overflow:hidden;display:flex}
+.sbar i{display:block;height:100%}
+.c-skr22{background:var(--skr)}.c-skr45{background:var(--skr45)}.c-hal22{background:var(--hal)}.c-hal45{background:var(--hal45)}
+.slegend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--sub);margin-top:8px}
+.slegend .dot{margin-right:5px}
+.snote{margin-top:12px;padding:10px 14px;border-radius:14px;font-size:13px;background:color-mix(in srgb,var(--warn) 13%,transparent);border:1px solid color-mix(in srgb,var(--warn) 28%,transparent)}
+.stockfoot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 8px}
+.errtext{color:var(--bad)}
+@media (max-width:900px){.stocklayout{grid-template-columns:minmax(0,1fr)}.countrylist{flex-direction:row;flex-wrap:wrap;gap:6px}.country{flex:1 1 150px;background:var(--glass-lo)}}

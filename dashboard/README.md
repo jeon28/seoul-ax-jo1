@@ -69,3 +69,12 @@ export default function render(ctx) {
 | `data/in/vessels.json` | 선박 목록(실제 선박명·코드 66척) |
 | `scripts/build-bunker-result.mjs` | 규칙을 돌려 `data/out/bunker-consumption.json` 을 다시 만듦 |
 | `scripts/test-bunker.mjs` | 계산 규칙 테스트: `node --test scripts/test-bunker.mjs` |
+
+## 예시: 일일 재고 현황 메뉴 (재고현황.html 을 옮김)
+
+| 파일 | 하는 일 |
+|---|---|
+| `dashboard/menus/empty-stock.js` | 기본 조각에 재고 현황 화면을 끼워 넣음 |
+| `dashboard/js/stock/board.js` | KPI · 국가 목록 · 항구 표(행 클릭) · 상세. 자료를 1분마다 다시 읽는다 |
+| `data/in/empty-stock-ports.json` | 항구별 재고 자료. 바꾸면 화면이 따라온다 |
+| `scripts/build-empty-stock-result.mjs` | 같은 자료에서 `data/out/empty-stock.json`(홈 카드)을 다시 만듦 |

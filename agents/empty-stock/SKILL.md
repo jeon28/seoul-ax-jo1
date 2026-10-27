@@ -5,7 +5,7 @@ description: 일일 재고 브리핑 에이전트 — TODO 한 줄로: 언제 �
 
 # 일일 재고 브리핑 에이전트
 
-> 담당: hjung · 묶음 A · 메뉴: dashboard 의 「일일 재고 브리핑」
+> 담당: hjung · 묶음 A · 메뉴: dashboard 의 「일일 재고 현황」
 > 상태: **작성 전** — 아래 TODO 를 채운다. 다 쓰면 dashboard/js/menus.js 에서 스킬 status 를 'done' 으로 바꾼다.
 
 ## 해결할 병목
@@ -26,6 +26,13 @@ TODO: 각 단계의 입력 → 출력, 막혔을 때(양식이 다르거나 값�
 
 ## 출력
 `data/out/empty-stock.json` — lib/result-shape.md 꼴. 확신이 낮은 건은 review 에 넣는다.
+
+## 화면 (메뉴 「일일 재고 현황」)
+- SKR + HAL 공컨테이너(22GP/45GP) **항구별 재고 현황**: KPI · 국가 목록 · 항구 표 · 항구 상세(`dashboard/js/stock/board.js`). 재고현황.html 을 옮겨 온 것.
+- 자료는 `data/in/empty-stock-ports.json`(수량이 없으면 null = 보고 없음). 이 파일을 바꾸면 화면이 1분 안에 따라온다.
+- 결과 파일은 `node scripts/build-empty-stock-result.mjs` 로 같은 자료에서 다시 만든다(합계 · TEU = 22GP + 45GP × 2 · 확인 필요).
+- 지금 자료는 **전달받은 실제 재고 수량**이라 결과 파일의 `synthetic` 이 false 다. CLAUDE.md 에 따라 실제 자료를 공개 주소에 올리기 전에 입장 비밀번호를 먼저 건다.
+- 아직 이 화면에 없는 것: 지역별 적정재고 대비 과잉/부족 판정(`over-short-judge`), 공이송 후보 요약. 적정재고 기준표가 생기면 이어서 붙인다.
 
 ## 지킬 것
 - 가상 데이터만 쓴다. 실제 선박명·컨테이너 번호·화주·금액·용선료는 넣지 않는다.
