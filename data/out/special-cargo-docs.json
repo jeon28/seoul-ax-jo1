@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "agent": "special-cargo-approval",
+  "owner": "kim jaehyung",
+  "bundle": "C",
+  "as_of": "2026-10-27",
+  "headline": "11건 점검: 가능 3 · 확인 필요 5 · 불가 3 (누락 1 · 불일치 2 · 위반 3 · 직접 확인 3)",
+  "metrics": [
+    {
+      "key": "processed",
+      "label": "점검 건수",
+      "value": 11,
+      "unit": "건",
+      "prev": 8
+    },
+    {
+      "key": "missing",
+      "label": "서류 누락",
+      "value": 1,
+      "unit": "건"
+    },
+    {
+      "key": "conflict",
+      "label": "서류 불일치",
+      "value": 2,
+      "unit": "건"
+    },
+    {
+      "key": "violation",
+      "label": "규정 위반",
+      "value": 3,
+      "unit": "건"
+    },
+    {
+      "key": "manual",
+      "label": "직접 확인",
+      "value": 3,
+      "unit": "건"
+    }
+  ],
+  "table": {
+    "columns": [
+      "요청코드",
+      "유형",
+      "화물",
+      "서류",
+      "판정",
+      "근거"
+    ],
+    "rows": [
+      [
+        "Q01",
+        "DG",
+        "Class 3 / UN 1307 PG III",
+        "완비",
+        "가능",
+        "서류 완비 · 규정 통과"
+      ],
+      [
+        "Q02",
+        "DG",
+        "Class 8 / UN 1824 PG II",
+        "누락(MSDS)",
+        "확인 필요",
+        "필수 서류 누락: MSDS"
+      ],
+      [
+        "Q03",
+        "OOG",
+        "초과 H120 W40 L0 cm · 24,500 kg",
+        "불일치(초과 높이)",
+        "확인 필요",
+        "초과 높이 불일치: 승인 요청서 80 cm / 치수표 120 cm / 도면 120 cm"
+      ],
+      [
+        "Q04",
+        "FLEXIBAG",
+        "NON-DG · 충전량 22,000 kg",
+        "완비",
+        "가능",
+        "서류 완비 · 규정 통과"
+      ],
+      [
+        "Q05",
+        "DG",
+        "Class 3 / UN 1089 PG I",
+        "완비",
+        "불가",
+        "금지 목록 해당: UN 1089는 VER.10 (FOR PARTNERS) 금지 품목"
+      ],
+      [
+        "Q06",
+        "DG",
+        "Class 3 / UN 1170 PG II",
+        "완비",
+        "불가",
+        "상해 CAS 금지 목록 해당 (CAS 64-17-5) 외 1건"
+      ],
+      [
+        "Q07",
+        "DG",
+        "Class 3 / UN 1824 PG II",
+        "완비",
+        "확인 필요",
+        "IMDG 와 다름: Class 8(신청 3) — 자동 거절하지 않음"
+      ],
+      [
+        "Q08",
+        "DG",
+        "Class 3 / UN 1307 PG III",
+        "완비",
+        "확인 필요",
+        "상해 양하/경유 MSDS 농도 85% (기준 100%)"
+      ],
+      [
+        "Q09",
+        "OOG",
+        "초과 H100 W40 L0 cm · 18,200 kg",
+        "완비",
+        "가능",
+        "서류 완비 · 규정 통과"
+      ],
+      [
+        "Q10",
+        "OOG",
+        "초과 H260 W60 L100 cm · 22,000 kg",
+        "완비",
+        "불가",
+        "초과 높이 260 cm 가 S03 한도 150 cm 초과"
+      ],
+      [
+        "Q11",
+        "FLEXIBAG",
+        "NON-DG · 충전량 23,000 kg",
+        "완비",
+        "확인 필요",
+        "COA 양식이 2026년 양식(T-2026)과 다름: T-2025"
+      ]
+    ]
+  },
+  "review": [
+    {
+      "id": "R01",
+      "code": "Q02",
+      "reason": "서류 누락",
+      "detail": "Q02 DG Class 8 / UN 1824 PG II · 필수 서류 누락: MSDS"
+    },
+    {
+      "id": "R02",
+      "code": "Q03",
+      "reason": "서류 불일치",
+      "detail": "Q03 OOG 초과 H120 W40 L0 cm · 24,500 kg · 초과 높이 불일치: 승인 요청서 80 cm / 치수표 120 cm / 도면 120 cm"
+    },
+    {
+      "id": "R03",
+      "code": "Q05",
+      "reason": "규정 위반",
+      "detail": "Q05 DG Class 3 / UN 1089 PG I · 금지 목록 해당: UN 1089는 VER.10 (FOR PARTNERS) 금지 품목"
+    },
+    {
+      "id": "R04",
+      "code": "Q06",
+      "reason": "규정 위반",
+      "detail": "Q06 DG Class 3 / UN 1170 PG II · 상해 CAS 금지 목록 해당 (CAS 64-17-5) · 상해 양하/경유 MSDS 농도 99.5% (기준 100%)"
+    },
+    {
+      "id": "R05",
+      "code": "Q07",
+      "reason": "직접 확인",
+      "detail": "Q07 DG Class 3 / UN 1824 PG II · IMDG 와 다름: Class 8(신청 3) — 자동 거절하지 않음"
+    },
+    {
+      "id": "R06",
+      "code": "Q08",
+      "reason": "직접 확인",
+      "detail": "Q08 DG Class 3 / UN 1307 PG III · 상해 양하/경유 MSDS 농도 85% (기준 100%)"
+    },
+    {
+      "id": "R07",
+      "code": "Q10",
+      "reason": "규정 위반",
+      "detail": "Q10 OOG 초과 H260 W60 L100 cm · 22,000 kg · 초과 높이 260 cm 가 S03 한도 150 cm 초과"
+    },
+    {
+      "id": "R08",
+      "code": "Q11",
+      "reason": "서류 불일치",
+      "detail": "Q11 FLEXIBAG NON-DG · 충전량 23,000 kg · COA 양식이 2026년 양식(T-2026)과 다름: T-2025"
+    }
+  ],
+  "time": {
+    "before_min": 20,
+    "after_min": 5,
+    "runs_per_month": 44,
+    "basis": "추정"
+  },
+  "source": {
+    "label": "가상 승인 요청 서류(값 추출 표) · 필수 서류표 · 숫자표 · CAS·IMDG 샘플",
+    "rows": 11
+  },
+  "rules_version": "special-cargo-approval@v1",
+  "synthetic": true
+}

@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "agent": "offhire",
+  "owner": "ijryu",
+  "bundle": "D",
+  "as_of": "2026-10-27",
+  "headline": "Off-hire 4건 검산, 불일치 2건 · 확인 필요 1건 · 협정 대장 청구 1건 · 반론 1건",
+  "metrics": [
+    {
+      "key": "processed",
+      "label": "검산 건수",
+      "value": 4,
+      "unit": "건"
+    },
+    {
+      "key": "warn",
+      "label": "검산 경고",
+      "value": 3,
+      "unit": "건"
+    },
+    {
+      "key": "claim",
+      "label": "청구",
+      "value": 1,
+      "unit": "건"
+    },
+    {
+      "key": "dispute",
+      "label": "반론",
+      "value": 1,
+      "unit": "건"
+    },
+    {
+      "key": "agreed",
+      "label": "합의",
+      "value": 1,
+      "unit": "건"
+    },
+    {
+      "key": "settled",
+      "label": "정산",
+      "value": 1,
+      "unit": "건"
+    }
+  ],
+  "table": {
+    "columns": [
+      "선박코드",
+      "SEQ",
+      "Port",
+      "Days",
+      "판정",
+      "확인 항목"
+    ],
+    "rows": [
+      [
+        "S01",
+        "001",
+        "KRPUS",
+        2.5,
+        "일치",
+        "-"
+      ],
+      [
+        "S01",
+        "002",
+        "CNSHA",
+        0.775,
+        "불일치",
+        "Days"
+      ],
+      [
+        "S01",
+        "003",
+        "JPTYO",
+        1,
+        "불일치",
+        "F/O Total"
+      ],
+      [
+        "S01",
+        "004",
+        "KRINC",
+        1.5,
+        "확인 필요",
+        "Remark, Hire(일 용선료)"
+      ]
+    ]
+  },
+  "review": [
+    {
+      "id": "R01",
+      "code": "S01",
+      "reason": "Days 불일치",
+      "detail": "S01 SEQ 002 · 기입 0.775일 / 계산 0.75일"
+    },
+    {
+      "id": "R02",
+      "code": "S01",
+      "reason": "F/O Total 불일치",
+      "detail": "S01 SEQ 003 · F/O Total 기입값이 계산값과 2.9% 다름"
+    },
+    {
+      "id": "R03",
+      "code": "S01",
+      "reason": "Remark 확인 필요",
+      "detail": "S01 SEQ 004 · Off-hire 사유(Remark)가 비어 있음"
+    },
+    {
+      "id": "R04",
+      "code": "S01",
+      "reason": "Hire(일 용선료) 확인 필요",
+      "detail": "S01 SEQ 004 · Hire(일 용선료)이(가) 다른 건과 4.2% 다름. 용선료 변경·C/P 조건 확인"
+    }
+  ],
+  "time": {
+    "before_min": 45,
+    "after_min": 10,
+    "runs_per_month": 4,
+    "basis": "추정"
+  },
+  "source": {
+    "label": "가상 Off-hire 엑셀·협정 대장",
+    "rows": 8
+  },
+  "rules_version": "offhire-rules@v1",
+  "synthetic": true
+}

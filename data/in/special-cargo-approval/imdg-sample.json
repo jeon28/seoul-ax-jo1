@@ -1,0 +1,15 @@
+{
+  "note": "IMDG 대조용 가상 샘플(UN 번호별 Class·PG 요약 10개). 실제 IMDG Code 자료를 쓰게 되면 출처(BAM Datenbank GEFAHRGUT, IMDG Code Amdt. 42-24, Datenlizenz Deutschland – Namensnennung 2.0, 형식 변경)를 표시한다. 웹사이트를 자동 수집하지 않는다.",
+  "entries": [
+    { "un": "1089", "cls": "3", "pg": "I", "name": "ACETALDEHYDE" },
+    { "un": "1170", "cls": "3", "pg": "II", "name": "ETHANOL" },
+    { "un": "1263", "cls": "3", "pg": "II", "name": "PAINT" },
+    { "un": "1307", "cls": "3", "pg": "III", "name": "XYLENES" },
+    { "un": "1789", "cls": "8", "pg": "II", "name": "HYDROCHLORIC ACID" },
+    { "un": "1824", "cls": "8", "pg": "II", "name": "SODIUM HYDROXIDE SOLUTION" },
+    { "un": "1830", "cls": "8", "pg": "II", "name": "SULPHURIC ACID" },
+    { "un": "1993", "cls": "3", "pg": "III", "name": "FLAMMABLE LIQUID, N.O.S." },
+    { "un": "2794", "cls": "8", "pg": "-", "name": "BATTERIES, WET, FILLED WITH ACID" },
+    { "un": "3077", "cls": "9", "pg": "III", "name": "ENVIRONMENTALLY HAZARDOUS SUBSTANCE, SOLID, N.O.S." }
+  ]
+}

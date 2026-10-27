@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>장금상선 AX 대시보드 소개</title>
+<style>
+:root{--bg:#f4f6f9;--card:#fff;--ink:#1c2430;--sub:#667085;--line:#dfe4eb;--soft:#eaf1fa;--accent:#1d4e89;--warn:#b54708;--warnbg:#fff4e5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f141a;--card:#1a212b;--ink:#e8ecf2;--sub:#9aa5b5;--line:#2b3340;--soft:#202a38;--accent:#7db0ee;--warn:#f5b261;--warnbg:#33281a}}
+:root[data-theme="dark"]{--bg:#0f141a;--card:#1a212b;--ink:#e8ecf2;--sub:#9aa5b5;--line:#2b3340;--soft:#202a38;--accent:#7db0ee;--warn:#f5b261;--warnbg:#33281a}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:clamp(13px,1.35vw,17px)/1.55 -apple-system,"Malgun Gothic","Apple SD Gothic Neo",sans-serif;overflow:hidden}
+.slide{position:absolute;inset:0 0 44px 0;display:none;overflow:auto;padding:clamp(14px,3vw,40px) clamp(14px,4vw,56px)}
+.slide.on{display:block}
+.in{max-width:1180px;margin:0 auto}
+h1{font-size:clamp(28px,5.5vw,60px);margin:6px 0 10px;line-height:1.15}
+h2{font-size:clamp(20px,2.8vw,32px);margin:0 0 14px;padding-bottom:6px;border-bottom:3px solid var(--accent)}
+.cover .in{min-height:100%;display:flex;flex-direction:column;justify-content:center}
+.kicker{color:var(--accent);font-weight:700;margin:0}
+.lead{font-size:clamp(15px,2vw,22px);color:var(--sub);margin:0 0 12px}
+.lead.sm{font-size:clamp(13px,1.5vw,17px)}
+.team{font-size:clamp(14px,1.8vw,20px)}
+.hint,.sub{color:var(--sub);font-size:.85em}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%}
+table.dense{min-width:720px}
+th,td{text-align:left;padding:.35em .6em;border-bottom:1px solid var(--line);vertical-align:top;font-size:.82em}
+th{background:var(--soft);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+code{background:var(--soft);padding:0 5px;border-radius:4px;font-size:.88em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.card p{margin:.4em 0 0;font-size:.9em}
+.card.hl{background:var(--soft);border-color:var(--accent)}
+.blist{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
+.bb{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.bt{font-weight:700;margin-bottom:4px}
+.ag{padding:4px 0;border-top:1px solid var(--line);font-size:.88em}
+.chip{display:inline-block;background:var(--soft);border-radius:99px;padding:0 8px;margin:2px 4px 0 0;font-size:.85em}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+pre{margin:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;overflow:auto;font-size:.72em;line-height:1.45}
+.fl{margin:0;padding-left:1.1em;font-size:.82em}
+.fl li{margin:.25em 0}
+.mock{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:10px 12px}
+.mtop{display:flex;justify-content:space-between;gap:8px;font-weight:700;border-bottom:1px solid var(--line);padding-bottom:6px;flex-wrap:wrap}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{background:var(--soft);border-radius:8px;padding:6px 10px}
+.tile span{display:block;font-size:.75em;color:var(--sub)}.tile b{font-size:1.3em}
+.mcards{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.mcard{border:1px solid var(--line);border-radius:8px;padding:6px 8px;background:var(--bg);font-size:.8em}
+.mcard .line{color:var(--sub);margin:4px 0}
+.fake{color:var(--warn);font-size:.85em}
+.mlist{margin-top:10px;border-top:1px dashed var(--line);padding-top:6px;font-size:.82em}
+.steps{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:8px}
+.steps li{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.n{background:var(--accent);color:var(--bg);width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:700;flex:none}
+.steps li>div{flex:1}
+.tag{background:var(--warnbg);color:var(--warn);border-radius:99px;padding:1px 10px;font-size:.8em;white-space:nowrap}
+nav.bar{position:fixed;left:0;right:0;bottom:0;height:44px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 12px;background:var(--card);border-top:1px solid var(--line)}
+nav.bar button{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:4px 14px;cursor:pointer}
+nav.bar .pg{color:var(--sub);font-size:.85em}
+.prog{position:fixed;left:0;bottom:44px;height:3px;background:var(--accent);transition:width .2s}
+@media (max-width:760px){.two{grid-template-columns:1fr}.tiles{grid-template-columns:repeat(2,1fr)}.mcards{grid-template-columns:repeat(2,1fr)}}
+</style></head>
+<body>
+<section class="slide cover"><div class="in">
+<p class="kicker">AI 교육 · 4회차 과제</p>
+<h1>장금상선 AX 대시보드</h1>
+<p class="lead">조원 12명의 업무 병목을 에이전트로 줄이고, 결과를 한 화면에 모았습니다</p>
+<p class="team"><b>1조</b> · 다니엘 · 전지연 · hjung · ijryu · kim jaehyung · 권도윤 · 김유민 · 노현석 · 이예윤 · 전성현 · 황심연 · 이병선</p>
+<p class="hint">← → 키 또는 화면을 옆으로 밀어 넘기세요</p></div></section>
+<section class="slide"><div class="in"><h2>조원 아이디어 한눈에</h2>
+<div class="tw"><table class="dense"><thead><tr><th>이름</th><th>병목 한 줄</th><th>내 에이전트</th></tr></thead><tbody>
+<tr><td><b>다니엘</b></td><td>누적 항해 자료에서 이상치·제외 구간을 걸러 속도별 연료 소모량을 계산 (일 1회 10분)</td><td>소모량 분석 에이전트</td></tr><tr><td><b>전지연</b></td><td>CY 메일의 재고·반입반출 수량을 회사 포탈 장치 수량과 CY마다 하나씩 대조 (일 60분)</td><td>부곡 CY 일일 대조 에이전트</td></tr><tr><td><b>hjung</b></td><td>동남아 지역별 재고 메일 Excel을 모아 적정재고와 비교해 과잉/부족을 직접 판정 (주 5회)</td><td>일일 재고 브리핑 에이전트</td></tr><tr><td><b>ijryu</b></td><td>엑셀이 계산한 Off-hire 차감액을 영문 Claim 메일과 협정 대장에 다시 옮겨 적기 (건당 30분~1시간)</td><td>Off-hire 협정 에이전트</td></tr><tr><td><b>kim jaehyung</b></td><td>스페셜화물(DG·OOG·Flexibag) 승인 요청 첨부문서를 하나씩 열어 규정 적합성 확인 (일 2회 20분)</td><td>스페셜화물 승인 보조 에이전트</td></tr><tr><td><b>권도윤</b></td><td>일본 내 과잉 포트→부족 포트 공이송 수량을 모선 기항 순서와 잔여 스페이스에 맞춰 조정 (일 1회)</td><td>일본 공이송 플래너</td></tr><tr><td><b>김유민</b></td><td>컨테이너마다 CERTI와 SPECIAL LIST의 중량·PKG·CLASS·UN NO.를 눈으로 하나씩 대조 (주 3회)</td><td>위험물 대조 에이전트</td></tr><tr><td><b>노현석</b></td><td>월별 거래처 실적을 도착지/선적지별로 다시 자르고 전월과 비교 (영업 업무 주 5회 60분)</td><td>영업실적 분석 에이전트</td></tr><tr><td><b>이예윤</b></td><td>포탈·대리점 메일·터미널 세 곳의 입항 스케줄을 눈으로 대조해 마감을 통지 (주 1회 20분)</td><td>주간 스케줄 통지 에이전트</td></tr><tr><td><b>전성현</b></td><td>어제 대비 신규 반납건 추출, 리즈사 반납번호 획득, 터미널 반출 확인을 일일이 진행 (일 40분)</td><td>반납 도우미</td></tr><tr><td><b>황심연</b></td><td>자사선 스페어파트 재고 회신을 취합하고 부족 선박의 1~3주 내 공급 가능 기항지를 찾기 (월 1회)</td><td>스페어파트 보급 에이전트</td></tr><tr><td><b>이병선</b></td><td>위험물·OOG 선적 가부를 내규 문서와 기억에 의존한 사고 사례로 건마다 판단 (일 30건)</td><td>스페셜화물 내규 판정 에이전트</td></tr>
+</tbody></table></div></div></section>
+<section class="slide"><div class="in"><h2>어떻게 모았나</h2>
+<p class="lead sm">12개 아이디어를 계산 방식과 업무 흐름이 비슷한 것끼리 <b>5개 묶음</b>으로 합쳤고, 묶음 하나가 카드 한 장입니다.</p>
+<div class="grid"><div class="card" style="border-top:4px solid #2f6fb0"><b>A. 컨테이너 재고·공이송</b><div class="sub">hjung · 권도윤</div><p>공컨테이너 과부족 판단 → 공이송안</p></div><div class="card" style="border-top:4px solid #1f8a70"><b>B. 반납·CY 재고 대조</b><div class="sub">전지연 · 전성현</div><p>반납 대상·CY 수량을 기준 자료와 대조해 확정</p></div><div class="card" style="border-top:4px solid #c2571a"><b>C. 위험물·스페셜화물 확인</b><div class="sub">kim jaehyung · 김유민 · 이병선</div><p>위험물 서류 일치 → 규정 판정 → 회신 초안</p></div><div class="card" style="border-top:4px solid #7a4fb0"><b>D. 선박 운영 수치(벙커·용선료·보급)</b><div class="sub">다니엘 · ijryu · 황심연</div><p>선박 운영 수치 계산, 사람은 확인 필요만</p></div><div class="card" style="border-top:4px solid #b0316a"><b>E. 평택 스케줄·실적</b><div class="sub">노현석 · 이예윤</div><p>평택사무소 입항 마감 + 월간 실적</p></div>
+<div class="card hl"><b>맨 위 요약</b><p>에이전트 수 · 처리 건수 · 확인 필요 건수 · 월 절감 시간(추정)을 결과 파일 숫자를 더해 보여줍니다.</p></div></div>
+<p class="sub">공통으로 쓰는 계산 네 가지: 두 표 대조 · 기준표 대비 과잉/부족 · 집계와 전월 비교 · 일정 창과 마감</p></div></section>
+<section class="slide"><div class="in"><h2>대시보드 첫 화면 그림</h2><div class="mock"><div class="mtop"><span>장금상선 AX 대시보드</span><span class="sub">기준일 · [엑셀 올리기]</span></div>
+<div class="tiles"><div class="tile"><span>에이전트</span><b>12 개</b></div><div class="tile"><span>처리 건수</span><b>○○ 건</b></div><div class="tile"><span>확인 필요</span><b>○○ 건</b></div><div class="tile"><span>월 절감 시간</span><b>○○ 시간</b></div></div>
+<div class="mcards"><div class="mcard" style="border-top:4px solid #2f6fb0"><b>A 컨테이너 재고·공이송</b><div class="line">한 줄 요약</div><span class="fake">확인 필요 n건 ▸</span></div><div class="mcard" style="border-top:4px solid #1f8a70"><b>B 반납·CY 재고 대조</b><div class="line">한 줄 요약</div><span class="fake">확인 필요 n건 ▸</span></div><div class="mcard" style="border-top:4px solid #c2571a"><b>C 위험물·스페셜화물 확인</b><div class="line">한 줄 요약</div><span class="fake">확인 필요 n건 ▸</span></div><div class="mcard" style="border-top:4px solid #7a4fb0"><b>D 선박 운영 수치(벙커·용…</b><div class="line">한 줄 요약</div><span class="fake">확인 필요 n건 ▸</span></div><div class="mcard" style="border-top:4px solid #b0316a"><b>E 평택 스케줄·실적</b><div class="line">한 줄 요약</div><span class="fake">확인 필요 n건 ▸</span></div></div>
+<div class="mlist"><div>확인 필요 목록 (이름 가림) · R01 S02 평균 대비 큰 이탈 …</div></div></div>
+<p class="sub">① 맨 위 요약 → ② 묶음별 카드 5장 → ③ 확인 필요 목록. 메일·알림 보내기 버튼은 없습니다. (○○ 는 자리 표시)</p></div></section>
+<section class="slide"><div class="in"><h2>묶음별 에이전트 · 스킬 · 누구의 아이디어</h2>
+<div class="blist"><div class="bb" style="border-left:5px solid #2f6fb0"><div class="bt">A. 컨테이너 재고·공이송</div>
+<div class="ag"><b>일일 재고 브리핑 에이전트</b> <span class="sub">· hjung</span><div class="sk"><span class="chip">재고 Excel 파서</span><span class="chip">과잉/부족 판정</span><span class="chip">공이송 후보 요약</span></div></div><div class="ag"><b>일본 공이송 플래너</b> <span class="sub">· 권도윤</span><div class="sk"><span class="chip">입력 정리</span><span class="chip">이송 후보 계산</span><span class="chip">검증·보고</span></div></div></div><div class="bb" style="border-left:5px solid #1f8a70"><div class="bt">B. 반납·CY 재고 대조</div>
+<div class="ag"><b>부곡 CY 일일 대조 에이전트</b> <span class="sub">· 전지연</span><div class="sk"><span class="chip">CY 메일 읽기</span><span class="chip">포탈 대조</span><span class="chip">일일 재고 엑셀 기입</span></div></div><div class="ag"><b>반납 도우미</b> <span class="sub">· 전성현</span><div class="sk"><span class="chip">신규건 추출</span><span class="chip">반납번호 요청·회신 정리</span><span class="chip">반납요청 메일 작성</span></div></div></div><div class="bb" style="border-left:5px solid #c2571a"><div class="bt">C. 위험물·스페셜화물 확인</div>
+<div class="ag"><b>스페셜화물 승인 보조 에이전트</b> <span class="sub">· kim jaehyung</span><div class="sk"><span class="chip">서류 점검(doc-check)</span><span class="chip">회신 초안(reply-draft)</span></div></div><div class="ag"><b>위험물 대조 에이전트</b> <span class="sub">· 김유민</span><div class="sk"><span class="chip">PDF 추출</span><span class="chip">대조 규칙</span><span class="chip">화면 요약</span></div></div><div class="ag"><b>스페셜화물 내규 판정 에이전트</b> <span class="sub">· 이병선</span><div class="sk"><span class="chip">금지 매트릭스 판정</span><span class="chip">사고 이력 조회</span><span class="chip">판정 기록</span></div></div></div><div class="bb" style="border-left:5px solid #7a4fb0"><div class="bt">D. 선박 운영 수치(벙커·용선료·보급)</div>
+<div class="ag"><b>소모량 분석 에이전트</b> <span class="sub">· 다니엘</span><div class="sk"><span class="chip">구간 정제</span><span class="chip">속도별 소모량 산출</span><span class="chip">검증·엑셀 출력</span></div></div><div class="ag"><b>Off-hire 협정 에이전트</b> <span class="sub">· ijryu</span><div class="sk"><span class="chip">offhire 검산</span><span class="chip">offhire 메일 초안</span><span class="chip">협정 대장 갱신</span></div></div><div class="ag"><b>스페어파트 보급 에이전트</b> <span class="sub">· 황심연</span><div class="sk"><span class="chip">재고 회신 취합(spare-inventory-collect)</span><span class="chip">기항지 맞추기(port-window-match)</span><span class="chip">요청·추적(supply-mail-tracker)</span></div></div></div><div class="bb" style="border-left:5px solid #b0316a"><div class="bt">E. 평택 스케줄·실적</div>
+<div class="ag"><b>영업실적 분석 에이전트</b> <span class="sub">· 노현석</span><div class="sk"><span class="chip">월간 거래처 집계</span><span class="chip">영업 방문 목록</span><span class="chip">실적 추이 보고</span></div></div><div class="ag"><b>주간 스케줄 통지 에이전트</b> <span class="sub">· 이예윤</span><div class="sk"><span class="chip">스케줄 모아 대조</span><span class="chip">적하목록 마감 계산</span><span class="chip">마감 통지 메일 초안</span></div></div></div></div></div></section>
+<section class="slide"><div class="in"><h2>공통 결과 파일 꼴</h2>
+<div class="two"><pre>{
+  "schema_version": 1,
+  "agent": "bunker-consumption",
+  "owner": "다니엘",
+  "bundle": "D",
+  "as_of": "2026-10-22",
+  "headline": "3척 처리, 제외 12일(8%), 확인 필요 2건",
+  "metrics": [
+    { "key": "processed", "label": "처리 건수", "value": 3, "unit": "척", "prev": 3 },
+    { "key": "excluded_ratio", "label": "제외 비율", "value": 8, "unit": "%", "prev": 6 }
+  ],
+  "table": {
+    "columns": ["선박코드", "속도(kn)", "일일 소모량(t)"],
+    "rows": [["S01", 12, 28.4], ["S01", 14, 36.1]]
+  },
+  "review": [
+    { "id": "R01", "code": "S02", "reason": "평균 대비 큰 이탈", "detail": "S02 10/03 소모량 이탈 폭 큼" }
+  ],
+  "time": { "before_min": 10, "after_min": 2, "runs_per_month": 30, "basis": "추정" },
+  "source": { "label": "가상 항해 일지", "rows": 365 },
+  "rules_version": "aggregate@v1",
+  "synthetic": true
+}</pre>
+<div><p class="lead sm">에이전트마다 <code>data/out/&lt;이름&gt;.json</code> 한 개. 대시보드는 이 꼴만 읽어서 카드를 같은 방식으로 그립니다.</p>
+<ul class="fl"><li><code>schema_version</code> 결과 파일 꼴의 버전. 지금은 1</li><li><code>agent · owner · bundle</code> 에이전트 이름(영문 슬러그) · 만든 조원 · 묶음 기호(A~E)</li><li><code>as_of</code> 계산 기준 날짜(YYYY-MM-DD)</li><li><code>headline</code> 카드 맨 윗줄에 그대로 쓰는 한 줄 요약</li><li><code>metrics[]</code> 카드 숫자들. key · label · value · unit · prev(전회 값, 없으면 생략)</li><li><code>table</code> 카드를 눌렀을 때 펼치는 표. columns 와 rows</li><li><code>review[]</code> 확인 필요 목록. id · code · reason · detail. detail 은 이미 코드로 가린 문장만</li><li><code>time</code> 걸린 시간 전/후(분), 월 실행 횟수, basis(추정 또는 측정). 월 절감 시간 = (전−후)×횟수÷60</li><li><code>source</code> 입력 자료 이름표와 행 수. 파일 이름·경로는 쓰지 않는다</li><li><code>rules_version</code> 어느 lib/ 규칙 버전으로 계산했는지</li><li><code>synthetic</code> 가상 데이터이면 true</li></ul></div></div></div></section>
+<section class="slide"><div class="in"><h2>역할 표</h2>
+<div class="tw"><table class="dense"><thead><tr><th>이름</th><th>맡을 에이전트</th><th>만들 스킬</th><th>4회차에 만들어 올 것</th><th>결과 파일</th></tr></thead><tbody>
+<tr><td><b>다니엘</b></td><td>소모량 분석 에이전트</td><td>구간 정제 · 속도별 소모량 산출 · 검증·엑셀 출력</td><td>SKILL.md 4개 · lib/aggregate.md 규칙 · 가상 샘플 · 결과 파일</td><td><code>bunker-consumption.json</code></td></tr><tr><td><b>전지연</b></td><td>부곡 CY 일일 대조 에이전트</td><td>CY 메일 읽기 · 포탈 대조 · 일일 재고 엑셀 기입</td><td>SKILL.md 4개 · lib/compare.md 규칙 · 가상 샘플 · 결과 파일</td><td><code>cy-reconcile.json</code></td></tr><tr><td><b>hjung</b></td><td>일일 재고 브리핑 에이전트</td><td>재고 Excel 파서 · 과잉/부족 판정 · 공이송 후보 요약</td><td>SKILL.md 4개 · lib/threshold.md 규칙 · 가상 샘플 · 결과 파일</td><td><code>empty-stock.json</code></td></tr><tr><td><b>ijryu</b></td><td>Off-hire 협정 에이전트</td><td>offhire 검산 · offhire 메일 초안 · 협정 대장 갱신</td><td>SKILL.md 4개 · lib/aggregate.md 규칙 · 가상 샘플 · 결과 파일</td><td><code>offhire-ledger.json</code></td></tr><tr><td><b>kim jaehyung</b></td><td>스페셜화물 승인 보조 에이전트</td><td>서류 점검(doc-check) · 회신 초안(reply-draft)</td><td>SKILL.md 3개 · lib/compare.md 규칙 · 가상 샘플 · 결과 파일</td><td><code>special-cargo-docs.json</code></td></tr><tr><td><b>권도윤</b></td><td>일본 공이송 플래너</td><td>입력 정리 · 이송 후보 계산 · 검증·보고</td><td>SKILL.md 4개 · lib/threshold.md 규칙 · 가상 샘플 · 결과 파일</td><td><code>japan-empty-transfer.json</code></td></tr><tr><td><b>김유민</b></td><td>위험물 대조 에이전트</td><td>PDF 추출 · 대조 규칙 · 화면 요약</td><td>SKILL.md 4개 · lib/compare.md 규칙 · 가상 샘플 · 결과 파일</td><td><code>dg-compare.json</code></td></tr><tr><td><b>노현석</b></td><td>영업실적 분석 에이전트</td><td>월간 거래처 집계 · 영업 방문 목록 · 실적 추이 보고</td><td>SKILL.md 4개 · lib/aggregate.md 규칙 · 가상 샘플 · 결과 파일</td><td><code>pyeongtaek-sales.json</code></td></tr><tr><td><b>이예윤</b></td><td>주간 스케줄 통지 에이전트</td><td>스케줄 모아 대조 · 적하목록 마감 계산 · 마감 통지 메일 초안</td><td>SKILL.md 4개 · lib/compare.md 규칙 · 가상 샘플 · 결과 파일</td><td><code>pyeongtaek-schedule.json</code></td></tr><tr><td><b>전성현</b></td><td>반납 도우미</td><td>신규건 추출 · 반납번호 요청·회신 정리 · 반납요청 메일 작성</td><td>SKILL.md 4개 · lib/compare.md 규칙 · 가상 샘플 · 결과 파일</td><td><code>container-return.json</code></td></tr><tr><td><b>황심연</b></td><td>스페어파트 보급 에이전트</td><td>재고 회신 취합(spare-inventory-collect) · 기항지 맞추기(port-window-match) · 요청·추적(supply-mail-tracker)</td><td>SKILL.md 4개 · lib/threshold.md 규칙 · 가상 샘플 · 결과 파일</td><td><code>spare-parts.json</code></td></tr><tr><td><b>이병선</b></td><td>스페셜화물 내규 판정 에이전트</td><td>금지 매트릭스 판정 · 사고 이력 조회 · 판정 기록</td><td>SKILL.md 4개 · lib/special-cargo-rules.md 규칙 · 가상 샘플 · 결과 파일</td><td><code>special-cargo-rules.json</code></td></tr>
+</tbody></table></div></div></section>
+<section class="slide"><div class="in"><h2>4회차 일정</h2>
+<ol class="steps"><li><span class="n">1</span><div><b>설계 확정</b><div class="sub">아이디어 표 · 묶음 · 첫 화면 그림 · 결과 파일 꼴</div></div><span class="tag">완료</span></li><li><span class="n">2</span><div><b>에이전트 · 스킬 만들기</b><div class="sub">조원이 각자 agents/ 에 SKILL.md 와 lib/ 규칙을 만든다</div></div><span class="tag">4회차</span></li><li><span class="n">3</span><div><b>결과 파일 내기</b><div class="sub">가상 샘플 엑셀로 돌려 data/out/ 에 결과 파일 1개씩</div></div><span class="tag">4회차</span></li><li><span class="n">4</span><div><b>대시보드에 연결</b><div class="sub">12개 결과 파일이 요약과 묶음 카드에 모두 보이는지 확인</div></div><span class="tag">4회차</span></li><li><span class="n">5</span><div><b>발표</b><div class="sub">덱과 대시보드 시연(가상 데이터만)</div></div><span class="tag">날짜 확인 후 기입</span></li></ol>
+<p class="sub">지킬 것: 가상 데이터만 · 보내기 기능 없음 · 키는 .env.local 과 버셀 환경 변수에만 · 실제 자료를 올리면 입장 비밀번호</p></div></section>
+<div class="prog" id="prog"></div>
+<nav class="bar"><button id="prev" type="button" aria-label="이전">◀ 이전</button><span class="pg" id="pg"></span><button id="next" type="button" aria-label="다음">다음 ▶</button></nav>
+<script>
+(function(){
+  var s=[].slice.call(document.querySelectorAll('.slide')),i=0;
+  function go(n){
+    i=Math.max(0,Math.min(s.length-1,n));
+    s.forEach(function(e,k){e.classList.toggle('on',k===i)});
+    s[i].scrollTop=0;
+    document.getElementById('pg').textContent=(i+1)+' / '+s.length;
+    document.getElementById('prog').style.width=((i+1)/s.length*100)+'%';
+    try{history.replaceState(null,'','#'+(i+1))}catch(e){}
+  }
+  document.getElementById('prev').onclick=function(){go(i-1)};
+  document.getElementById('next').onclick=function(){go(i+1)};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(i+1)}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1)}
+    else if(e.key==='Home')go(0);else if(e.key==='End')go(s.length-1);
+  });
+  var x0=null,y0=null;
+  document.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;
+    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)go(dx<0?i+1:i-1);
+  },{passive:true});
+  var h=parseInt(location.hash.slice(1),10);go(isNaN(h)?0:h-1);
+})();
+</script>
+</body></html>

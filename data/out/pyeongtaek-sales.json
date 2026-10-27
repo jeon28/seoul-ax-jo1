@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "agent": "sales-analysis",
+  "owner": "노현석",
+  "bundle": "E",
+  "as_of": "2026-10-15",
+  "headline": "수출 1,820 TEU(+4%) · 수입 1,540 TEU(-2%), 신규 2 · 이탈 1",
+  "metrics": [
+    {
+      "key": "processed",
+      "label": "거래처",
+      "value": 24,
+      "unit": "곳",
+      "prev": 23
+    },
+    {
+      "key": "export_teu",
+      "label": "수출",
+      "value": 1820,
+      "unit": "TEU",
+      "prev": 1750
+    },
+    {
+      "key": "import_teu",
+      "label": "수입",
+      "value": 1540,
+      "unit": "TEU",
+      "prev": 1572
+    },
+    {
+      "key": "new",
+      "label": "신규 화주",
+      "value": 2,
+      "unit": "곳"
+    }
+  ],
+  "table": {
+    "columns": [
+      "화주코드",
+      "구분",
+      "상대 항",
+      "TEU",
+      "전월 대비",
+      "비고"
+    ],
+    "rows": [
+      [
+        "H01",
+        "수출",
+        "D01",
+        320,
+        "+40",
+        ""
+      ],
+      [
+        "H02",
+        "수출",
+        "D02",
+        210,
+        "-35",
+        "감소"
+      ],
+      [
+        "H03",
+        "수입",
+        "O01",
+        180,
+        "+180",
+        "신규"
+      ],
+      [
+        "H04",
+        "수입",
+        "O02",
+        0,
+        "-95",
+        "이탈"
+      ]
+    ]
+  },
+  "review": [
+    {
+      "id": "R01",
+      "code": "H02",
+      "reason": "전월 대비 큰 폭 감소",
+      "detail": "H02 수출 TEU -35, 방문 우선 검토"
+    },
+    {
+      "id": "R02",
+      "code": "H04",
+      "reason": "이탈 화주",
+      "detail": "H04 이번 달 실적 0, 전월 95"
+    }
+  ],
+  "time": {
+    "before_min": 60,
+    "after_min": 15,
+    "runs_per_month": 22,
+    "basis": "가정"
+  },
+  "source": {
+    "label": "가상 월별 실적 엑셀",
+    "rows": 340
+  },
+  "rules_version": "aggregate@v1",
+  "synthetic": true
+}

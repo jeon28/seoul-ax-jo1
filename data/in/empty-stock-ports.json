@@ -1,0 +1,237 @@
+{
+ "_note": "SKR+HAL 공컨테이너(22GP/45GP) 항구별 재고. 가상 데이터(재고현황.html 의 표 값을 옮긴 샘플). null = 보고 없음. 이 파일을 바꾼 뒤 화면에서 「조회」를 누르면 반영된다.",
+ "updatedAt": "2026-10-26",
+ "rows": [
+  {
+   "country": "홍콩",
+   "code": "HKHKG",
+   "name": "Hong Kong",
+   "s22": 394,
+   "s45": 515,
+   "h22": 273,
+   "h45": 303,
+   "date": "2026-10-26",
+   "note": "전달받은 표 값(메일 미확인)"
+  },
+  {
+   "country": "베트남",
+   "code": "VNHPH",
+   "name": "Haiphong",
+   "s22": 932,
+   "s45": 171,
+   "h22": 1330,
+   "h45": 134,
+   "date": "2026-10-26",
+   "note": ""
+  },
+  {
+   "country": "베트남",
+   "code": "VNSGN",
+   "name": "Ho Chi Minh",
+   "s22": 1553,
+   "s45": 1253,
+   "h22": 1027,
+   "h45": 1226,
+   "date": "2026-10-26",
+   "note": ""
+  },
+  {
+   "country": "베트남",
+   "code": "VNDAD",
+   "name": "Da Nang",
+   "s22": null,
+   "s45": null,
+   "h22": 6,
+   "h45": 9,
+   "date": "2026-10-26",
+   "note": "SKR 보고 없음"
+  },
+  {
+   "country": "태국",
+   "code": "THBKK",
+   "name": "Bangkok",
+   "s22": 1487,
+   "s45": 797,
+   "h22": 1603,
+   "h45": 1323,
+   "date": "2026-10-26",
+   "note": "HAL은 10/26 메일 기준"
+  },
+  {
+   "country": "태국",
+   "code": "THLCH",
+   "name": "Laem Chabang",
+   "s22": 1776,
+   "s45": 1271,
+   "h22": 1893,
+   "h45": 1368,
+   "date": "2026-10-26",
+   "note": "HAL은 10/26 메일 기준. HAL E/P In(this week) 358x22GP 미포함"
+  },
+  {
+   "country": "말레이시아",
+   "code": "MYPKG",
+   "name": "Port Klang",
+   "s22": 428,
+   "s45": 861,
+   "h22": 1409,
+   "h45": 1091,
+   "date": "2026-10-23",
+   "note": "전달받은 표 값(메일 미확인). SKR 10/23, HAL 10/22 보고"
+  },
+  {
+   "country": "말레이시아",
+   "code": "MYPEN",
+   "name": "Penang",
+   "s22": 303,
+   "s45": 458,
+   "h22": 411,
+   "h45": 512,
+   "date": "2026-10-26",
+   "note": "전달받은 표 값(메일 미확인)"
+  },
+  {
+   "country": "말레이시아",
+   "code": "MYPGU",
+   "name": "Pasir Gudang",
+   "s22": 124,
+   "s45": 162,
+   "h22": 2,
+   "h45": 14,
+   "date": "2026-10-26",
+   "note": "HAL은 전달받은 표 값"
+  },
+  {
+   "country": "싱가포르",
+   "code": "SGSIN",
+   "name": "Singapore",
+   "s22": 194,
+   "s45": 204,
+   "h22": 76,
+   "h45": 259,
+   "date": "2026-10-26",
+   "note": "전달받은 표 값(메일 미확인). Food Grade 별도(SKR 45GP 1, HAL 22GP 10)"
+  },
+  {
+   "country": "인도네시아",
+   "code": "IDJKT",
+   "name": "Jakarta",
+   "s22": 2493,
+   "s45": 2403,
+   "h22": 2974,
+   "h45": 1209,
+   "date": "2026-10-25",
+   "note": "정상분(AV)+파손분(DM) 합산"
+  },
+  {
+   "country": "인도네시아",
+   "code": "IDSUB",
+   "name": "Surabaya",
+   "s22": 589,
+   "s45": 821,
+   "h22": 294,
+   "h45": 641,
+   "date": "2026-10-26",
+   "note": ""
+  },
+  {
+   "country": "인도네시아",
+   "code": "IDSRG",
+   "name": "Semarang",
+   "s22": 35,
+   "s45": 830,
+   "h22": 220,
+   "h45": 151,
+   "date": "2026-10-26",
+   "note": "정상분(AV)+파손분(DM) 합산"
+  },
+  {
+   "country": "방글라데시",
+   "code": "BDCGP",
+   "name": "Chittagong",
+   "s22": 286,
+   "s45": 506,
+   "h22": 6,
+   "h45": 13,
+   "date": "2026-10-26",
+   "note": "SKR 10/26, HAL 10/25 보고. 40HC=45GP 환산"
+  },
+  {
+   "country": "인도",
+   "code": "INNSA",
+   "name": "Nhava Sheva",
+   "s22": 97,
+   "s45": 689,
+   "h22": 215,
+   "h45": 566,
+   "date": "2026-10-26",
+   "note": ""
+  },
+  {
+   "country": "인도",
+   "code": "INMUN",
+   "name": "Mundra",
+   "s22": 192,
+   "s45": 52,
+   "h22": 68,
+   "h45": 97,
+   "date": "2026-10-26",
+   "note": ""
+  },
+  {
+   "country": "인도",
+   "code": "INMAA",
+   "name": "Chennai",
+   "s22": 308,
+   "s45": 1251,
+   "h22": 0,
+   "h45": 0,
+   "date": "2026-10-26",
+   "note": ""
+  },
+  {
+   "country": "인도",
+   "code": "INVTZ",
+   "name": "Visakhapatnam",
+   "s22": 276,
+   "s45": 27,
+   "h22": 0,
+   "h45": 0,
+   "date": "2026-10-26",
+   "note": ""
+  },
+  {
+   "country": "인도",
+   "code": "INCCU",
+   "name": "Kolkata",
+   "s22": 6,
+   "s45": 0,
+   "h22": 0,
+   "h45": 1,
+   "date": "2026-10-26",
+   "note": ""
+  },
+  {
+   "country": "파키스탄",
+   "code": "PKKHI",
+   "name": "Karachi",
+   "s22": 220,
+   "s45": 207,
+   "h22": 198,
+   "h45": 113,
+   "date": "2026-10-26",
+   "note": "전달받은 표 값(메일 미확인). HAL Upcountry 144/6 제외"
+  },
+  {
+   "country": "캄보디아",
+   "code": "KHPNH",
+   "name": "Phnom Penh",
+   "s22": null,
+   "s45": null,
+   "h22": 98,
+   "h45": 3,
+   "date": "2026-10-23",
+   "note": "전달받은 표 값(메일 미확인). SKR 보고 없음"
+  }
+ ]
+}

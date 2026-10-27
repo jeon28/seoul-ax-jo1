@@ -1,0 +1,16 @@
+{
+  "files": [
+    "bunker-consumption.json",
+    "cy-reconcile.json",
+    "empty-stock.json",
+    "offhire-ledger.json",
+    "special-cargo-docs.json",
+    "japan-empty-transfer.json",
+    "dg-compare.json",
+    "pyeongtaek-sales.json",
+    "pyeongtaek-schedule.json",
+    "container-return.json",
+    "spare-parts.json",
+    "special-cargo-rules.json"
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "agent": "japan-empty-transfer",
+  "owner": "권도윤",
+  "bundle": "A",
+  "as_of": "2026-10-27",
+  "headline": "이송안 9건 (205개 · 251 TEU), 스페이스 부족 1건 · 이송 못 한 부족 3건, 수량 검증 통과",
+  "metrics": [
+    {
+      "key": "processed",
+      "label": "이송안",
+      "value": 9,
+      "unit": "건"
+    },
+    {
+      "key": "moved_teu",
+      "label": "이송 TEU",
+      "value": 251,
+      "unit": "TEU"
+    },
+    {
+      "key": "space_short",
+      "label": "스페이스 부족",
+      "value": 1,
+      "unit": "건"
+    },
+    {
+      "key": "unresolved",
+      "label": "이송 못 한 부족",
+      "value": 3,
+      "unit": "건"
+    }
+  ],
+  "table": {
+    "columns": [
+      "모선코드",
+      "항차",
+      "타입",
+      "출발",
+      "도착",
+      "수량(개)",
+      "TEU",
+      "ETD",
+      "Cut-off"
+    ],
+    "rows": [
+      [
+        "V01",
+        "101S",
+        "22RE",
+        "CHIBA",
+        "OSAKA",
+        18,
+        18,
+        "2026-10-28",
+        "2026-10-27 16:00"
+      ],
+      [
+        "V01",
+        "101S",
+        "45RE",
+        "SHIMIZU",
+        "NAGOYA",
+        20,
+        40,
+        "2026-10-28",
+        "2026-10-27 23:00"
+      ],
+      [
+        "V01",
+        "101S",
+        "42UT",
+        "CHIBA",
+        "OSAKA",
+        8,
+        16,
+        "2026-10-28",
+        "2026-10-27 16:00"
+      ],
+      [
+        "V01",
+        "101S",
+        "22GP",
+        "CHIBA",
+        "NAGOYA",
+        60,
+        60,
+        "2026-10-28",
+        "2026-10-27 16:00"
+      ],
+      [
+        "V01",
+        "101S",
+        "22GP",
+        "CHIBA",
+        "OSAKA",
+        32,
+        32,
+        "2026-10-28",
+        "2026-10-27 16:00"
+      ],
+      [
+        "V01",
+        "101S",
+        "22GP",
+        "CHIBA",
+        "MOJI",
+        18,
+        18,
+        "2026-10-28",
+        "2026-10-27 16:00"
+      ],
+      [
+        "V01",
+        "101S",
+        "45GP",
+        "CHIBA",
+        "NAGOYA",
+        18,
+        36,
+        "2026-10-28",
+        "2026-10-27 16:00"
+      ],
+      [
+        "V02",
+        "202S",
+        "22PC",
+        "SHIMIZU",
+        "KOBE",
+        9,
+        9,
+        "2026-10-29",
+        "2026-10-28 18:00"
+      ],
+      [
+        "V02",
+        "202S",
+        "22GP",
+        "SHIMIZU",
+        "KOBE",
+        22,
+        22,
+        "2026-10-29",
+        "2026-10-28 18:00"
+      ]
+    ]
+  },
+  "review": [
+    {
+      "id": "R01",
+      "code": "V01",
+      "reason": "모선 잔여 스페이스 부족",
+      "detail": "45GP V01 101S: 스페이스 부족으로 2개 구간 조합 축소/제외 (이 타입 배정 18개, 1개=2 TEU). 예: CHIBA→NAGOYA 필요 48 중 18; CHIBA→MOJI 필요 20 중 0"
+    },
+    {
+      "id": "R02",
+      "code": "NAGOYA",
+      "reason": "이송 못 한 부족분",
+      "detail": "45GP NAGOYA: Deficit 30 남음 (Surplus는 남았으나 기항 순서·스페이스로 이송 불가)"
+    },
+    {
+      "id": "R03",
+      "code": "KOBE",
+      "reason": "이송 못 한 부족분",
+      "detail": "45GP KOBE: Deficit 30 남음 (Surplus는 남았으나 기항 순서·스페이스로 이송 불가)"
+    },
+    {
+      "id": "R04",
+      "code": "MOJI",
+      "reason": "이송 못 한 부족분",
+      "detail": "45GP MOJI: Deficit 20 남음 (Surplus는 남았으나 기항 순서·스페이스로 이송 불가)"
+    },
+    {
+      "id": "R05",
+      "code": "V02",
+      "reason": "Cut-off 비어 있음(이번 이송안엔 영향 없음)",
+      "detail": "V02 202S: MOJI Cut-off 없음 (마지막 기항지라 이번 이송안에는 영향 없음, 원본 확인)"
+    }
+  ],
+  "time": {
+    "before_min": 30,
+    "after_min": 10,
+    "runs_per_month": 22,
+    "basis": "가정"
+  },
+  "source": {
+    "label": "가상 포트 현황·모선 기항·잔여 스페이스 (sim2)",
+    "rows": 18
+  },
+  "rules_version": "japan-repo-planner@2026-10-27",
+  "synthetic": true
+}

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>일본 공이송 플래너 실행 안내</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1d232b;
+    --muted: #5b6673;
+    --line: #dde2e8;
+    --accent: #1f5fbf;
+    --accent-soft: #e8f0fc;
+    --warn: #9a5b00;
+    --warn-soft: #fff4e0;
+    --code-bg: #f0f2f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14181d;
+      --card: #1c2229;
+      --text: #e6e9ed;
+      --muted: #9aa5b1;
+      --line: #2e3640;
+      --accent: #7fb0ff;
+      --accent-soft: #1d2a3d;
+      --warn: #f0b45a;
+      --warn-soft: #33290f;
+      --code-bg: #12161b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.6rem; margin: 0 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+  section {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-bottom: 18px;
+  }
+  h2 { font-size: 1.15rem; margin: 0 0 12px; }
+  h2 .no {
+    display: inline-block; min-width: 26px; height: 26px; line-height: 26px; text-align: center;
+    background: var(--accent); color: #fff; border-radius: 50%; font-size: .85rem; margin-right: 8px;
+  }
+  ul, ol { margin: 8px 0 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+  code {
+    background: var(--code-bg); border-radius: 5px; padding: 1px 6px;
+    font-family: Consolas, "D2Coding", monospace; font-size: .92em;
+  }
+  .prompt {
+    position: relative; background: var(--code-bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px; margin: 10px 0 4px; white-space: pre-wrap;
+    font-family: Consolas, "D2Coding", monospace; font-size: .92rem;
+  }
+  button.copy {
+    position: absolute; top: 8px; right: 8px; border: 1px solid var(--line); background: var(--card);
+    color: var(--text); border-radius: 7px; padding: 4px 10px; font-size: .8rem; cursor: pointer;
+  }
+  button.copy:hover { border-color: var(--accent); color: var(--accent); }
+  .note { background: var(--accent-soft); border-radius: 10px; padding: 10px 14px; margin-top: 12px; }
+  .warn { background: var(--warn-soft); color: var(--text); border-left: 4px solid var(--warn); border-radius: 8px; padding: 10px 14px; margin-top: 12px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: .95rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  .muted { color: var(--muted); }
+  @media (max-width: 480px) { section { padding: 16px; } h1 { font-size: 1.35rem; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>일본 공이송 플래너 실행 안내</h1>
+  <p class="sub">내일 일본 출항 모선 기준으로 공컨테이너 이송안 <strong>초안</strong>을 만드는 에이전트(<code>japan-repo-planner</code>)를 쓰는 방법입니다. 확정은 항상 사람이 합니다.</p>
+
+  <section>
+    <h2><span class="no">1</span>준비 (처음 한 번)</h2>
+    <ul>
+      <li><strong>Python</strong>: 이미 설치돼 있습니다(3.12). 스크립트는 별도 설치 없이 돕니다.</li>
+      <li><strong>작업 폴더</strong>: <code>C:\Users\user\Desktop\my-bottleneck</code> 폴더에서 Claude Code를 열어야 합니다. 에이전트와 스킬이 이 폴더의 <code>.claude/</code> 안에 있어서, 다른 폴더에서 열면 인식되지 않습니다.</li>
+      <li><strong>에이전트 확인</strong>: Claude Code에서 <code>/agents</code>를 입력하면 <code>japan-repo-planner</code>가 보여야 합니다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="no">2</span>매일 하는 순서</h2>
+    <ol>
+      <li>장비관리 시스템에서 파일 3종을 내려받아 폴더에 저장합니다. 엑셀이면 <strong>CSV로 저장</strong>해야 합니다.
+        <ul>
+          <li>포트·타입별 보유/필요</li>
+          <li>모선 기항 순서 (ETD, Cut-off 포함)</li>
+          <li>모선 잔여 스페이스 (모선당 TEU 하나)</li>
+        </ul>
+      </li>
+      <li>(선택) 시스템 화면의 타입별 합계를 <code>type,onhand,required</code> 3열 CSV로 적어 둡니다. 있으면 변환이 맞는지 자동으로 대조됩니다.</li>
+      <li>Claude Code에 아래 문장을 붙여 넣습니다. 파일 이름과 조회 시각만 바꾸세요.</li>
+    </ol>
+    <div class="prompt" id="prompt">japan-repo-planner 에이전트로 내일 일본 출항 모선 기준 공이송 계획 초안을 만들어 줘.
+- 보유/필요: (파일 이름)
+- 모선 기항 순서: (파일 이름)
+- 모선 잔여 스페이스(TEU): (파일 이름)
+- 원본 합계: (파일 이름, 없으면 이 줄 삭제)
+- 조회 시각: 2026-10-28 09:00<button class="copy" type="button" id="copyBtn">복사</button></div>
+    <div class="note">에이전트가 <strong>입력 정리 → 이송 후보 계산 → 검증·보고</strong> 순서로 알아서 진행합니다. 보통 1분 안에 끝납니다.</div>
+  </section>
+
+  <section>
+    <h2><span class="no">3</span>결과 보는 순서</h2>
+    <p class="muted">마지막 응답과 <code>work/out/report.md</code>를 아래 순서로 확인하세요.</p>
+    <table>
+      <tr><th>순서</th><th>확인할 것</th></tr>
+      <tr><td>1</td><td>맨 위에 <strong>검증 실패 배너</strong>가 있으면 그 이송안은 쓰지 마세요.</td></tr>
+      <tr><td>2</td><td><strong>예외 플래그</strong>를 보고 에이전트가 물어보는 항목(스페이스 부족, Cut-off 누락 등)에 답합니다.</td></tr>
+      <tr><td>3</td><td>맨 아래 <strong>체크리스트</strong>(선박명·항차·ETD·Cut-off, 합계, 조회 시각)를 원본과 직접 대조합니다.</td></tr>
+    </table>
+    <p>조정이 필요하면 말로 요청하면 됩니다. 예: <code>SIM_VSL_A 스페이스를 200으로 줄여서 다시 계산해 줘</code></p>
+  </section>
+
+  <section>
+    <h2><span class="no">4</span>다른 방법</h2>
+    <ul>
+      <li>새 터미널에서 <code>claude --agent japan-repo-planner</code>로 열면 처음부터 이 에이전트와 대화합니다.</li>
+      <li>다른 프로젝트 폴더에서도 쓰려면 <code>.claude/</code> 폴더(agents, skills)와 <code>config/type_teu.csv</code>를 그 폴더로 복사하세요.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="no">5</span>알아 둘 규칙</h2>
+    <ul>
+      <li>이송은 <strong>한 모선 안에서만</strong> 계산합니다. 모선을 갈아타는 환적은 하지 않습니다.</li>
+      <li>스페이스는 모선당 TEU 하나를 모든 타입이 나눠 씁니다. 일본 내에 잉여가 있는 특수 컨테이너(RF·OT·FR)가 Dry보다 먼저 배정됩니다.</li>
+      <li>선적 포트의 Cut-off가 비어 있으면 그 포트에서 선적하는 이송은 배정하지 않고 확인을 요청합니다.</li>
+      <li>표에 없는 새 컨테이너 타입이 나오면 계산을 멈추고 TEU 값을 물어봅니다.</li>
+    </ul>
+    <table>
+      <tr><th>코드</th><th>이름</th><th>TEU</th></tr>
+      <tr><td>22GP / 42GP / 45GP</td><td>20DC / 40DC / 40HC(40'HQ)</td><td>1 / 2 / 2</td></tr>
+      <tr><td>22RE / 45RE</td><td>RF 20피트 / 40HC</td><td>1 / 2</td></tr>
+      <tr><td>22UT / 42UT</td><td>OT 20피트 / 40피트</td><td>1 / 2</td></tr>
+      <tr><td>22PC / 42PC</td><td>FR 20피트 / 40피트</td><td>1 / 2</td></tr>
+    </table>
+    <div class="warn">에이전트는 이송안 <strong>초안</strong>만 만들고, 모선 스케줄과 Cut-off는 알지 못합니다. 항상 최신 파일을 주고, 결과의 선박명·항차·날짜는 원본과 대조하세요. 대리점 메일은 사람이 검토한 뒤 발송합니다.</div>
+  </section>
+</div>
+<script>
+  var btn = document.getElementById("copyBtn");
+  btn.addEventListener("click", function () {
+    var text = document.getElementById("prompt").innerText.replace(/복사\s*$/, "").trim();
+    function done(ok) {
+      btn.textContent = ok ? "복사됨" : "직접 선택해 복사하세요";
+      setTimeout(function () { btn.textContent = "복사"; }, 1800);
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+    } catch (e) { done(false); }
+  });
+</script>
+</body>
+</html>
