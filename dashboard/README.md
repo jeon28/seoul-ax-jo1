@@ -90,3 +90,14 @@ export default function render(ctx) {
 | `data/in/offhire/` | 가상 Off-hire 엑셀 · CP 리스트 엑셀 · 샘플 협정 대장 · 용선 선박 목록 |
 | `scripts/build-offhire-result.mjs` | 규칙을 샘플에 돌려 `data/out/offhire-ledger.json`(금액 없음, 선박 S01)을 다시 만듦 |
 | `scripts/test-offhire.mjs` | 계산 규칙 테스트: `node --test scripts/test-offhire.mjs` |
+
+## 예시: 스페셜화물 승인 보조 메뉴 (ops-mail-automation 의 스페셜 화물 승인 흐름을 옮김)
+
+| 파일 | 하는 일 |
+|---|---|
+| `dashboard/menus/special-cargo-approval.js` | 기본 조각에 승인 점검 화면을 끼워 넣음 |
+| `dashboard/js/approval/board.js` | 화면: 건수 요약 · 승인/확인 필요/거절 세 줄 카드(필수 서류 ✓✗ 칩) · 카드를 누르면 점검표(서류 · 서류 간 대조 · 규정 단계)와 회신 초안(승인 · 거절 · 보완 요청, 복사). 보내기·Outlook 저장은 없음 |
+| `dashboard/js/approval/rules.js` · `drafts.js` | 점검 규칙(순수 함수, node 에서도 돈다) = `lib/special-cargo-rules.md` 「승인 보조」 장 · 초안 문구 틀. DG 금지 목록은 `js/dgdesk/rules.js` 를 그대로 씀 |
+| `data/in/special-cargo-approval/` | 가상 승인 요청 11건(서류에서 뽑은 값 표) · 필수 서류표 · 숫자표(OOG 한도·Flexibag·상해 농도) · CAS 금지 목록 샘플 · IMDG 샘플 |
+| `scripts/build-special-cargo-approval-result.mjs` | 같은 규칙으로 `data/out/special-cargo-docs.json`(홈 카드)을 다시 만듦 |
+| `scripts/test-special-cargo-approval.mjs` | 점검 규칙 테스트: `node --test scripts/test-special-cargo-approval.mjs` |

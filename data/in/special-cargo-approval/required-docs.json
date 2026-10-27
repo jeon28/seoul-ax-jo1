@@ -1,0 +1,30 @@
+{
+  "note": "화물 유형별 필수 서류표(가상). 서류를 더하거나 빼려면 이 파일만 바꾸고 RULES_VERSION 을 올린다. key 는 requests.json 의 docs 칸 이름과 같다.",
+  "types": {
+    "DG": {
+      "label": "DG(위험물)",
+      "docs": [
+        { "key": "application", "label": "승인 요청서", "en": "DG application" },
+        { "key": "dg_declaration", "label": "DG Declaration", "en": "DG declaration" },
+        { "key": "msds", "label": "MSDS", "en": "MSDS" }
+      ]
+    },
+    "OOG": {
+      "label": "OOG(규격 초과)",
+      "docs": [
+        { "key": "application", "label": "승인 요청서", "en": "OOG application" },
+        { "key": "dimension_sheet", "label": "치수표", "en": "dimension sheet" },
+        { "key": "drawing", "label": "도면", "en": "cargo drawing" },
+        { "key": "lashing_plan", "label": "고박 계획", "en": "lashing plan" }
+      ]
+    },
+    "FLEXIBAG": {
+      "label": "Flexibag",
+      "docs": [
+        { "key": "application", "label": "승인 요청서", "en": "Flexibag application" },
+        { "key": "coa", "label": "COA 인증서", "en": "COA certificate" },
+        { "key": "flexibag_spec", "label": "Flexibag 규격서", "en": "Flexibag specification" }
+      ]
+    }
+  }
+}

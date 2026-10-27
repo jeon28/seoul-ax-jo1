@@ -12,7 +12,7 @@ export const MENUS = [
   { slug: 'return-helper', bundle: 'B', name: '반납 도우미', agent: '반납 도우미', owner: '전성현', file: 'container-return.json', icon: 'M9 14L4 9l5-5 M4 9h10a6 6 0 010 12h-3',
     skills: [{ slug: 'new-case-extract', name: '신규건 추출', status: 'todo' }, { slug: 'return-number-tracker', name: '반납번호 요청·회신 정리', status: 'todo' }, { slug: 'return-request-mail', name: '반납요청 메일 작성', status: 'todo' }] },
   { slug: 'special-cargo-approval', bundle: 'C', name: '스페셜화물 승인 보조', agent: '스페셜화물 승인 보조 에이전트', owner: 'kim jaehyung', file: 'special-cargo-docs.json', icon: 'M9 4h6v3H9z M7 5H5v16h14V5h-2 M9 14l2 2 4-4',
-    skills: [{ slug: 'doc-check', name: '서류 점검', status: 'todo' }, { slug: 'reply-draft', name: '회신 초안', status: 'todo' }] },
+    skills: [{ slug: 'doc-check', name: '서류 점검', status: 'done' }, { slug: 'reply-draft', name: '회신 초안', status: 'done' }] },
   { slug: 'dg-compare', bundle: 'C', name: '위험물 대조', agent: '위험물 대조 에이전트', owner: '김유민', file: 'dg-compare.json', icon: 'M12 3l9 9-9 9-9-9z M12 8v5 M12 16v.01',
     skills: [{ slug: 'pdf-extract', name: 'PDF 추출', status: 'todo' }, { slug: 'compare-rules', name: '대조 규칙', status: 'todo' }, { slug: 'screen-summary', name: '화면 요약', status: 'todo' }] },
   { slug: 'special-cargo-rules', bundle: 'C', name: '스페셜화물 내규 판정', agent: '스페셜화물 내규 판정 에이전트', owner: '이병선', file: 'special-cargo-rules.json', icon: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z M9 12l2 2 4-4',

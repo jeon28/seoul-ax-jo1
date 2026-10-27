@@ -1,0 +1,28 @@
+{
+  "note": "가상 승인 요청 11건: 첨부 서류(PDF·Word·Excel)에서 뽑은 값을 표로 옮긴 것. 선박은 S01~S03, 컨테이너는 C01~C11, 발신처는 L 코드로 가렸다. 서류 칸이 null 이면 그 서류가 안 온 것, 값이 빈 글자이면 서류에 있으나 읽지 못한 것이다. origin: skr_hal = SKR·흥아(HAS/HAL) 발신 → 금지 리스트 VER.11, partner = 그 외 → VER.10.",
+  "snapshot_at": "2026-10-27 09:40",
+  "requests": [
+    {"id":"Q01","type":"DG","vessel":"S01","voyage":"2639E","pol":"QINGDAO","via":[],"pod":"BUSAN","sender":"L01","origin":"partner","received":"2026-10-26 23:41",
+     "docs":{"application":{"un":"UN1307","cls":"3","pg":"III","weight":"18,000 KGS","container":"C01"},"dg_declaration":{"un":"1307","cls":"Class 3","pg":"III","weight":"18000 KGS","container":"C01"},"msds":{"un":"UN 1307","cas":"1330-20-7","conc":"100%"}}},
+    {"id":"Q02","type":"DG","vessel":"S02","voyage":"9028E","pol":"BUSAN","via":[],"pod":"VLADIVOSTOK","sender":"L03","origin":"skr_hal","received":"2026-10-26 18:02",
+     "docs":{"application":{"un":"UN1824","cls":"8","pg":"II","weight":"21,500 KGS","container":"C02"},"dg_declaration":{"un":"1824","cls":"8","pg":"II","weight":"21500 KGS","container":"C02"},"msds":null}},
+    {"id":"Q03","type":"OOG","vessel":"S02","voyage":"9028E","pol":"SHANGHAI","via":[],"pod":"VLADIVOSTOK","sender":"L03","origin":"skr_hal","received":"2026-10-26 17:44",
+     "docs":{"application":{"over_h":"80 cm","over_w":"40 cm","over_l":"0 cm","weight":"24,500 KGS","container":"C03"},"dimension_sheet":{"over_h":"120 cm","over_w":"40 cm","over_l":"0 cm","weight":"24500 KGS","container":"C03"},"drawing":{"over_h":"120 cm","over_w":"40 cm","over_l":"0 cm"},"lashing_plan":{"weight":"24,500 KGS"}}},
+    {"id":"Q04","type":"FLEXIBAG","vessel":"S01","voyage":"2640E","pol":"QINGDAO","via":[],"pod":"BUSAN","sender":"L01","origin":"partner","received":"2026-10-26 23:20",
+     "docs":{"application":{"weight":"22,000 KGS","container":"C04","cargo_kind":"NON-DG"},"coa":{"year":"2026","template":"T-2026"},"flexibag_spec":{"weight":"22000 KG","container":"C04"}}},
+    {"id":"Q05","type":"DG","vessel":"S01","voyage":"2639E","pol":"QINGDAO","via":[],"pod":"BUSAN","sender":"L01","origin":"partner","received":"2026-10-26 23:03",
+     "docs":{"application":{"un":"UN1089","cls":"3","pg":"I","weight":"9,000 KGS","container":"C05"},"dg_declaration":{"un":"1089","cls":"3","pg":"I","weight":"9000 KGS","container":"C05"},"msds":{"un":"1089","cas":"75-07-0","conc":"100%"}}},
+    {"id":"Q06","type":"DG","vessel":"S02","voyage":"9029E","pol":"BUSAN","via":[],"pod":"SHANGHAI","sender":"L03","origin":"skr_hal","received":"2026-10-26 17:20",
+     "docs":{"application":{"un":"UN1170","cls":"3","pg":"II","weight":"16,000 KGS","container":"C06"},"dg_declaration":{"un":"1170","cls":"3","pg":"II","weight":"16000 KGS","container":"C06"},"msds":{"un":"1170","cas":"64-17-5","conc":"99.5%"}}},
+    {"id":"Q07","type":"DG","vessel":"S03","voyage":"2633N","pol":"BUSAN","via":[],"pod":"VLADIVOSTOK","sender":"L05","origin":"partner","received":"2026-10-26 21:29",
+     "docs":{"application":{"un":"UN1824","cls":"3","pg":"II","weight":"20,000 KGS","container":"C07"},"dg_declaration":{"un":"1824","cls":"3","pg":"II","weight":"20000 KGS","container":"C07"},"msds":{"un":"1824","cas":"1310-73-2","conc":"50%"}}},
+    {"id":"Q08","type":"DG","vessel":"S02","voyage":"9029E","pol":"BUSAN","via":[],"pod":"SHANGHAI","sender":"L03","origin":"skr_hal","received":"2026-10-26 16:48",
+     "docs":{"application":{"un":"UN1307","cls":"3","pg":"III","weight":"17,500 KGS","container":"C08"},"dg_declaration":{"un":"1307","cls":"3","pg":"III","weight":"17500 KGS","container":"C08"},"msds":{"un":"1307","cas":"1330-20-7","conc":"85%"}}},
+    {"id":"Q09","type":"OOG","vessel":"S01","voyage":"2637E","pol":"QINGDAO","via":[],"pod":"BUSAN","sender":"L02","origin":"partner","received":"2026-10-26 20:41",
+     "docs":{"application":{"over_h":"100 cm","over_w":"40 cm","over_l":"0 cm","weight":"18,200 KGS","container":"C09"},"dimension_sheet":{"over_h":"100 cm","over_w":"40 cm","over_l":"0 cm","weight":"18200 KGS","container":"C09"},"drawing":{"over_h":"1 m","over_w":"400 mm","over_l":"0 cm"},"lashing_plan":{"weight":"18,200 KGS"}}},
+    {"id":"Q10","type":"OOG","vessel":"S03","voyage":"2633N","pol":"BUSAN","via":[],"pod":"VLADIVOSTOK","sender":"L05","origin":"partner","received":"2026-10-26 21:26",
+     "docs":{"application":{"over_h":"260 cm","over_w":"60 cm","over_l":"100 cm","weight":"22,000 KGS","container":"C10"},"dimension_sheet":{"over_h":"260 cm","over_w":"60 cm","over_l":"100 cm","weight":"22000 KGS","container":"C10"},"drawing":{"over_h":"260 cm","over_w":"60 cm","over_l":"100 cm"},"lashing_plan":{"weight":"22,000 KGS"}}},
+    {"id":"Q11","type":"FLEXIBAG","vessel":"S03","voyage":"2634N","pol":"NHAVA SHEVA","via":["BUSAN"],"pod":"VLADIVOSTOK","sender":"L06","origin":"skr_hal","received":"2026-10-26 18:16",
+     "docs":{"application":{"weight":"23,000 KGS","container":"C11","cargo_kind":"NON-DG"},"coa":{"year":"2026","template":"T-2025"},"flexibag_spec":{"weight":"23000 KG","container":"C11"}}}
+  ]
+}
