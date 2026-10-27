@@ -353,6 +353,68 @@ select.inp option:checked{background-color:var(--opt-sel);color:var(--opt-sel-in
 .skelrow{display:flex;justify-content:space-between;align-items:center;padding:12px}
 .skeltable{display:flex;flex-direction:column;gap:14px;margin-top:18px}
 
+/* ── Off hire 관리: 엑셀 올리기 · 검산 표 · 협정 대장 · Declaration (다른 메뉴에는 영향 없음) ── */
+.oh{display:flex;flex-direction:column;gap:10px}
+.oh .tag.ohreal{color:var(--bad);border-color:var(--bad)}
+.ohdrop{flex:1 1 320px;align-self:stretch;display:flex;flex-direction:column;gap:2px;justify-content:center;text-align:center;border:2px dashed var(--stroke);border-radius:16px;padding:8px 14px;cursor:pointer;color:var(--sub);font-size:12px;transition:border-color .2s,color .2s}
+.ohdrop b{font-size:13px;color:var(--ink)}
+.ohdrop:hover,.ohdrop.over{border-color:var(--blue);color:var(--blue)}
+.ohdrop:hover b,.ohdrop.over b{color:var(--blue)}
+.ohnote{margin-top:8px;font-size:11.5px}
+.ohchips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.ohchip{background:var(--tilebg);border:1px solid var(--stroke-lo);border-radius:12px;padding:4px 12px;min-width:84px}
+.ohchip .lab{display:block;font-size:11px;color:var(--sub)}
+.ohchip .val{font-size:18px;font-variant-numeric:tabular-nums}
+.ohmain{min-width:1080px}
+.ohmain td.nw,.ohmain th{white-space:nowrap}
+.tbl td.ohbad{background:color-mix(in srgb,var(--bad) 15%,transparent);color:var(--bad);font-weight:700}
+.tbl td.ohwarn{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn);font-weight:700}
+.ohcalc{display:block;font-weight:400;font-size:10.5px}
+.tbl tr.ohsumrow td{font-weight:700;background:var(--glass-lo)}
+/* 협정 대장 */
+.ohhist{min-width:1020px}
+.ohhist td{vertical-align:middle;padding:3px 6px;border-bottom:0}
+.ohhist tr.vstart td{border-top:1px solid var(--hair);padding-top:8px}
+.ohhist tbody tr:first-child td{border-top:0}
+.ohhist td.ohvessel{vertical-align:top;width:150px;padding:8px 10px 8px 4px}
+.ohhist td.ohvessel b{display:block;font-size:14px;color:var(--blue);letter-spacing:.02em}
+.ohvname{display:block;font-size:11.5px;margin-top:1px}
+.ohvsum{display:block;font-size:11px;color:var(--sub);margin-top:4px}
+.ohin{width:100%;font:500 12.5px var(--font);color:var(--ink);background:transparent;border:1px solid transparent;border-radius:8px;padding:4px 6px}
+.ohin:hover{border-color:var(--hair)}
+.ohin:focus{outline:none;border-color:var(--blue);background:var(--tilebg)}
+.ohin::placeholder{color:var(--sub);opacity:.55}
+.ohin.content{min-width:150px}
+.ohin.port{width:72px}
+.ohin.days{width:76px;text-align:right;font-variant-numeric:tabular-nums}
+.ohin.amount{width:112px;text-align:right;font-variant-numeric:tabular-nums}
+.ohin[type=datetime-local]{width:178px;font-size:12px;padding:4px 3px}
+select.ohin{appearance:none;-webkit-appearance:none;cursor:pointer;font-weight:700;width:76px;text-align:center}
+select.ohin[data-status=""]{font-weight:400;color:var(--sub)}
+select.ohin[data-status="청구"]{color:var(--warn)}
+select.ohin[data-status="반론"]{color:var(--bad)}
+select.ohin[data-status="합의"]{color:var(--blue)}
+select.ohin[data-status="정산"]{color:var(--ok)}
+select.ohin option{background-color:var(--opt-bg);color:var(--opt-ink);font-weight:500}
+.ohperiod{display:flex;align-items:center;gap:2px;white-space:nowrap;color:var(--sub)}
+.ohdel,.ohadd{appearance:none;background:transparent;border:1px solid transparent;border-radius:99px;font:600 11.5px var(--font);padding:2px 9px;cursor:pointer}
+.ohdel{color:var(--sub);opacity:0}
+.ohhist tr:hover .ohdel,.ohdel:focus{opacity:1}
+.ohdel:hover{color:var(--bad);border-color:var(--bad)}
+.ohadd{color:var(--blue)}
+.ohadd:hover{border-color:var(--blue)}
+/* Declaration · 문구 */
+.ohgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px 12px;margin-bottom:10px}
+.ohgrid .wide{grid-column:span 2}
+@media (max-width:520px){.ohgrid .wide{grid-column:span 1}}
+.ohgrid .inp{width:100%}
+.ohgrid textarea.inp{resize:vertical;border-radius:12px}
+.ohgrid input[readonly]{background:transparent;border-style:dashed}
+.ohsum{margin:0 0 8px;font-size:13px}
+.ohsum b{color:var(--blue)}
+textarea.ohtext{width:100%;min-height:300px;font:12.5px/1.5 Consolas,"D2Coding",monospace;color:var(--ink);background:var(--tilebg);border:1px solid var(--stroke);border-radius:14px;padding:10px 12px;resize:vertical}
+.ohbtns{margin:8px 0 0}
+
 /* ── 스페셜화물 내규 판정: DG 승인 데스크(승인 · 보류 · 거절 세 줄, 회신 초안 시트) ── */
 .dgdesk{display:flex;flex-direction:column;gap:12px}
 .dgbody{display:flex;flex-direction:column;gap:12px}

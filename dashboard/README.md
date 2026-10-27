@@ -79,6 +79,18 @@ export default function render(ctx) {
 | `data/in/empty-stock-ports.json` | 항구별 재고 자료. 바꾼 뒤 화면에서 「조회」를 누르면 반영된다 |
 | `scripts/build-empty-stock-result.mjs` | 같은 자료에서 `data/out/empty-stock.json`(홈 카드)을 다시 만듦 |
 
+## 예시: Off hire 관리 메뉴 (Off-hire 관리 폴더의 offhire-settlement 를 옮김)
+
+| 파일 | 하는 일 |
+|---|---|
+| `dashboard/menus/offhire.js` | 기본 조각에 Off hire 도구 화면을 끼워 넣음 |
+| `dashboard/js/offhire/board.js` | ① 엑셀 올리기 ② 검산 결과 표 ③ 협정 대장(History) ④ Add off-hire Declaration ⑤ Claim 문구 초안. 협정 대장·CP 리스트·서명은 이 브라우저에만 저장 |
+| `dashboard/js/offhire/rules.js` | 계산 규칙(순수 함수, node 에서도 돈다) = 「허용 차이 숫자표」 |
+| `dashboard/js/offhire/xlsx.js` | 엑셀 읽기(SheetJS)를 이 메뉴가 열릴 때만 불러옴 |
+| `data/in/offhire/` | 가상 Off-hire 엑셀 · CP 리스트 엑셀 · 샘플 협정 대장 · 용선 선박 목록 |
+| `scripts/build-offhire-result.mjs` | 규칙을 샘플에 돌려 `data/out/offhire-ledger.json`(금액 없음, 선박 S01)을 다시 만듦 |
+| `scripts/test-offhire.mjs` | 계산 규칙 테스트: `node --test scripts/test-offhire.mjs` |
+
 ## 예시: 스페셜화물 내규 판정 메뉴 (DG_승인_데스크_발표용_공유본.html 을 옮김)
 
 | 파일 | 하는 일 |
