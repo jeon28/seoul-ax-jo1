@@ -199,8 +199,7 @@ export function speedPerformance() {
   const root = el('div', 'perf');
   const controls = el('section', 'glass panel controls');
   const results = el('div', 'perfresults');
-  const chartBox = el('div');
-  root.append(controls, results, chartBox);
+  root.append(controls, results);
 
   const save = () => writeState(st);
   const patch = (i, p) => { Object.assign(st.sides[i], p); save(); };
@@ -299,29 +298,31 @@ export function speedPerformance() {
       if (!a.rows.length) p.append(el('p', 'sub', '조건에 맞는 데이터가 없습니다. RH/Slip/기간/속력 범위를 넓혀 보세요.'));
       else p.append(resultTable(a));
       p.append(portPanel(d.port));
-      const row = el('div', 'row');
-      const dl = el('button', 'btn', 'CSV 저장 (Excel에서 열기)');
+      const dl = el('button', 'btn', 'CSV 저장');
       dl.type = 'button';
+      dl.title = 'Excel 에서 열 수 있는 CSV 로 저장';
       dl.disabled = !a.rows.length;
       dl.addEventListener('click', () => download(d.vsl, toCsv(d.vsl, a)));
-      row.append(dl);
-      p.append(row);
+      h.append(dl);
       grid.append(p);
     });
-    results.append(grid);
 
-    chartBox.replaceChildren();
+    // 그래프: 선박 1척이면 표 옆(오른쪽)에, 2척 비교면 아래 전체 너비에 둔다 — 스크롤 없이 한눈에 보이게
     const series = analyses.map((a, i) => (a && data[i] && a.rows.length ? { name: `${data[i].vsl} FO`, color: COLORS[i], points: a.rows.map((r) => ({ x: r.spd, y: r.fo })) } : null)).filter(Boolean);
+    let chartPanel = null;
     if (series.length) {
-      const p = el('section', 'glass panel');
+      chartPanel = el('section', 'glass panel');
       const h = el('div', 'phead');
       const t = el('h2', '', '속력별 FO 소모량 ');
       t.append(el('span', 'muted', '(MT/day)'));
       h.append(t);
-      p.append(h, lineChart({ series, xUnit: ' kn', label: '속력별 FO 소모량 꺾은선 그래프' }));
-      p.append(el('p', 'sub', '건수가 적은 속력(회색 숫자)은 평균의 신뢰도가 낮습니다. FO 는 한 종류로만 보고되어 VLSFO/HSFO 구분이 없습니다.'));
-      chartBox.append(p);
+      chartPanel.append(h, lineChart({ series, xUnit: ' kn', label: '속력별 FO 소모량 꺾은선 그래프', height: 230 }));
+      chartPanel.append(el('p', 'sub', '건수가 적은 속력(회색 숫자)은 평균의 신뢰도가 낮습니다. FO 는 한 종류로만 보고되어 VLSFO/HSFO 구분이 없습니다.'));
     }
+    const shown = grid.children.length;
+    if (chartPanel && shown === 1) grid.append(chartPanel);
+    results.append(grid);
+    if (chartPanel && shown > 1) results.append(chartPanel);
   }
 
   // 처음 열 때 저장된(없으면 기본) 선박을 바로 보여 준다

@@ -265,6 +265,32 @@ code{font:12px/1.4 ui-monospace,"SF Mono",Consolas,monospace;color:var(--sub)}
 .toolhead h2{font-size:19px;letter-spacing:-.02em}
 .toolhead .sub{margin-top:2px}
 
+/* 소모량 분석 조회 화면은 한 화면에 조건·표·그래프가 다 보이도록 촘촘하게(다른 메뉴에는 영향 없음) */
+.toolsec{gap:8px}
+.toolsec .toolhead h2{font-size:16px}
+.toolsec .toolhead .sub{font-size:12.5px}
+.perf,.perfresults{gap:10px}
+.toolsec .panel{padding:12px 14px}
+.toolsec .phead{margin-bottom:8px;gap:8px}
+.toolsec .phead h2{font-size:14px}
+.toolsec .row{gap:8px;margin-bottom:8px}
+.toolsec .grid2{gap:10px}
+.toolsec .controls .grid2{gap:6px 18px}
+.toolsec .field{font-size:11px;gap:3px}
+.toolsec .inp{font-size:12.5px;min-height:30px;padding:4px 9px;border-radius:10px}
+.toolsec .btn{font-size:12px;min-height:30px;padding:4px 12px}
+.toolsec .ckrow{font-size:12.5px;min-height:30px}
+.toolsec .ckrow input{width:15px;height:15px}
+.toolsec .controls>.sub{font-size:11.5px;margin-top:2px}
+.toolsec .sub{font-size:12px}
+.toolsec .tbl{font-size:12px}
+.toolsec .tbl th{font-size:11px;padding:5px 10px}
+.toolsec .tbl td{padding:4px 10px}
+.toolsec .tablewrap{max-height:none;border-radius:10px}
+.toolsec .portbox{margin-top:10px;padding-top:8px}
+.toolsec .portbox h3{font-size:13px;margin-bottom:6px}
+.toolsec .legend{font-size:12px;margin-top:2px}
+
 /* 드롭다운 목록: 브라우저가 목록을 흰/검은 바탕으로 따로 그려서, 글자·배경을 직접 지정하지 않으면 다크 모드에서 흰 바탕에 흰 글씨가 된다 */
 :root{--opt-bg:#ffffff;--opt-ink:#16181d;--opt-sel:#0b57d0;--opt-sel-ink:#ffffff}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--opt-bg:#1d2130;--opt-ink:#f3f4f7;--opt-sel:#1a5fd6;--opt-sel-ink:#ffffff}}

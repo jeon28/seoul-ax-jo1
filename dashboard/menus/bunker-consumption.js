@@ -2,7 +2,7 @@
 // 위쪽: 속력별 소모량 조회(Speed Performance) — operation-dashboard 의 같은 메뉴를 옮겨 온 것(js/bunker/ 에 계산·자료·화면).
 // 아래쪽: 에이전트 결과 파일(data/out/bunker-consumption.json)이 홈 카드에 올리는 요약과 스킬 순서.
 // 선박명·코드는 실제, 수치는 가상. 실제 NOON REPORT 로 바꾸려면 js/bunker/noon-synthetic.js 의 getHistory() 만 바꾼다.
-import { hero, headline, metrics, pipeline, resultTable, reviewList, timeSaving, info, howTo } from '../js/agent-page.js';
+import { hero, pipeline, resultTable, reviewList, timeSaving, info, howTo } from '../js/agent-page.js';
 import { speedPerformance } from '../js/bunker/board.js';
 import { el } from '../js/core.js';
 
@@ -24,6 +24,7 @@ export default function render(ctx) {
   side.append(timeSaving(ctx), info(ctx));
   cols.append(main, side);
 
-  page.append(hero(ctx), headline(ctx), metrics(ctx), tool, pipeline(ctx), cols, howTo(ctx));
+  // 한 줄 요약·숫자 타일(처리 선박·제외 비율·제외한 행)은 홈 카드가 같은 값을 보여 주므로 이 화면에서는 뺀다
+  page.append(hero(ctx), tool, pipeline(ctx), cols, howTo(ctx));
   return page;
 }
