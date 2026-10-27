@@ -1,10 +1,12 @@
 // 일일 재고 현황: SKR + HAL 공컨테이너(22GP / 45GP) 항구별 재고. 재고현황.html 의 시스템을 옮겨 온 것.
-//   KPI → 국가 목록 → 항구 표(행 클릭) → 상세(SKR · HAL · 합계, 비율 막대, 비고).  단위: 개(BOX), Total TEU = 22GP + 45GP × 2.
-// 자료는 data/in/empty-stock-ports.json. 이 파일이 바뀌면 화면이 1분 안에 따라온다(원본의 data.js 자동 갱신과 같은 동작).
+//   조회 버튼 → (조회 중 스켈레톤) → KPI → 국가 목록 → 항구 표(행 클릭) → 상세(SKR · HAL · 합계, 비율 막대, 비고).
+//   단위: 개(BOX), Total TEU = 22GP + 45GP × 2.
+// 「조회」는 가상이다: 실제 서버를 부르지 않고 data/in/empty-stock-ports.json 을 읽으면서 약 1초의 대기를 넣어 조회처럼 보이게 한다.
+// 실제 조회로 바꿀 때는 query() 안의 fetchData() 만 실제 API 호출로 바꾸면 나머지 화면은 그대로 쓴다.
 import { el } from '../core.js';
 
 const DATA_URL = '../data/in/empty-stock-ports.json';
-const POLL_MS = 60_000;
+const FAKE_DELAY_MS = [900, 1500]; // 가상 조회 대기(최소, 최대)
 
 const n = (v) => (v == null ? 0 : v);
 const num = (v) => v.toLocaleString('ko-KR');
@@ -13,12 +15,10 @@ const sum = (list) => list.reduce((a, p) => ({ s22: a.s22 + n(p.s22), s45: a.s45
 const t22 = (a) => a.s22 + a.h22;
 const t45 = (a) => a.s45 + a.h45;
 const teu = (a) => t22(a) + t45(a) * 2;
-
-const todayStr = () => {
-  const d = new Date();
-  const z = (x) => String(x).padStart(2, '0');
-  return `${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())}`;
-};
+const z = (x) => String(x).padStart(2, '0');
+const dateStr = (d) => `${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())}`;
+const stamp = (d) => `${dateStr(d)} ${z(d.getHours())}:${z(d.getMinutes())}:${z(d.getSeconds())}`;
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /** 수량은 숫자 또는 null 만 인정, 문자열 칸은 문자열만. 형식이 안 맞는 행은 버리고 개수만 센다 */
 function cleanRows(raw) {
@@ -75,27 +75,91 @@ function summary(a) {
   return frag;
 }
 
+const skel = (w, h = 14) => {
+  const s = el('i', 'skel');
+  s.style.width = w;
+  s.style.height = `${h}px`;
+  return s;
+};
+
 export function stockBoard() {
+  let phase = 'idle'; // idle(조회 전) → loading → ready
   let rows = [];
   let countries = [];
   let selCountry = null;
   let selPort = null;
-  let updatedAt = null;
+  let queriedAt = null;
   let skipped = 0;
   let loadError = null;
-  let lastText = null;
 
   const root = el('div', 'stock');
+  const bar = el('section', 'glass stockbar');
+  const status = el('div', 'stockstatus');
+  status.setAttribute('role', 'status');
+  status.setAttribute('aria-live', 'polite');
+  const queryBtn = el('button', 'btn primary querybtn', '조회');
+  queryBtn.type = 'button';
+  bar.append(status, queryBtn);
+  const body = el('div', 'stockbody');
+  root.append(bar, body);
+
   const kpis = el('div', 'tiles kpis');
   const layout = el('div', 'stocklayout');
   const countryPanel = el('section', 'glass panel countrypanel');
   const right = el('div', 'stockright');
   const tablePanel = el('section', 'glass panel stocktable');
   const detail = el('section', 'glass panel detail');
-  const foot = el('div', 'stockfoot');
   right.append(tablePanel, detail);
   layout.append(countryPanel, right);
-  root.append(kpis, layout, foot);
+
+  // ── 조회 바 ──
+  function renderBar() {
+    queryBtn.disabled = phase === 'loading';
+    queryBtn.setAttribute('aria-busy', String(phase === 'loading'));
+    queryBtn.replaceChildren();
+    if (phase === 'loading') queryBtn.append(el('i', 'spin'), document.createTextNode('조회 중…'));
+    else queryBtn.textContent = phase === 'idle' ? '조회' : '다시 조회';
+    status.replaceChildren();
+    const main = el('b', '', '공컨테이너 재고 조회');
+    let sub;
+    if (phase === 'loading') sub = '항구별 최신 수신 메일 기준 재고를 불러오는 중입니다…';
+    else if (loadError) sub = `조회에 실패했습니다: ${loadError}${rows.length ? ' · 마지막으로 조회한 값을 보여 줍니다' : ''}`;
+    else if (phase === 'ready') sub = `마지막 조회 ${queriedAt} · 항구 ${rows.length}곳${skipped ? ` · 형식이 맞지 않아 건너뛴 행 ${skipped}개` : ''}`;
+    else sub = '항구별 최신 수신 메일 기준 · 오른쪽 「조회」 버튼을 누르면 재고를 불러옵니다';
+    status.append(main, el('span', 'sub' + (loadError ? ' errtext' : ''), sub));
+  }
+
+  // ── 본문: 조회 전 / 조회 중 / 조회 후 ──
+  function renderIdle() {
+    const p = el('section', 'glass panel stockempty');
+    p.append(el('h3', '', loadError ? '재고를 불러오지 못했습니다' : '아직 조회하지 않았습니다'), el('p', 'sub', loadError ? '잠시 뒤 「조회」 버튼을 다시 눌러 주세요.' : '「조회」 버튼을 누르면 SKR + HAL 공컨테이너(22GP / 45GP) 항구별 재고를 불러옵니다.'));
+    body.replaceChildren(p);
+  }
+
+  function renderSkeleton() {
+    const k = el('div', 'tiles kpis');
+    for (let i = 0; i < 5; i++) {
+      const t = el('div', 'glass tile');
+      t.append(skel('55%', 13), skel('70%', 30));
+      t.style.display = 'flex';
+      t.style.flexDirection = 'column';
+      t.style.gap = '10px';
+      k.append(t);
+    }
+    const l = el('div', 'stocklayout');
+    const cp = el('section', 'glass panel countrypanel');
+    const list = el('div', 'countrylist');
+    for (let i = 0; i < 7; i++) { const r = el('div', 'skelrow'); r.append(skel('40%'), skel('28%')); list.append(r); }
+    cp.append(skel('45%', 16), list);
+    const tp = el('section', 'glass panel stocktable');
+    const rowsEl = el('div', 'skeltable');
+    for (let i = 0; i < 8; i++) rowsEl.append(skel(`${88 - (i % 3) * 7}%`, 16));
+    tp.append(skel('35%', 18), rowsEl);
+    const r = el('div', 'stockright');
+    r.append(tp);
+    l.append(cp, r);
+    body.replaceChildren(k, l);
+  }
 
   function renderKpis() {
     const a = sum(rows);
@@ -117,7 +181,7 @@ export function stockBoard() {
       b.type = 'button';
       b.setAttribute('aria-pressed', String(selCountry === key));
       b.append(el('span', '', label), el('span', 'muted', `${num(value)} TEU`));
-      b.addEventListener('click', () => { selCountry = key; selPort = null; render(); });
+      b.addEventListener('click', () => { selCountry = key; selPort = null; renderReady(false); });
       list.append(b);
     };
     add('전체', teu(sum(rows)), null);
@@ -136,7 +200,7 @@ export function stockBoard() {
     const th = el('thead');
     th.append(head);
     const tb = el('tbody');
-    const today = todayStr();
+    const today = dateStr(new Date());
     list.forEach((p) => {
       const a = sum([p]);
       const tr = el('tr', 'clickrow' + (selPort === p.code ? ' on' : ''));
@@ -148,7 +212,7 @@ export function stockBoard() {
       const tcell = el('td', 'num');
       tcell.append(el('b', '', num(teu(a))));
       tr.append(tcell, date);
-      const pick = () => { selPort = p.code; render(); };
+      const pick = () => { selPort = p.code; renderReady(false); };
       tr.addEventListener('click', pick);
       tr.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
       tb.append(tr);
@@ -173,61 +237,63 @@ export function stockBoard() {
       if (selCountry) {
         const list = rows.filter((x) => x.country === selCountry);
         detail.append(el('h3', '', `${selCountry} 합계`), el('div', 'sub', `항구 ${list.length}곳`), summary(sum(list)));
-      } else detail.append(el('div', 'hint', !lastText && !loadError ? '재고 자료를 불러오는 중…' : '국가를 선택하거나 항구 행을 누르면 상세 수량이 여기에 표시됩니다.'));
+      } else detail.append(el('div', 'hint', '국가를 선택하거나 항구 행을 누르면 상세 수량이 여기에 표시됩니다.'));
       return;
     }
     const title = el('h3', '', `${p.name} `);
     title.append(el('span', 'muted', p.code));
-    detail.append(title, el('div', 'sub', `${p.country} · 기준일 ${p.date}${p.date === todayStr() ? '' : ' (오늘자 아님)'}`), summary(sum([p])));
+    detail.append(title, el('div', 'sub', `${p.country} · 기준일 ${p.date}${p.date === dateStr(new Date()) ? '' : ' (오늘자 아님)'}`), summary(sum([p])));
     if (p.note) detail.append(el('div', 'snote', `비고: ${p.note}`));
   }
 
-  function renderFoot() {
-    foot.replaceChildren();
-    const msg = loadError ? `자료를 읽지 못했습니다: ${loadError}` : `마지막 갱신: ${updatedAt || '-'} · 1분마다 자동 확인${skipped ? ` · 형식이 맞지 않아 건너뛴 행 ${skipped}개` : ''}`;
-    foot.append(el('span', 'sub' + (loadError ? ' errtext' : ''), msg));
-    const b = el('button', 'btn ghost', '지금 다시 읽기');
-    b.type = 'button';
-    b.addEventListener('click', load);
-    foot.append(b);
-  }
-
-  function render() {
+  /** fresh = 방금 조회해서 처음 보이는 경우(부드럽게 나타남). 선택만 바뀐 때는 다시 애니메이션하지 않는다 */
+  function renderReady(fresh) {
     renderKpis();
     renderCountries();
     renderPorts();
     renderDetail();
-    renderFoot();
+    body.classList.toggle('fresh', !!fresh);
+    if (body.firstChild !== kpis) body.replaceChildren(kpis, layout);
+    renderBar();
   }
 
-  async function load() {
+  // ── 가상 조회 ──
+  async function fetchData() {
+    const r = await fetch(DATA_URL, { cache: 'no-store' });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const j = JSON.parse(await r.text());
+    const c = cleanRows(j.rows);
+    if (!c.rows.length) throw new Error('재고 자료가 비었거나 형식이 맞지 않습니다');
+    return c;
+  }
+
+  async function query() {
+    if (phase === 'loading') return;
+    phase = 'loading';
+    loadError = null;
+    renderBar();
+    renderSkeleton();
+    const [lo, hi] = FAKE_DELAY_MS;
     try {
-      const r = await fetch(DATA_URL, { cache: 'no-store' });
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      const text = await r.text();
-      if (text === lastText && !loadError) return; // 바뀐 게 없으면 다시 그리지 않는다(선택 상태 유지)
-      const j = JSON.parse(text);
-      const c = cleanRows(j.rows);
-      if (!c.rows.length) throw new Error('rows 가 비었거나 형식이 맞지 않습니다');
-      lastText = text;
+      const [c] = await Promise.all([fetchData(), sleep(lo + Math.random() * (hi - lo))]); // 읽기가 빨라도 조회처럼 보이게 최소 대기
       rows = c.rows;
       skipped = c.skipped;
-      updatedAt = j.updatedAt || null;
       countries = [...new Set(rows.map((p) => p.country))];
       if (selCountry && !countries.includes(selCountry)) selCountry = null;
       if (selPort && !rows.some((p) => p.code === selPort)) selPort = null;
-      loadError = null;
+      queriedAt = stamp(new Date());
+      phase = 'ready';
+      renderReady(true);
     } catch (e) {
-      loadError = e instanceof Error ? e.message : String(e); // 실패해도 마지막으로 읽은 값은 그대로 보여 준다
+      loadError = e instanceof Error ? e.message : String(e);
+      phase = rows.length ? 'ready' : 'idle'; // 실패해도 마지막으로 조회한 값이 있으면 그대로 보여 준다
+      if (phase === 'ready') renderReady(false); else renderIdle();
+      renderBar();
     }
-    render();
   }
 
-  render();
-  load();
-  const timer = setInterval(() => {
-    if (!root.isConnected) { clearInterval(timer); return; } // 다른 메뉴로 갔으면 멈춘다
-    load();
-  }, POLL_MS);
+  queryBtn.addEventListener('click', query);
+  renderBar();
+  renderIdle();
   return root;
 }

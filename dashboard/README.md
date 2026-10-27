@@ -75,6 +75,6 @@ export default function render(ctx) {
 | 파일 | 하는 일 |
 |---|---|
 | `dashboard/menus/empty-stock.js` | 기본 조각에 재고 현황 화면을 끼워 넣음 |
-| `dashboard/js/stock/board.js` | KPI · 국가 목록 · 항구 표(행 클릭) · 상세. 자료를 1분마다 다시 읽는다 |
-| `data/in/empty-stock-ports.json` | 항구별 재고 자료. 바꾸면 화면이 따라온다 |
+| `dashboard/js/stock/board.js` | KPI · 국가 목록 · 항구 표(행 클릭) · 상세. 「조회」 버튼을 누르면 자료를 읽어 보여 준다(가상 조회: 약 1초 대기 후 표시) |
+| `data/in/empty-stock-ports.json` | 항구별 재고 자료. 바꾼 뒤 화면에서 「조회」를 누르면 반영된다 |
 | `scripts/build-empty-stock-result.mjs` | 같은 자료에서 `data/out/empty-stock.json`(홈 카드)을 다시 만듦 |

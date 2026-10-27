@@ -309,3 +309,20 @@ select.inp option:checked{background-color:var(--opt-sel);color:var(--opt-sel-in
 .stockfoot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 8px}
 .errtext{color:var(--bad)}
 @media (max-width:900px){.stocklayout{grid-template-columns:minmax(0,1fr)}.countrylist{flex-direction:row;flex-wrap:wrap;gap:6px}.country{flex:1 1 150px;background:var(--glass-lo)}}
+
+/* ── 일일 재고 현황: 조회 바 · 조회 중(스켈레톤) · 조회 전 ── */
+.stockbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px;border-radius:22px;flex-wrap:wrap}
+.stockstatus{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1 1 280px}
+.stockstatus b{font-size:15px;letter-spacing:-.01em}
+.querybtn{min-width:112px;min-height:44px;font-size:15px}
+.spin{width:14px;height:14px;border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.stockbody{display:flex;flex-direction:column;gap:18px}
+.stockbody.fresh>*{animation:rise .5s cubic-bezier(.2,.8,.2,1)}
+.stockempty{padding:44px 24px;text-align:center}
+.stockempty h3{font-size:18px;letter-spacing:-.02em}
+.stockempty .sub{margin-top:6px}
+.skel{display:block;border-radius:8px;background:linear-gradient(90deg,var(--tilebg) 25%,var(--glass-hi) 50%,var(--tilebg) 75%);background-size:200% 100%;animation:shimmer 1.3s ease-in-out infinite}
+@keyframes shimmer{from{background-position:200% 0}to{background-position:-200% 0}}
+.skelrow{display:flex;justify-content:space-between;align-items:center;padding:12px}
+.skeltable{display:flex;flex-direction:column;gap:14px;margin-top:18px}
