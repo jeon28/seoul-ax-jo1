@@ -16,7 +16,7 @@ export const MENUS = [
   { slug: 'dg-compare', bundle: 'C', name: '위험물 대조', agent: '위험물 대조 에이전트', owner: '김유민', file: 'dg-compare.json', icon: 'M12 3l9 9-9 9-9-9z M12 8v5 M12 16v.01',
     skills: [{ slug: 'pdf-extract', name: 'PDF 추출', status: 'todo' }, { slug: 'compare-rules', name: '대조 규칙', status: 'todo' }, { slug: 'screen-summary', name: '화면 요약', status: 'todo' }] },
   { slug: 'special-cargo-rules', bundle: 'C', name: '스페셜화물 내규 판정', agent: '스페셜화물 내규 판정 에이전트', owner: '이병선', file: 'special-cargo-rules.json', icon: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z M9 12l2 2 4-4',
-    skills: [{ slug: 'prohibit-matrix-judge', name: '금지 매트릭스 판정', status: 'todo' }, { slug: 'accident-history-lookup', name: '사고 이력 조회', status: 'todo' }, { slug: 'judgment-log', name: '판정 기록', status: 'todo' }] },
+    skills: [{ slug: 'prohibit-matrix-judge', name: '금지 매트릭스 판정', status: 'done' }, { slug: 'accident-history-lookup', name: '사고 이력 조회', status: 'done' }, { slug: 'judgment-log', name: '판정 기록', status: 'done' }] },
   { slug: 'bunker-consumption', bundle: 'D', name: '소모량 분석', agent: '소모량 분석 에이전트', owner: '다니엘', file: 'bunker-consumption.json', icon: 'M12 3s6 6 6 11a6 6 0 01-12 0c0-5 6-11 6-11z',
     skills: [{ slug: 'segment-cleanup', name: '구간 정제', status: 'done' }, { slug: 'speed-consumption-calc', name: '속도별 소모량 산출', status: 'done' }, { slug: 'verify-excel-export', name: '검증·엑셀 출력', status: 'done' }] },
   { slug: 'offhire', bundle: 'D', name: 'Off-hire 협정', agent: 'Off-hire 협정 에이전트', owner: 'ijryu', file: 'offhire-ledger.json', icon: 'M12 7v5l3 2 M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
