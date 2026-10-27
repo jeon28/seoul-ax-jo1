@@ -414,3 +414,37 @@ select.ohin option{background-color:var(--opt-bg);color:var(--opt-ink);font-weig
 .ohsum b{color:var(--blue)}
 textarea.ohtext{width:100%;min-height:300px;font:12.5px/1.5 Consolas,"D2Coding",monospace;color:var(--ink);background:var(--tilebg);border:1px solid var(--stroke);border-radius:14px;padding:10px 12px;resize:vertical}
 .ohbtns{margin:8px 0 0}
+
+/* ── 스페셜화물 내규 판정: DG 승인 데스크(승인 · 보류 · 거절 세 줄, 회신 초안 시트) ── */
+.dgdesk{display:flex;flex-direction:column;gap:12px}
+.dgbody{display:flex;flex-direction:column;gap:12px}
+.dgrules{display:flex;flex-wrap:wrap;gap:6px 20px;padding:10px 16px;border-radius:18px;font-size:12.5px;color:var(--sub)}
+.dgrules b{color:var(--ink);font-weight:650}
+.dgkpi.ok .val{color:var(--ok)}.dgkpi.warn .val{color:var(--warn)}.dgkpi.bad .val{color:var(--bad)}
+.dglanes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}
+.dglane{display:flex;flex-direction:column;gap:8px;min-width:0;padding:10px;border-radius:22px;background:var(--glass-lo);border:1px solid var(--stroke-lo)}
+.dglanehead{display:flex;align-items:center;gap:8px;font-size:14px;margin:2px 4px 4px}
+.dgdot{width:10px;height:10px;border-radius:50%;flex:none;background:var(--sub)}
+.dglane.ok .dgdot{background:var(--ok)}.dglane.warn .dgdot{background:var(--warn)}.dglane.bad .dgdot{background:var(--bad)}
+.dgn{margin-left:auto;color:var(--sub);font-weight:600;font-variant-numeric:tabular-nums}
+.dgempty{font-size:12.5px;color:var(--sub);padding:16px 10px;border:1px dashed var(--hair);border-radius:14px;text-align:center}
+.dgcard{appearance:none;display:flex;flex-direction:column;gap:5px;width:100%;min-width:0;text-align:left;color:var(--ink);font:inherit;padding:10px 12px;border-radius:16px;background:var(--tilebg);border:1px solid var(--stroke-lo);border-left:4px solid var(--hair);cursor:pointer;transition:background .2s,transform .2s}
+.dgcard:hover{background:var(--glass-hi);transform:translateY(-1px)}
+.dgcard.ok{border-left-color:var(--ok)}.dgcard.warn{border-left-color:var(--warn)}.dgcard.bad{border-left-color:var(--bad)}
+.dgrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;min-width:0}
+.dgcode{font-size:13.5px;font-variant-numeric:tabular-nums}
+.dgmeta{font-size:12px;color:var(--sub);overflow-wrap:anywhere}
+.dgwhy{font-size:12.5px;overflow-wrap:anywhere}
+.dgun{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:650;font-variant-numeric:tabular-nums}
+.dgcls{display:inline-grid;place-items:center;width:21px;height:21px;transform:rotate(45deg);border:1.5px solid var(--ink);font-size:9px;border-radius:2px;margin-right:2px}
+.dgcls i{transform:rotate(-45deg);font-style:normal}
+.dgholdbar{margin:12px 0 4px;padding:9px 12px;border-radius:12px;font-size:13px;font-weight:650;background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
+.dgkv{margin:10px 0 4px}
+.dgtabs{margin:12px 0 8px}
+.dgtext{width:100%;min-height:300px;resize:vertical;font:13px/1.55 ui-monospace,Consolas,"Malgun Gothic",monospace;color:var(--ink);background:var(--tilebg);border:1px solid var(--stroke);border-radius:14px;padding:12px}
+.dgtext:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.dgact{display:flex;gap:8px;flex-wrap:wrap}
+.dgresult{margin-top:10px;padding:9px 12px;border-radius:12px;font-size:13px}
+.dgresult.ok{background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ok)}
+.dgresult.bad{background:color-mix(in srgb,var(--bad) 13%,transparent);color:var(--bad)}
+@media (max-width:1100px){.dglanes{grid-template-columns:minmax(0,1fr)}}

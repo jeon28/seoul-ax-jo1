@@ -3,79 +3,294 @@
   "agent": "special-cargo-rules",
   "owner": "이병선",
   "bundle": "C",
-  "as_of": "2026-10-15",
-  "headline": "30건 판정: 가능 24 · 불가 3 · 검토 필요 3",
+  "as_of": "2026-10-27",
+  "headline": "21건 판정: 가능 20 · 불가 0 · 검토 필요 1, 최근 사고 이력 4건",
   "metrics": [
     {
       "key": "processed",
       "label": "판정 건수",
-      "value": 30,
-      "unit": "건",
-      "prev": 28
+      "value": 21,
+      "unit": "건"
     },
     {
       "key": "ok",
       "label": "가능",
-      "value": 24,
+      "value": 20,
       "unit": "건"
     },
     {
       "key": "no",
       "label": "불가",
-      "value": 3,
+      "value": 0,
       "unit": "건"
     },
     {
       "key": "check",
       "label": "검토 필요",
-      "value": 3,
+      "value": 1,
+      "unit": "건"
+    },
+    {
+      "key": "accident",
+      "label": "최근 12개월 사고 이력",
+      "value": 4,
       "unit": "건"
     }
   ],
   "table": {
     "columns": [
       "요청코드",
-      "품목",
-      "항만",
+      "선박",
+      "구간",
+      "UN·Class",
+      "적용 리스트",
       "판정",
-      "근거"
+      "근거",
+      "사고 이력"
     ],
     "rows": [
       [
-        "Q11",
-        "Class 3",
-        "T01",
+        "Q01",
+        "S01",
+        "QINGDAO → BUSAN / VLADIVOSTOK",
+        "Class 3 / UN 1307",
+        "VER.10 (FOR PARTNERS)",
         "가능",
-        "내규 [조항]"
+        "VER.10 (FOR PARTNERS)에 해당 없음",
+        "최근 12개월 없음 (그 이전 1건)"
+      ],
+      [
+        "Q02",
+        "S01",
+        "QINGDAO → BUSAN",
+        "Class 4.1 / UN 1328",
+        "VER.10 (FOR PARTNERS)",
+        "가능",
+        "VER.10 (FOR PARTNERS)에 해당 없음",
+        "기록 없음"
+      ],
+      [
+        "Q03",
+        "S01",
+        "QINGDAO → BUSAN / VLADIVOSTOK",
+        "Class 8 / UN 1779",
+        "VER.10 (FOR PARTNERS)",
+        "가능",
+        "VER.10 (FOR PARTNERS)에 해당 없음",
+        "기록 없음"
+      ],
+      [
+        "Q04",
+        "S01",
+        "QINGDAO → BUSAN / VLADIVOSTOK",
+        "Class 3 / UN 2265",
+        "VER.10 (FOR PARTNERS)",
+        "가능",
+        "VER.10 (FOR PARTNERS)에 해당 없음",
+        "기록 없음"
+      ],
+      [
+        "Q05",
+        "S01",
+        "QINGDAO → BUSAN / VLADIVOSTOK",
+        "Class 3 / UN 1274",
+        "VER.10 (FOR PARTNERS)",
+        "가능",
+        "VER.10 (FOR PARTNERS)에 해당 없음",
+        "기록 없음"
+      ],
+      [
+        "Q06",
+        "S01",
+        "QINGDAO → BUSAN",
+        "Class 9 / UN 3077",
+        "VER.10 (FOR PARTNERS)",
+        "가능",
+        "VER.10 (FOR PARTNERS)에 해당 없음",
+        "최근 12개월 없음 (그 이전 1건)"
+      ],
+      [
+        "Q07",
+        "S01",
+        "QINGDAO → BUSAN",
+        "Class 8 / UN 2923",
+        "VER.10 (FOR PARTNERS)",
+        "가능",
+        "VER.10 (FOR PARTNERS)에 해당 없음",
+        "최근 12개월 사고 1건 (가장 최근 2026-09-30 UN 2923 컨테이너 손상·누출)"
+      ],
+      [
+        "Q08",
+        "S01",
+        "QINGDAO → BUSAN",
+        "Class 8 / UN 2923",
+        "VER.10 (FOR PARTNERS)",
+        "가능",
+        "VER.10 (FOR PARTNERS)에 해당 없음",
+        "최근 12개월 사고 1건 (가장 최근 2026-09-30 UN 2923 컨테이너 손상·누출)"
+      ],
+      [
+        "Q09",
+        "S01",
+        "QINGDAO → INCHEON",
+        "Class 9 / UN 3077",
+        "VER.10 (FOR PARTNERS)",
+        "가능",
+        "VER.10 (FOR PARTNERS)에 해당 없음",
+        "최근 12개월 없음 (그 이전 1건)"
+      ],
+      [
+        "Q10",
+        "S02",
+        "SHANGHAI → VLADIVOSTOK",
+        "Class 8 / UN 2922",
+        "VER.11 (SKR HAL ONLY)",
+        "가능",
+        "VER.11 (SKR HAL ONLY)에 해당 없음",
+        "기록 없음"
+      ],
+      [
+        "Q11",
+        "S02",
+        "SHANGHAI → VLADIVOSTOK",
+        "Class 8 / UN 2735",
+        "VER.11 (SKR HAL ONLY)",
+        "가능",
+        "VER.11 (SKR HAL ONLY)에 해당 없음",
+        "기록 없음"
       ],
       [
         "Q12",
-        "Class 1",
-        "T02",
-        "불가",
-        "내규 [조항]"
+        "S02",
+        "SHANGHAI → VLADIVOSTOK",
+        "Class 9 / UN 3077",
+        "VER.11 (SKR HAL ONLY)",
+        "가능",
+        "VER.11 (SKR HAL ONLY)에 해당 없음",
+        "최근 12개월 없음 (그 이전 1건)"
       ],
       [
         "Q13",
-        "Class 8",
-        "T03",
+        "S03",
+        "BUSAN → VLADIVOSTOK",
+        "Class 8 / UN 2619",
+        "VER.11 (SKR HAL ONLY)",
+        "가능",
+        "VER.11 (SKR HAL ONLY)에 해당 없음",
+        "기록 없음"
+      ],
+      [
+        "Q14",
+        "S03",
+        "BUSAN → VLADIVOSTOK",
+        "Class 8 / UN 2264",
+        "VER.11 (SKR HAL ONLY)",
+        "가능",
+        "VER.11 (SKR HAL ONLY)에 해당 없음",
+        "기록 없음"
+      ],
+      [
+        "Q15",
+        "S03",
+        "BUSAN → VLADIVOSTOK",
+        "Class 3 / UN 1197",
+        "VER.11 (SKR HAL ONLY)",
+        "가능",
+        "VER.11 (SKR HAL ONLY)에 해당 없음",
+        "기록 없음"
+      ],
+      [
+        "Q16",
+        "S03",
+        "BUSAN → VLADIVOSTOK",
+        "Class 3 / UN 1197",
+        "VER.11 (SKR HAL ONLY)",
+        "가능",
+        "VER.11 (SKR HAL ONLY)에 해당 없음",
+        "기록 없음"
+      ],
+      [
+        "Q17",
+        "S03",
+        "MUNDRA → BUSAN → VLADIVOSTOK",
+        "Class 3 / UN 1866",
+        "VER.10 (FOR PARTNERS)",
+        "가능",
+        "VER.10 (FOR PARTNERS)에 해당 없음",
+        "기록 없음"
+      ],
+      [
+        "Q18",
+        "S03",
+        "MUNDRA → BUSAN → VLADIVOSTOK",
+        "Class 6.1 / UN 1708",
+        "VER.10 (FOR PARTNERS)",
+        "가능",
+        "VER.10 (FOR PARTNERS)에 해당 없음",
+        "기록 없음"
+      ],
+      [
+        "Q19",
+        "S03",
+        "NHAVA SHEVA → BUSAN → VLADIVOSTOK",
+        "Class 8 / UN 2794",
+        "VER.11 (SKR HAL ONLY)",
+        "가능",
+        "VER.11 (SKR HAL ONLY)에 해당 없음",
+        "최근 12개월 사고 1건 (가장 최근 2026-04-05 UN 2794 배터리 산 누출)"
+      ],
+      [
+        "Q20",
+        "S03",
+        "NHAVA SHEVA → BUSAN → VLADIVOSTOK",
+        "Class 9 / UN 3077",
+        "VER.11 (SKR HAL ONLY)",
+        "가능",
+        "VER.11 (SKR HAL ONLY)에 해당 없음",
+        "최근 12개월 없음 (그 이전 1건)"
+      ],
+      [
+        "Q21",
+        "S04",
+        "BUSAN → HAIPHONG",
+        "Class 4.2 / UN 1381",
+        "VER.11 (SKR HAL ONLY)",
         "검토 필요",
-        "환적 조건 애매"
+        "Remark M/N: ISO 탱크 · 수중(under water) · SKR/HAL 선박만 허용",
+        "최근 12개월 사고 1건 (가장 최근 2026-08-14 UN 1381 컨테이너 화재)"
       ]
     ]
   },
   "review": [
     {
       "id": "R01",
-      "code": "Q13",
-      "reason": "환적 조건 애매",
-      "detail": "Q13 조항이 환적항 조건을 명확히 정하지 않음"
+      "code": "Q21",
+      "reason": "조건 확인 필요(보류)",
+      "detail": "Q21 Class 4.2 / UN 1381 · VER.11 (SKR HAL ONLY) · Remark M/N: ISO 탱크 · 수중(under water) · SKR/HAL 선박만 허용"
     },
     {
       "id": "R02",
-      "code": "Q27",
+      "code": "Q07",
       "reason": "같은 UN 번호 최근 사고 이력",
-      "detail": "Q27 품목에 최근 사고 기록 있음"
+      "detail": "Q07 UN 2923 · 최근 12개월 사고 1건 (가장 최근 2026-09-30 UN 2923 컨테이너 손상·누출) · 판정은 가능"
+    },
+    {
+      "id": "R03",
+      "code": "Q08",
+      "reason": "같은 UN 번호 최근 사고 이력",
+      "detail": "Q08 UN 2923 · 최근 12개월 사고 1건 (가장 최근 2026-09-30 UN 2923 컨테이너 손상·누출) · 판정은 가능"
+    },
+    {
+      "id": "R04",
+      "code": "Q19",
+      "reason": "같은 UN 번호 최근 사고 이력",
+      "detail": "Q19 UN 2794 · 최근 12개월 사고 1건 (가장 최근 2026-04-05 UN 2794 배터리 산 누출) · 판정은 가능"
+    },
+    {
+      "id": "R05",
+      "code": "Q21",
+      "reason": "같은 UN 번호 최근 사고 이력",
+      "detail": "Q21 UN 1381 · 최근 12개월 사고 1건 (가장 최근 2026-08-14 UN 1381 컨테이너 화재) · 판정은 검토 필요"
     }
   ],
   "time": {
@@ -85,8 +300,8 @@
     "basis": "추정"
   },
   "source": {
-    "label": "가상 금지 매트릭스·사고 사례",
-    "rows": 30
+    "label": "가상 DG 신청(공유본 스냅샷, 이름 가림) · 금지 리스트 VER.10/11 · 가상 사고 사례",
+    "rows": 21
   },
   "rules_version": "special-cargo-rules@v1",
   "synthetic": true

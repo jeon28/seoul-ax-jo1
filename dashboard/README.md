@@ -90,3 +90,16 @@ export default function render(ctx) {
 | `data/in/offhire/` | 가상 Off-hire 엑셀 · CP 리스트 엑셀 · 샘플 협정 대장 · 용선 선박 목록 |
 | `scripts/build-offhire-result.mjs` | 규칙을 샘플에 돌려 `data/out/offhire-ledger.json`(금액 없음, 선박 S01)을 다시 만듦 |
 | `scripts/test-offhire.mjs` | 계산 규칙 테스트: `node --test scripts/test-offhire.mjs` |
+
+## 예시: 스페셜화물 내규 판정 메뉴 (DG_승인_데스크_발표용_공유본.html 을 옮김)
+
+| 파일 | 하는 일 |
+|---|---|
+| `dashboard/menus/special-cargo-rules.js` | 기본 조각에 DG 승인 데스크를 끼워 넣음 |
+| `dashboard/js/dgdesk/board.js` | 화면: 건수 요약 · 승인/보류/거절 세 줄 카드 · 카드를 누르면 회신 초안 시트(승인안·거절안, 복사). 보내기·Outlook 저장은 없음 |
+| `dashboard/js/dgdesk/rules.js` · `drafts.js` | 판정 규칙(순수 함수, node 에서도 돈다) = `lib/special-cargo-rules.md` · 초안 문구 틀 |
+| `data/in/special-cargo-rules/prohibit-lists.json` | 금지 리스트 VER.10 · VER.11. 개정되면 이 파일만 바꾸고 「다시 판정」 |
+| `data/in/special-cargo-rules/requests.json` | 신청 21건(선박 S01·발신처 L01 로 가림) |
+| `data/in/special-cargo-rules/accident-cases.json` | 가상 사고 사례 8건. 같은 UN 번호의 최근 12개월 사고를 카드·시트·결과 파일에 붙임(판정은 안 바꿈) |
+| `scripts/build-special-cargo-rules-result.mjs` | 같은 규칙으로 `data/out/special-cargo-rules.json`(홈 카드)을 다시 만듦 |
+| `scripts/test-special-cargo-rules.mjs` | 판정 규칙 테스트: `node --test scripts/test-special-cargo-rules.mjs` |
