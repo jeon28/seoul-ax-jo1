@@ -1,0 +1,401 @@
+{
+ "_note": "선박명·코드는 실제, 속도·소모량 등 수치는 모두 가상(dashboard/js/bunker/noon-synthetic.js). teu 는 설계 TEU.",
+ "vessels": [
+  {
+   "code": "MEBG",
+   "name": "MELBOURNE BRIDGE",
+   "series": "8000",
+   "teu": 8002
+  },
+  {
+   "code": "MBBG",
+   "name": "MUMBAI BRIDGE",
+   "series": "8000",
+   "teu": 8002
+  },
+  {
+   "code": "SDBG",
+   "name": "SYDNEY BRIDGE",
+   "series": "8000",
+   "teu": 8002
+  },
+  {
+   "code": "LCVY",
+   "name": "LAEM CHABANG VOYAGER",
+   "series": "2800",
+   "teu": 2782
+  },
+  {
+   "code": "NBVY",
+   "name": "NINGBO VOYAGER",
+   "series": "2800",
+   "teu": 2782
+  },
+  {
+   "code": "QDVY",
+   "name": "QINGDAO VOYAGER",
+   "series": "2800",
+   "teu": 2782
+  },
+  {
+   "code": "TJVY",
+   "name": "TIANJIN VOYAGER",
+   "series": "2800",
+   "teu": 2782
+  },
+  {
+   "code": "ICVY",
+   "name": "INCHEON VOYAGER",
+   "series": "2500",
+   "teu": 2548
+  },
+  {
+   "code": "KYVY",
+   "name": "KWANG YANG VOYAGER",
+   "series": "2500",
+   "teu": 2548
+  },
+  {
+   "code": "USVY",
+   "name": "ULSAN VOYAGER",
+   "series": "2500",
+   "teu": 2548
+  },
+  {
+   "code": "YSVY",
+   "name": "YEOSU VOYAGER",
+   "series": "2500",
+   "teu": 2548
+  },
+  {
+   "code": "HMVY",
+   "name": "HOCHIMINH VOYAGER",
+   "series": "2500",
+   "teu": 2535
+  },
+  {
+   "code": "JKVY",
+   "name": "JAKARATA VOYAGER",
+   "series": "2500",
+   "teu": 2535
+  },
+  {
+   "code": "SHVY",
+   "name": "SHANGHAI VOYAGER",
+   "series": "2500",
+   "teu": 2535
+  },
+  {
+   "code": "CNVY",
+   "name": "CHENNAI VOYAGER",
+   "series": "2500",
+   "teu": 2546
+  },
+  {
+   "code": "SBVG",
+   "name": "SURABAYA VOYAGER",
+   "series": "2000",
+   "teu": 1980
+  },
+  {
+   "code": "HAB",
+   "name": "HEUNG-A BANGKOK",
+   "series": "1800",
+   "teu": 1785
+  },
+  {
+   "code": "HAHM",
+   "name": "HEUNG-A HOCHIMINH",
+   "series": "1800",
+   "teu": 1785
+  },
+  {
+   "code": "SWAL",
+   "name": "SAWASDEE ALTAIR",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWAT",
+   "name": "SAWASDEE ATLANTIC",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWBT",
+   "name": "SAWASDEE BALTIC",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWCP",
+   "name": "SAWASDEE CAPELLA",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWCG",
+   "name": "SAWASDEE CHITTAGONG",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWDN",
+   "name": "SAWASDEE DENEB",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWIC",
+   "name": "SAWASDEE INCHEON",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWMM",
+   "name": "SAWASDEE MIMOSA",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWPC",
+   "name": "SAWASDEE PACIFIC",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWRG",
+   "name": "SAWASDEE RIGEL",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWSH",
+   "name": "SAWASDEE SHANGHAI",
+   "series": "1800",
+   "teu": 1800
+  },
+  {
+   "code": "SWSI",
+   "name": "SAWASDEE SIRIUS",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWSP",
+   "name": "SAWASDEE SPICA",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWSR",
+   "name": "SAWASDEE SUNRISE",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWVG",
+   "name": "SAWASDEE VEGA",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWXM",
+   "name": "SAWASDEE XIAMEN",
+   "series": "1800",
+   "teu": 1809
+  },
+  {
+   "code": "SWTD",
+   "name": "SAWASDEE THAILAND",
+   "series": "1600",
+   "teu": 1577
+  },
+  {
+   "code": "PCSZ",
+   "name": "PACIFIC SHENZHEN",
+   "series": "1100",
+   "teu": 1102
+  },
+  {
+   "code": "NBTD",
+   "name": "NINGBO TRADER",
+   "series": "1100",
+   "teu": 1114
+  },
+  {
+   "code": "PCBJ",
+   "name": "PACIFIC BEIJING",
+   "series": "1100",
+   "teu": 1118
+  },
+  {
+   "code": "HAKT",
+   "name": "HEUNG-A AKITA",
+   "series": "1000",
+   "teu": 1003
+  },
+  {
+   "code": "HAHP",
+   "name": "HEUNG-A HAIPHONG",
+   "series": "1000",
+   "teu": 1003
+  },
+  {
+   "code": "HAJN",
+   "name": "HEUNG-A JANICE",
+   "series": "1000",
+   "teu": 1003
+  },
+  {
+   "code": "HAXM",
+   "name": "HEUNG-A XIAMEN",
+   "series": "1000",
+   "teu": 1003
+  },
+  {
+   "code": "HASR",
+   "name": "HEUNG-A SARAH",
+   "series": "1000",
+   "teu": 1103
+  },
+  {
+   "code": "HAYN",
+   "name": "HEUNG-A YOUNG",
+   "series": "1000",
+   "teu": 1103
+  },
+  {
+   "code": "AKTR",
+   "name": "AKITA TRADER",
+   "series": "1000",
+   "teu": 1054
+  },
+  {
+   "code": "TYTR",
+   "name": "TOYAMA TRADER",
+   "series": "1000",
+   "teu": 1054
+  },
+  {
+   "code": "KBTR",
+   "name": "KOBE TRADER",
+   "series": "1000",
+   "teu": 1084
+  },
+  {
+   "code": "QDTR",
+   "name": "QINGDAO TRADER",
+   "series": "1000",
+   "teu": 1084
+  },
+  {
+   "code": "YTTR",
+   "name": "YANGTZE TRADER",
+   "series": "1000",
+   "teu": 1084
+  },
+  {
+   "code": "YKTD",
+   "name": "YOKOHAMA TRADER",
+   "series": "1000",
+   "teu": 1084
+  },
+  {
+   "code": "HTVY",
+   "name": "HAKATA VOYAGER",
+   "series": "1000",
+   "teu": 698
+  },
+  {
+   "code": "HKVY",
+   "name": "HONGKONG VOYAGER",
+   "series": "1000",
+   "teu": 1060
+  },
+  {
+   "code": "NGTR",
+   "name": "NAGOYA TRADER",
+   "series": "1000",
+   "teu": 907
+  },
+  {
+   "code": "SDTR",
+   "name": "SENDAI TRADER",
+   "series": "1000",
+   "teu": 1118
+  },
+  {
+   "code": "PCSG",
+   "name": "PACIFIC SINGAPORE",
+   "series": "700",
+   "teu": 698
+  },
+  {
+   "code": "PCTJ",
+   "name": "PACIFIC TIANJIN",
+   "series": "700",
+   "teu": 698
+  },
+  {
+   "code": "VTVY",
+   "name": "VOSTOCHNY VOYAGER",
+   "series": "700",
+   "teu": 698
+  },
+  {
+   "code": "ATSH",
+   "name": "ATLANTIC SOUTH",
+   "series": "700",
+   "teu": 704
+  },
+  {
+   "code": "ATPR",
+   "name": "ATLANTIC PIONEER",
+   "series": "700",
+   "teu": 724
+  },
+  {
+   "code": "HRON",
+   "name": "HONOR OCEAN",
+   "series": "700",
+   "teu": 634
+  },
+  {
+   "code": "OSVY",
+   "name": "OSAKA VOYAGER",
+   "series": "700",
+   "teu": 698
+  },
+  {
+   "code": "PCBS",
+   "name": "PACIFIC BUSAN",
+   "series": "700",
+   "teu": 704
+  },
+  {
+   "code": "PCNB",
+   "name": "PACIFIC NINGBO",
+   "series": "700",
+   "teu": 698
+  },
+  {
+   "code": "SKNT",
+   "name": "SINOKOR NIIGATA",
+   "series": "550",
+   "teu": 550
+  },
+  {
+   "code": "HKEP",
+   "name": "HAKATA EXPRESS",
+   "series": "428",
+   "teu": 428
+  },
+  {
+   "code": "MJEP",
+   "name": "MOJI EXPRESS",
+   "series": "428",
+   "teu": 428
+  }
+ ]
+}
