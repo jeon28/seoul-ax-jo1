@@ -1,0 +1,27 @@
+{
+  "note": "공유본(DG 승인 데스크 발표용)의 2026-10-27 09:40 처리 결과를 옮긴 신청 21건. 선박은 S01~S04, 발신처는 L01~L07 로 가렸고 부킹번호·이메일은 넣지 않았다. origin: skr_hal = SKR·흥아(HAS/HAL) 발신 → VER.11, partner = 그 외 → VER.10.",
+  "snapshot_at": "2026-10-27 09:40",
+  "requests": [
+    {"id":"Q01","folder":"KQS","svc":"KQS","vessel":"S01","voyage":"2639E","route":"QINGDAO → BUSAN / VLADIVOSTOK","sender":"L01","origin":"partner","cargos":[{"cls":"3","un":"1307"}],"received":"2026-10-26 23:41"},
+    {"id":"Q02","folder":"KQS","svc":"KQS","vessel":"S01","voyage":"2638E","route":"QINGDAO → BUSAN","sender":"L01","origin":"partner","cargos":[{"cls":"4.1","un":"1328"}],"received":"2026-10-26 23:35"},
+    {"id":"Q03","folder":"KQS","svc":"KQS","vessel":"S01","voyage":"2640E","route":"QINGDAO → BUSAN / VLADIVOSTOK","sender":"L01","origin":"partner","cargos":[{"cls":"8","un":"1779"}],"received":"2026-10-26 23:20"},
+    {"id":"Q04","folder":"KQS","svc":"KQS","vessel":"S01","voyage":"2639E","route":"QINGDAO → BUSAN / VLADIVOSTOK","sender":"L01","origin":"partner","cargos":[{"cls":"3","un":"2265"}],"received":"2026-10-26 23:03"},
+    {"id":"Q05","folder":"KQS","svc":"KQS","vessel":"S01","voyage":"2639E","route":"QINGDAO → BUSAN / VLADIVOSTOK","sender":"L01","origin":"partner","cargos":[{"cls":"3","un":"1274"}],"received":"2026-10-26 22:52"},
+    {"id":"Q06","folder":"KQS","svc":"KQS","vessel":"S01","voyage":"2637E","route":"QINGDAO → BUSAN","sender":"L02","origin":"partner","cargos":[{"cls":"9","un":"3077"}],"received":"2026-10-26 20:41"},
+    {"id":"Q07","folder":"KQS","svc":"KQS","vessel":"S01","voyage":"2637E","route":"QINGDAO → BUSAN","sender":"L02","origin":"partner","cargos":[{"cls":"8","un":"2923"}],"received":"2026-10-26 20:24"},
+    {"id":"Q08","folder":"KQS","svc":"KQS","vessel":"S01","voyage":"2637E","route":"QINGDAO → BUSAN","sender":"L02","origin":"partner","cargos":[{"cls":"8","un":"2923"}],"received":"2026-10-26 20:22"},
+    {"id":"Q09","folder":"KQS","svc":"KQS","vessel":"S01","voyage":"2637E","route":"QINGDAO → INCHEON","sender":"L02","origin":"partner","cargos":[{"cls":"9","un":"3077"}],"received":"2026-10-26 20:20"},
+    {"id":"Q10","folder":"SRS","svc":"SRS","vessel":"S02","voyage":"9028E","route":"SHANGHAI → VLADIVOSTOK","sender":"L03","origin":"skr_hal","cargos":[{"cls":"8","un":"2922"}],"received":"2026-10-26 18:02"},
+    {"id":"Q11","folder":"SRS","svc":"SRS","vessel":"S02","voyage":"9028E","route":"SHANGHAI → VLADIVOSTOK","sender":"L03","origin":"skr_hal","cargos":[{"cls":"8","un":"2735"}],"received":"2026-10-26 17:44"},
+    {"id":"Q12","folder":"SRS","svc":"SRS","vessel":"S02","voyage":"9028E","route":"SHANGHAI → VLADIVOSTOK","sender":"L03","origin":"skr_hal","cargos":[{"cls":"9","un":"3077"}],"received":"2026-10-26 14:19"},
+    {"id":"Q13","folder":"PVS2","svc":"PVS2","vessel":"S03","voyage":"2633N","route":"BUSAN → VLADIVOSTOK","sender":"L03","origin":"skr_hal","cargos":[{"cls":"8","un":"2619"}],"received":"2026-10-26 18:18"},
+    {"id":"Q14","folder":"PVS2","svc":"PVS2","vessel":"S03","voyage":"2633N","route":"BUSAN → VLADIVOSTOK","sender":"L03","origin":"skr_hal","cargos":[{"cls":"8","un":"2264"}],"received":"2026-10-26 18:13"},
+    {"id":"Q15","folder":"PVS2","svc":"PVS2","vessel":"S03","voyage":"2633N","route":"BUSAN → VLADIVOSTOK","sender":"L04","origin":"skr_hal","cargos":[{"cls":"3","un":"1197"}],"received":"2026-10-26 16:05"},
+    {"id":"Q16","folder":"PVS2","svc":"PVS2","vessel":"S03","voyage":"2633N","route":"BUSAN → VLADIVOSTOK","sender":"L04","origin":"skr_hal","cargos":[{"cls":"3","un":"1197"}],"received":"2026-10-26 16:01"},
+    {"id":"Q17","folder":"PVS2","svc":"PVS2","vessel":"S03","voyage":"2633N","route":"MUNDRA → BUSAN → VLADIVOSTOK","sender":"L05","origin":"partner","cargos":[{"cls":"3","un":"1866"}],"received":"2026-10-26 21:29","note":"2nd leg"},
+    {"id":"Q18","folder":"PVS2","svc":"PVS2","vessel":"S03","voyage":"2633N","route":"MUNDRA → BUSAN → VLADIVOSTOK","sender":"L05","origin":"partner","cargos":[{"cls":"6.1","un":"1708"}],"received":"2026-10-26 21:26","note":"2nd leg"},
+    {"id":"Q19","folder":"PVS2","svc":"PVS2","vessel":"S03","voyage":"2634N","route":"NHAVA SHEVA → BUSAN → VLADIVOSTOK","sender":"L06","origin":"skr_hal","cargos":[{"cls":"8","un":"2794"}],"received":"2026-10-26 18:16","note":"선박 변경"},
+    {"id":"Q20","folder":"PVS2","svc":"PVS2","vessel":"S03","voyage":"2634N","route":"NHAVA SHEVA → BUSAN → VLADIVOSTOK","sender":"L06","origin":"skr_hal","cargos":[{"cls":"9","un":"3077"}],"received":"2026-10-26 18:15","note":"선박 변경"},
+    {"id":"Q21","folder":"PVS2","svc":"KJS2","vessel":"S04","voyage":"2616S","route":"BUSAN → HAIPHONG","sender":"L07","origin":"skr_hal","cargos":[{"cls":"4.2","un":"1381"}],"received":"2026-10-26 17:52"}
+  ]
+}
