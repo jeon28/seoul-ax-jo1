@@ -1,8 +1,10 @@
 // 일본 공이송 플래너 메뉴 화면 — 담당: 권도윤
-// 기본 화면(요약 · 이송안 표 · 확인 필요 · 시간 전/후 · 스킬 순서)에 「정해진 규칙 · 실행 방법」 안내를 끼워 넣었다.
-// 이송안 계산은 agents/japan-empty-transfer/skills/*/scripts 의 Python 이 하고, 이 화면은 그 결과 파일
-// (data/out/japan-empty-transfer.json)을 보여 준다. 결과 파일은 `node scripts/build-japan-result.mjs` 로 다시 만든다.
+// 위쪽: 「이송안 만들기」 — CSV 를 고르거나 가상 샘플을 불러오면 브라우저 안에서 입력 정리 → 이송 후보 계산 → 검증·보고를 돌린다
+//       (js/japan/planner.js = agents/japan-empty-transfer/skills 의 Python 3개를 옮긴 것. node --test scripts/test-japan.mjs 로 Python 결과와 대조).
+// 아래쪽: 기본 화면(요약 · 이송안 표 · 확인 필요 · 시간 전/후 · 스킬 순서)과 「정해진 규칙」 안내.
+//         홈 카드가 읽는 결과 파일(data/out/japan-empty-transfer.json)은 `node scripts/build-japan-result.mjs` 로 다시 만든다.
 import { hero, headline, metrics, pipeline, resultTable, reviewList, timeSaving, info, howTo } from '../js/agent-page.js';
+import { plannerBoard } from '../js/japan/board.js';
 import { el } from '../js/core.js';
 
 const RULES = [
@@ -42,7 +44,7 @@ function guide(ctx) {
   p.append(steps);
 
   p.append(
-    el('p', 'sub', '실행: Python 3 이 있는 PC 에서 프로젝트 루트의 명령을 차례로 실행(SKILL.md 「처음 실행해 보기」). 가상 샘플은 data/in/japan-empty-transfer/sim2/, 최종 결과는 data/out/japan-empty-transfer/out/ (report.md 포함).'),
+    el('p', 'sub', '실행: 위의 「이송안 만들기」가 브라우저에서 바로 돈다(js/japan/planner.js). Python 3 이 있는 PC 에서는 같은 계산을 프로젝트 루트의 명령으로도 돌릴 수 있다(SKILL.md 「처음 실행해 보기」). 두 결과는 같아야 하고 node --test scripts/test-japan.mjs 가 그것을 확인한다. 가상 샘플: data/in/japan-empty-transfer/sim2/, 최종 결과: data/out/japan-empty-transfer/out/.'),
     el('p', 'sub', '한계: 배정 규칙은 휴리스틱이라 모든 경우에 최적은 아니다. 실제 시스템 파일로는 아직 돌려 보지 않았다(열 이름 · 타입 표기 확인 필요). 대리점 메일은 발송하지 않고 초안만 쓴다.'),
   );
   return p;
@@ -56,6 +58,13 @@ export default function render(ctx) {
   main.append(resultTable(ctx), reviewList(ctx));
   side.append(timeSaving(ctx), info(ctx));
   cols.append(main, side);
-  page.append(hero(ctx), headline(ctx), metrics(ctx), pipeline(ctx), guide(ctx), cols, howTo(ctx));
+  const sec = el('section', 'toolsec');
+  const head = el('div', 'toolhead');
+  head.append(
+    el('h2', '', '이송안 만들기 (에이전트 실행)'),
+    el('p', 'sub', 'CSV 3종을 고르거나 가상 샘플을 불러와 실행 · 입력 정리 → 이송 후보 계산 → 검증·보고 · 브라우저 안에서만 계산하고 파일은 서버로 보내지 않습니다'),
+  );
+  sec.append(head, plannerBoard());
+  page.append(hero(ctx), headline(ctx), sec, metrics(ctx), pipeline(ctx), guide(ctx), cols, howTo(ctx));
   return page;
 }
