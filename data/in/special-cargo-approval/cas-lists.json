@@ -1,0 +1,12 @@
+{
+  "note": "상해·닝보 양하/경유 CAS 금지 목록(가상 샘플, 실제 목록 아님). 실제 목록은 담당자가 회사 자료로 바꿔 넣는다.",
+  "sha": [
+    { "cas": "64-17-5", "name": "ethanol" },
+    { "cas": "67-56-1", "name": "methanol" },
+    { "cas": "7647-01-0", "name": "hydrogen chloride" }
+  ],
+  "ngb": [
+    { "cas": "108-88-3", "name": "toluene" },
+    { "cas": "71-43-2", "name": "benzene" }
+  ]
+}

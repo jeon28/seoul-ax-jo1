@@ -415,6 +415,17 @@ select.ohin option{background-color:var(--opt-bg);color:var(--opt-ink);font-weig
 textarea.ohtext{width:100%;min-height:300px;font:12.5px/1.5 Consolas,"D2Coding",monospace;color:var(--ink);background:var(--tilebg);border:1px solid var(--stroke);border-radius:14px;padding:10px 12px;resize:vertical}
 .ohbtns{margin:8px 0 0}
 
+/* ── 스페셜화물 승인 보조(js/approval/) — DG 승인 데스크 조각(.dg*)을 같이 쓴다 ── */
+.apdoc{display:inline-flex;align-items:center;font-size:11.5px;font-weight:650;padding:1px 8px;border-radius:99px;white-space:nowrap}
+.apdoc.ok{background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ok)}
+.apdoc.bad{background:color-mix(in srgb,var(--bad) 14%,transparent);color:var(--bad)}
+.apsub{font-size:13px;margin:14px 0 6px;color:var(--sub);font-weight:650}
+.apsteps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.apstep{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:7px 10px;border-radius:12px;background:var(--tilebg);border:1px solid var(--stroke-lo);font-size:13px}
+.apstep .sub{margin:0;font-size:12.5px;overflow-wrap:anywhere}
+.aptables{padding:10px 14px}
+.aptables summary{cursor:pointer;font-weight:650;font-size:13.5px}
+.aptables .tablewrap{margin-top:8px;display:flex;flex-direction:column;gap:10px}
 /* ── 스페셜화물 내규 판정: DG 승인 데스크(승인 · 보류 · 거절 세 줄, 회신 초안 시트) ── */
 .dgdesk{display:flex;flex-direction:column;gap:12px}
 .dgbody{display:flex;flex-direction:column;gap:12px}

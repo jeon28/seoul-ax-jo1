@@ -1,0 +1,23 @@
+{
+  "note": "승인 보조 숫자표(가상). 한도·기준을 바꾸려면 이 파일만 바꾸고 RULES_VERSION 을 올린다. 실제 값은 담당자가 회사 규정집으로 채운다. 길이는 cm, 무게는 kg.",
+  "ports": {
+    "sha": { "label": "상해", "en": "Shanghai", "aliases": ["SHANGHAI", "CNSHA", "SHA"] },
+    "ngb": { "label": "닝보", "en": "Ningbo", "aliases": ["NINGBO", "CNNGB", "NGB"] }
+  },
+  "dg": {
+    "cas_on_match": "bad",
+    "sha_msds_conc_pct": 100,
+    "sha_msds_on_fail": "hold"
+  },
+  "oog": {
+    "default": { "over_h": 200, "over_w": 150, "over_l": 200, "weight": 30000 },
+    "by_vessel": {
+      "S03": { "over_h": 150, "over_w": 100, "over_l": 150, "weight": 26000 }
+    }
+  },
+  "flexibag": {
+    "allowed_cargo_kind": ["NON-DG"],
+    "max_fill_kg": 24000,
+    "coa_templates": { "2025": "T-2025", "2026": "T-2026" }
+  }
+}
