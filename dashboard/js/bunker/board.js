@@ -51,7 +51,7 @@ export function searchVessels(fleet, q, limit = 12) {
 }
 
 // ── 이 브라우저에만 저장하는 입력값 ──
-const KEY = 'axdash.bunker.performance';
+const KEY = 'axdash.bunker.performance.v2'; // v2: 속력 기본값을 12~18 로 바꾸면서, 예전 저장값(10~22)이 새 기본값을 덮지 않게 키를 바꿈
 const side = (code) => ({ code, rhMin: String(DEFAULT_FILTERS.rhMin), rhMax: String(DEFAULT_FILTERS.rhMax), slipMin: String(DEFAULT_FILTERS.slipMin), slipMax: String(DEFAULT_FILTERS.slipMax) });
 const defaults = () => ({ months: 0, spdMin: DEFAULT_FILTERS.spdMin, spdMax: DEFAULT_FILTERS.spdMax, exclude: true, sides: [side('MEBG'), side('')] });
 function readState() {

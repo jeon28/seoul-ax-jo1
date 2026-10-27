@@ -89,6 +89,8 @@ test('가상 NOON REPORT: 같은 선박은 언제나 같고, 일부러 섞은 �
   const b = await getHistory({ ...v });
   assert.equal(a, b); // 캐시
   assert.ok(a.duplicates > 0 && a.rows.some((r) => r.outlier) && a.rows.some((r) => r.spd === null));
-  const x = analyze(a.rows, DEFAULT_FILTERS);
+  const x = analyze(a.rows, { ...DEFAULT_FILTERS, spdMin: 10, spdMax: 22 });
   assert.ok(x.rows.length >= 8 && x.rows.every((r, i, arr) => i === 0 || arr[i - 1].fo >= r.fo)); // 속력이 낮을수록 소모량이 줄어든다
+  assert.deepEqual([DEFAULT_FILTERS.spdMin, DEFAULT_FILTERS.spdMax], [12, 18]); // 화면 기본 속력 범위
+  assert.ok(analyze(a.rows, DEFAULT_FILTERS).rows.every((r) => r.spd >= 12 && r.spd <= 18));
 });

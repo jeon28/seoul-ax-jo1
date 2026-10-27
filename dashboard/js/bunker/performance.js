@@ -11,7 +11,7 @@
 export const RULES_VERSION = 'aggregate@v1';
 
 /** @type {Filters} */
-export const DEFAULT_FILTERS = { rhMin: 23, rhMax: 25, slipMin: -10, slipMax: 10, spdMin: 10, spdMax: 22, excludeOutliers: true };
+export const DEFAULT_FILTERS = { rhMin: 23, rhMax: 25, slipMin: -10, slipMax: 10, spdMin: 12, spdMax: 18, excludeOutliers: true };
 
 /** 이상치 기준: 그 선박 항해 중 일일 FO 중앙값의 몇 배부터 입력 오류로 보나 */
 export const OUTLIER_FACTOR = 5;

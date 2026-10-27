@@ -4,7 +4,7 @@
   "owner": "다니엘",
   "bundle": "D",
   "as_of": "2026-10-15",
-  "headline": "3척 처리, 제외 72건(3%), 확인 필요 6건",
+  "headline": "3척 처리, 제외 72건(3%), 확인 필요 4건",
   "metrics": [
     {
       "key": "processed",
@@ -65,13 +65,6 @@
         91
       ],
       [
-        "MEBG",
-        "MELBOURNE BRIDGE",
-        20,
-        102,
-        92
-      ],
-      [
         "MBBG",
         "MUMBAI BRIDGE",
         12,
@@ -100,13 +93,6 @@
         109
       ],
       [
-        "MBBG",
-        "MUMBAI BRIDGE",
-        20,
-        103.9,
-        86
-      ],
-      [
         "SDBG",
         "SYDNEY BRIDGE",
         12,
@@ -133,13 +119,6 @@
         18,
         76.1,
         88
-      ],
-      [
-        "SDBG",
-        "SYDNEY BRIDGE",
-        20,
-        104.4,
-        89
       ]
     ]
   },
@@ -148,37 +127,25 @@
       "id": "R01",
       "code": "MEBG",
       "reason": "표본이 적은 속도",
-      "detail": "MEBG 12kn(1건), 11kn(1건) 는 3건 미만이라 평균의 신뢰도가 낮음"
+      "detail": "MEBG 12kn(1건) 는 3건 미만이라 평균의 신뢰도가 낮음"
     },
     {
       "id": "R02",
-      "code": "MEBG",
-      "reason": "입력 오류 의심 행 많음",
-      "detail": "MEBG 입력 오류 의심 7건을 평균에서 제외함, 원본 확인 필요"
-    },
-    {
-      "id": "R03",
       "code": "MBBG",
       "reason": "표본이 적은 속도",
       "detail": "MBBG 12kn(1건) 는 3건 미만이라 평균의 신뢰도가 낮음"
     },
     {
-      "id": "R04",
+      "id": "R03",
       "code": "MBBG",
       "reason": "입력 오류 의심 행 많음",
-      "detail": "MBBG 입력 오류 의심 12건을 평균에서 제외함, 원본 확인 필요"
+      "detail": "MBBG 입력 오류 의심 6건을 평균에서 제외함, 원본 확인 필요"
     },
     {
-      "id": "R05",
+      "id": "R04",
       "code": "SDBG",
       "reason": "표본이 적은 속도",
-      "detail": "SDBG 12kn(2건), 10kn(1건) 는 3건 미만이라 평균의 신뢰도가 낮음"
-    },
-    {
-      "id": "R06",
-      "code": "SDBG",
-      "reason": "입력 오류 의심 행 많음",
-      "detail": "SDBG 입력 오류 의심 9건을 평균에서 제외함, 원본 확인 필요"
+      "detail": "SDBG 12kn(2건) 는 3건 미만이라 평균의 신뢰도가 낮음"
     }
   ],
   "time": {

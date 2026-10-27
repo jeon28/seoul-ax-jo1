@@ -13,7 +13,7 @@ const { MIN_TDR_CALLS } = await load('portcalc.js');
 
 // 오늘 처리할 선박(8000TEU급 Bridge 3척). 늘리려면 코드만 추가한다.
 const CODES = ['MEBG', 'MBBG', 'SDBG'];
-const TABLE_SPEEDS = [12, 14, 16, 18, 20];
+const TABLE_SPEEDS = [12, 14, 16, 18]; // 기본 속력 범위(12~18kn) 안의 짝수 속력
 const PREV = { processed: 3, excluded_ratio: 6 }; // 전회 값(가상)
 
 const fleet = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/in/vessels.json'), 'utf8')).vessels;

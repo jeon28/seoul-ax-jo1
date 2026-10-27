@@ -264,3 +264,10 @@ code{font:12px/1.4 ui-monospace,"SF Mono",Consolas,monospace;color:var(--sub)}
 .toolhead{padding:0 8px}
 .toolhead h2{font-size:19px;letter-spacing:-.02em}
 .toolhead .sub{margin-top:2px}
+
+/* 드롭다운 목록: 브라우저가 목록을 흰/검은 바탕으로 따로 그려서, 글자·배경을 직접 지정하지 않으면 다크 모드에서 흰 바탕에 흰 글씨가 된다 */
+:root{--opt-bg:#ffffff;--opt-ink:#16181d;--opt-sel:#0b57d0;--opt-sel-ink:#ffffff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--opt-bg:#1d2130;--opt-ink:#f3f4f7;--opt-sel:#1a5fd6;--opt-sel-ink:#ffffff}}
+:root[data-theme="dark"]{--opt-bg:#1d2130;--opt-ink:#f3f4f7;--opt-sel:#1a5fd6;--opt-sel-ink:#ffffff}
+select.inp option{background-color:var(--opt-bg);color:var(--opt-ink);font-size:15px;font-weight:500}
+select.inp option:checked{background-color:var(--opt-sel);color:var(--opt-sel-ink)}
