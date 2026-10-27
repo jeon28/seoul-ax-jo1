@@ -101,3 +101,15 @@ export default function render(ctx) {
 | `data/in/special-cargo-approval/` | 가상 승인 요청 11건(서류에서 뽑은 값 표) · 필수 서류표 · 숫자표(OOG 한도·Flexibag·상해 농도) · CAS 금지 목록 샘플 · IMDG 샘플 |
 | `scripts/build-special-cargo-approval-result.mjs` | 같은 규칙으로 `data/out/special-cargo-docs.json`(홈 카드)을 다시 만듦 |
 | `scripts/test-special-cargo-approval.mjs` | 점검 규칙 테스트: `node --test scripts/test-special-cargo-approval.mjs` |
+## 예시: 스페셜화물 내규 판정 메뉴 (DG_승인_데스크_발표용_공유본.html 을 옮김)
+
+| 파일 | 하는 일 |
+|---|---|
+| `dashboard/menus/special-cargo-rules.js` | 기본 조각에 DG 승인 데스크를 끼워 넣음 |
+| `dashboard/js/dgdesk/board.js` | 화면: 건수 요약 · 승인/보류/거절 세 줄 카드 · 카드를 누르면 회신 초안 시트(승인안·거절안, 복사). 보내기·Outlook 저장은 없음 |
+| `dashboard/js/dgdesk/rules.js` · `drafts.js` | 판정 규칙(순수 함수, node 에서도 돈다) = `lib/special-cargo-rules.md` · 초안 문구 틀 |
+| `data/in/special-cargo-rules/prohibit-lists.json` | 금지 리스트 VER.10 · VER.11. 개정되면 이 파일만 바꾸고 「다시 판정」 |
+| `data/in/special-cargo-rules/requests.json` | 신청 21건(선박 S01·발신처 L01 로 가림) |
+| `data/in/special-cargo-rules/accident-cases.json` | 가상 사고 사례 8건. 같은 UN 번호의 최근 12개월 사고를 카드·시트·결과 파일에 붙임(판정은 안 바꿈) |
+| `scripts/build-special-cargo-rules-result.mjs` | 같은 규칙으로 `data/out/special-cargo-rules.json`(홈 카드)을 다시 만듦 |
+| `scripts/test-special-cargo-rules.mjs` | 판정 규칙 테스트: `node --test scripts/test-special-cargo-rules.mjs` |
