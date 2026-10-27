@@ -22,9 +22,9 @@ function niceScale(max, ticks = 5) {
 /**
  * @param {{series:{name:string,color:string,points:{x:number,y:number}[]}[], xUnit?:string, yLabel?:string, label?:string}} o
  */
-export function lineChart({ series, xUnit = '', yLabel = '', label = '그래프' }) {
+export function lineChart({ series, xUnit = '', yLabel = '', label = '그래프', height = 320 }) {
   const W = 720;
-  const H = 320;
+  const H = height;
   const M = { l: 46, r: 18, t: 14, b: 34 };
   const wrap = el('div', 'chartwrap');
   const all = series.flatMap((x) => x.points);
