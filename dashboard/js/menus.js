@@ -24,7 +24,7 @@ export const MENUS = [
   { slug: 'spare-parts-supply', bundle: 'D', name: '스페어파트 보급', agent: '스페어파트 보급 에이전트', owner: '황심연', file: 'spare-parts.json', icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M12 2v3 M12 19v3 M2 12h3 M19 12h3 M5 5l2 2 M17 17l2 2 M5 19l2-2 M17 7l2-2',
     skills: [{ slug: 'spare-inventory-collect', name: '재고 회신 취합', status: 'todo' }, { slug: 'port-window-match', name: '기항지 맞추기', status: 'todo' }, { slug: 'supply-mail-tracker', name: '요청·추적', status: 'todo' }] },
   { slug: 'sales-analysis', bundle: 'E', name: '영업실적 분석', agent: '영업실적 분석 에이전트', owner: '노현석', file: 'pyeongtaek-sales.json', icon: 'M4 20V10 M10 20V4 M16 20v-8 M22 20H2',
-    skills: [{ slug: 'monthly-client-aggregate', name: '월간 거래처 집계', status: 'todo' }, { slug: 'sales-visit-list', name: '영업 방문 목록', status: 'todo' }, { slug: 'performance-trend-report', name: '실적 추이 보고', status: 'todo' }] },
+    skills: [{ slug: 'monthly-client-aggregate', name: '월간 거래처 집계', status: 'done' }, { slug: 'sales-visit-list', name: '영업 방문 목록', status: 'done' }, { slug: 'performance-trend-report', name: '실적 추이 보고', status: 'done' }] },
   { slug: 'weekly-schedule', bundle: 'E', name: '주간 스케줄 통지', agent: '주간 스케줄 통지 에이전트', owner: '이예윤', file: 'pyeongtaek-schedule.json', icon: 'M4 6h16v14H4z M4 10h16 M8 3v4 M16 3v4',
     skills: [{ slug: 'schedule-collect-compare', name: '스케줄 모아 대조', status: 'todo' }, { slug: 'manifest-deadline-calc', name: '적하목록 마감 계산', status: 'todo' }, { slug: 'deadline-mail-draft', name: '마감 통지 메일 초안', status: 'todo' }] },
 ];
