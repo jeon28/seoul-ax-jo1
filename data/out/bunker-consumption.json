@@ -4,7 +4,7 @@
   "owner": "다니엘",
   "bundle": "D",
   "as_of": "2026-10-15",
-  "headline": "3척 처리, 제외 12일(8%), 확인 필요 2건",
+  "headline": "3척 처리, 제외 72건(3%), 확인 필요 6건",
   "metrics": [
     {
       "key": "processed",
@@ -16,63 +16,169 @@
     {
       "key": "excluded_ratio",
       "label": "제외 비율",
-      "value": 8,
+      "value": 3,
       "unit": "%",
       "prev": 6
     },
     {
       "key": "excluded_days",
-      "label": "제외한 날",
-      "value": 12,
-      "unit": "일"
+      "label": "제외한 행",
+      "value": 72,
+      "unit": "건"
     }
   ],
   "table": {
     "columns": [
       "선박코드",
+      "선박명",
       "속도(kn)",
-      "일일 소모량(t)"
+      "일일 소모량(t)",
+      "건수"
     ],
     "rows": [
       [
-        "S01",
+        "MEBG",
+        "MELBOURNE BRIDGE",
         12,
-        28.4
+        25.3,
+        1
       ],
       [
-        "S01",
+        "MEBG",
+        "MELBOURNE BRIDGE",
         14,
-        36.1
+        34.8,
+        15
       ],
       [
-        "S02",
+        "MEBG",
+        "MELBOURNE BRIDGE",
+        16,
+        52.4,
+        54
+      ],
+      [
+        "MEBG",
+        "MELBOURNE BRIDGE",
+        18,
+        74.5,
+        91
+      ],
+      [
+        "MEBG",
+        "MELBOURNE BRIDGE",
+        20,
+        102,
+        92
+      ],
+      [
+        "MBBG",
+        "MUMBAI BRIDGE",
         12,
-        27.9
+        18.9,
+        1
       ],
       [
-        "S02",
+        "MBBG",
+        "MUMBAI BRIDGE",
         14,
-        35.6
+        35.3,
+        12
       ],
       [
-        "S03",
-        13,
-        31.2
+        "MBBG",
+        "MUMBAI BRIDGE",
+        16,
+        52.6,
+        59
+      ],
+      [
+        "MBBG",
+        "MUMBAI BRIDGE",
+        18,
+        75,
+        109
+      ],
+      [
+        "MBBG",
+        "MUMBAI BRIDGE",
+        20,
+        103.9,
+        86
+      ],
+      [
+        "SDBG",
+        "SYDNEY BRIDGE",
+        12,
+        23.9,
+        2
+      ],
+      [
+        "SDBG",
+        "SYDNEY BRIDGE",
+        14,
+        38.1,
+        12
+      ],
+      [
+        "SDBG",
+        "SYDNEY BRIDGE",
+        16,
+        54.7,
+        56
+      ],
+      [
+        "SDBG",
+        "SYDNEY BRIDGE",
+        18,
+        76.1,
+        88
+      ],
+      [
+        "SDBG",
+        "SYDNEY BRIDGE",
+        20,
+        104.4,
+        89
       ]
     ]
   },
   "review": [
     {
       "id": "R01",
-      "code": "S02",
-      "reason": "평균 대비 큰 이탈",
-      "detail": "S02 10/03 소모량이 같은 속도 평균보다 크게 높음"
+      "code": "MEBG",
+      "reason": "표본이 적은 속도",
+      "detail": "MEBG 12kn(1건), 11kn(1건) 는 3건 미만이라 평균의 신뢰도가 낮음"
     },
     {
       "id": "R02",
-      "code": "S03",
-      "reason": "항내 체류일 판별 애매",
-      "detail": "S03 10/07 입항 전후, 제외 여부 확인"
+      "code": "MEBG",
+      "reason": "입력 오류 의심 행 많음",
+      "detail": "MEBG 입력 오류 의심 7건을 평균에서 제외함, 원본 확인 필요"
+    },
+    {
+      "id": "R03",
+      "code": "MBBG",
+      "reason": "표본이 적은 속도",
+      "detail": "MBBG 12kn(1건) 는 3건 미만이라 평균의 신뢰도가 낮음"
+    },
+    {
+      "id": "R04",
+      "code": "MBBG",
+      "reason": "입력 오류 의심 행 많음",
+      "detail": "MBBG 입력 오류 의심 12건을 평균에서 제외함, 원본 확인 필요"
+    },
+    {
+      "id": "R05",
+      "code": "SDBG",
+      "reason": "표본이 적은 속도",
+      "detail": "SDBG 12kn(2건), 10kn(1건) 는 3건 미만이라 평균의 신뢰도가 낮음"
+    },
+    {
+      "id": "R06",
+      "code": "SDBG",
+      "reason": "입력 오류 의심 행 많음",
+      "detail": "SDBG 입력 오류 의심 9건을 평균에서 제외함, 원본 확인 필요"
     }
   ],
   "time": {
@@ -82,8 +188,8 @@
     "basis": "추정"
   },
   "source": {
-    "label": "가상 항해 일지",
-    "rows": 365
+    "label": "가상 NOON REPORT (선박 3척)",
+    "rows": 2124
   },
   "rules_version": "aggregate@v1",
   "synthetic": true

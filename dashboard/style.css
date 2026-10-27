@@ -230,3 +230,37 @@ code{font:12px/1.4 ui-monospace,"SF Mono",Consolas,monospace;color:var(--sub)}
   .cards{grid-template-columns:minmax(0,1fr)}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ── 소모량 분석: 조회 폼 · 선박 선택 · 그래프 ── */
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:12px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.field{display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--sub);font-weight:600}
+.inp{font:500 14px var(--font);color:var(--ink);background:var(--tilebg);border:1px solid var(--stroke);border-radius:14px;padding:9px 12px;min-height:40px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.inp::placeholder{color:var(--sub)}
+.ckrow{display:flex;align-items:center;gap:8px;font-size:13.5px;min-height:40px;cursor:pointer}
+.ckrow input{width:18px;height:18px;accent-color:var(--blue)}
+.controls{z-index:5}
+.suggest{position:relative}
+.suggestlist{position:absolute;top:100%;left:0;z-index:30;list-style:none;margin:4px 0 0;padding:6px;min-width:320px;max-height:280px;overflow:auto;background:var(--glass-hi);border:1px solid var(--stroke);border-radius:16px;box-shadow:var(--shadow);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);color:var(--ink);font-weight:500;font-size:13.5px}
+.suggestlist li{padding:8px 10px;border-radius:10px;cursor:pointer}
+.suggestlist li:hover{background:var(--glass-lo)}
+.err{color:var(--bad);font-size:13px;margin-top:4px}
+.muted{color:var(--sub);font-weight:400}
+.warntext{color:var(--warn)}
+.lowsample{color:var(--sub);opacity:.65}
+.perf,.perfresults,.toolsec{display:flex;flex-direction:column;gap:18px}
+.toolsec{gap:12px}
+.portbox{margin-top:18px;padding-top:14px;border-top:1px solid var(--hair)}
+.portbox h3{font-size:15px;margin-bottom:10px}
+.chartwrap{position:relative}
+.chart{width:100%;height:auto;display:block;touch-action:pan-y}
+.chart text{fill:var(--sub);font-size:11px}
+.chart .grid{stroke:var(--hair)}
+.chart .guide{stroke:var(--sub);stroke-dasharray:3 3;opacity:.6}
+.charttip{position:absolute;top:8px;pointer-events:none;min-width:120px;background:var(--glass-hi);border:1px solid var(--stroke);border-radius:12px;padding:8px 11px;font-size:12.5px;box-shadow:var(--shadow);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.legend{display:flex;gap:16px;justify-content:center;font-size:13px;margin-top:6px}
+.legitem{display:inline-flex;align-items:center;gap:4px}
+@media (max-width:1100px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.toolhead{padding:0 8px}
+.toolhead h2{font-size:19px;letter-spacing:-.02em}
+.toolhead .sub{margin-top:2px}

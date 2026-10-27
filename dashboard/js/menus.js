@@ -18,7 +18,7 @@ export const MENUS = [
   { slug: 'special-cargo-rules', bundle: 'C', name: '스페셜화물 내규 판정', agent: '스페셜화물 내규 판정 에이전트', owner: '이병선', file: 'special-cargo-rules.json', icon: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z M9 12l2 2 4-4',
     skills: [{ slug: 'prohibit-matrix-judge', name: '금지 매트릭스 판정', status: 'todo' }, { slug: 'accident-history-lookup', name: '사고 이력 조회', status: 'todo' }, { slug: 'judgment-log', name: '판정 기록', status: 'todo' }] },
   { slug: 'bunker-consumption', bundle: 'D', name: '소모량 분석', agent: '소모량 분석 에이전트', owner: '다니엘', file: 'bunker-consumption.json', icon: 'M12 3s6 6 6 11a6 6 0 01-12 0c0-5 6-11 6-11z',
-    skills: [{ slug: 'segment-cleanup', name: '구간 정제', status: 'todo' }, { slug: 'speed-consumption-calc', name: '속도별 소모량 산출', status: 'todo' }, { slug: 'verify-excel-export', name: '검증·엑셀 출력', status: 'todo' }] },
+    skills: [{ slug: 'segment-cleanup', name: '구간 정제', status: 'done' }, { slug: 'speed-consumption-calc', name: '속도별 소모량 산출', status: 'done' }, { slug: 'verify-excel-export', name: '검증·엑셀 출력', status: 'done' }] },
   { slug: 'offhire', bundle: 'D', name: 'Off-hire 협정', agent: 'Off-hire 협정 에이전트', owner: 'ijryu', file: 'offhire-ledger.json', icon: 'M12 7v5l3 2 M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
     skills: [{ slug: 'offhire-check', name: 'offhire 검산', status: 'todo' }, { slug: 'offhire-mail-draft', name: 'offhire 메일 초안', status: 'todo' }, { slug: 'agreement-ledger-update', name: '협정 대장 갱신', status: 'todo' }] },
   { slug: 'spare-parts-supply', bundle: 'D', name: '스페어파트 보급', agent: '스페어파트 보급 에이전트', owner: '황심연', file: 'spare-parts.json', icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M12 2v3 M12 19v3 M2 12h3 M19 12h3 M5 5l2 2 M17 17l2 2 M5 19l2-2 M17 7l2-2',

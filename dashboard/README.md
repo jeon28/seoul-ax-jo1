@@ -54,3 +54,18 @@ export default function render(ctx) {
 - API 키는 `.env.local` 과 버셀 환경 변수에만 둔다. 코드·문서·깃에 적지 않는다.
 - AI 에는 이름을 가린 확인 목록(S01·C01·H01)만 보낸다. 숫자는 규칙(lib/)이 계산한다.
 - 확신이 낮은 값은 맞다고 처리하지 않고 `review` 로 넘긴다.
+
+## 예시: 소모량 분석 메뉴 (operation-dashboard 의 Speed Performance 를 옮김)
+
+메뉴 화면을 통째로 바꾼 예다. 보고 따라 하면 된다.
+
+| 파일 | 하는 일 |
+|---|---|
+| `dashboard/menus/bunker-consumption.js` | 기본 조각(요약·스킬 순서·결과 표)에 조회 화면을 끼워 넣음 |
+| `dashboard/js/bunker/board.js` | 조회 화면: 선박 1·2 선택, 기간·속력·RH·Slip 필터, 속력별 표, 정박 소모량, 그래프, CSV |
+| `dashboard/js/bunker/performance.js` · `portcalc.js` | 계산 규칙(순수 함수, node 에서도 돈다) = 「제외 규칙 숫자표」 |
+| `dashboard/js/bunker/noon-synthetic.js` | 가상 NOON REPORT 공급부. 실제 자료로 바꿀 때 `getHistory()` 만 바꾼다 |
+| `dashboard/js/bunker/chart.js` | 외부 라이브러리 없는 SVG 꺾은선 그래프 |
+| `data/in/vessels.json` | 선박 목록(실제 선박명·코드 66척) |
+| `scripts/build-bunker-result.mjs` | 규칙을 돌려 `data/out/bunker-consumption.json` 을 다시 만듦 |
+| `scripts/test-bunker.mjs` | 계산 규칙 테스트: `node --test scripts/test-bunker.mjs` |
