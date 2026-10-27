@@ -1,0 +1,16 @@
+{
+ "_note": "용선(T/C) 선박 목록. History 화면의 선박 줄에 쓴다. 선박명·코드는 실제, 금액·기간 등 수치는 모두 가상(ledger-demo.json).",
+ "vessels": [
+  ["ATPR", "ATLANTIC PIONEER"],
+  ["ATSH", "ATLANTIC SOUTH"],
+  ["CNVY", "CHENNAI VOYAGER"],
+  ["HSWH", "HANSUNG WEIHAI"],
+  ["LCVY", "LAEM CHABANG VOYAGER"],
+  ["PCBJ", "PACIFIC BEIJING"],
+  ["PCSG", "PACIFIC SINGAPORE"],
+  ["PCSZ", "PACIFIC SHENZHEN"],
+  ["SBVG", "SURABAYA VOYAGER"],
+  ["TJBG", "TIANJIN BRIDGE"],
+  ["YTTR", "YANGTZE TRADER"]
+ ]
+}
