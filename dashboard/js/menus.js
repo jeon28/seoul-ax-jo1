@@ -6,7 +6,7 @@ export const MENUS = [
   { slug: 'empty-stock', bundle: 'A', name: '일일 재고 현황', agent: '일일 재고 브리핑 에이전트', owner: 'hjung', file: 'empty-stock.json', icon: 'M21 8l-9-5-9 5v8l9 5 9-5V8z M3 8l9 5 9-5 M12 13v8',
     skills: [{ slug: 'stock-excel-parser', name: '재고 Excel 파서', status: 'todo' }, { slug: 'over-short-judge', name: '과잉/부족 판정', status: 'todo' }, { slug: 'transfer-candidate-summary', name: '공이송 후보 요약', status: 'todo' }] },
   { slug: 'japan-empty-transfer', bundle: 'A', name: '일본 공이송 플래너', agent: '일본 공이송 플래너', owner: '권도윤', file: 'japan-empty-transfer.json', icon: 'M7 8h13 M16 4l4 4-4 4 M17 16H4 M8 12l-4 4 4 4',
-    skills: [{ slug: 'input-cleanup', name: '입력 정리', status: 'todo' }, { slug: 'transfer-candidate-calc', name: '이송 후보 계산', status: 'todo' }, { slug: 'verify-report', name: '검증·보고', status: 'todo' }] },
+    skills: [{ slug: 'input-cleanup', name: '입력 정리', status: 'done' }, { slug: 'transfer-candidate-calc', name: '이송 후보 계산', status: 'done' }, { slug: 'verify-report', name: '검증·보고', status: 'done' }] },
   { slug: 'bugok-cy', bundle: 'B', name: '부곡 CY 일일 대조', agent: '부곡 CY 일일 대조 에이전트', owner: '전지연', file: 'cy-reconcile.json', icon: 'M3 5h8v14H3z M13 5h8v14h-8z M6 9h2 M6 13h2 M16 9h2 M16 13h2',
     skills: [{ slug: 'cy-mail-reader', name: 'CY 메일 읽기', status: 'todo' }, { slug: 'portal-compare', name: '포탈 대조', status: 'todo' }, { slug: 'daily-stock-sheet-fill', name: '일일 재고 엑셀 기입', status: 'todo' }] },
   { slug: 'return-helper', bundle: 'B', name: '반납 도우미', agent: '반납 도우미', owner: '전성현', file: 'container-return.json', icon: 'M9 14L4 9l5-5 M4 9h10a6 6 0 010 12h-3',
